@@ -876,27 +876,7 @@ ol.steps li::before{
 <!-- == NAV ================================================ -->
 <nav class="nav" id="nav">
   <a class="nav-logo" href="#top"><img src="https://i.postimg.cc/26bynKyG/logo-(6).png" alt="Atlantic Sun Control"></a>
-  <ul class="nav-links">
-    <li><a href="#" class="has-arrow">About Us</a></li>
-    <li><a href="#compare" class="has-arrow">Solutions</a></li>
-    <li><a href="#residential" class="has-arrow">Who We Serve</a></li>
-    <li><a href="#faq" class="has-arrow">Resources</a></li>
-    <li><a href="#estimate" class="nav-cta">Request a Free Estimate</a></li>
-    <li><a href="tel:5718328571" class="nav-phone">(571) 832-8571</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<div class="drawer" id="drawer">
-  <a href="#">About Us</a>
-  <a href="#compare">Solutions</a>
-  <a href="#residential">Who We Serve</a>
-  <a href="#faq">Resources</a>
-  <a href="#estimate">Request a Free Estimate</a>
-  <a href="tel:5718328571">(571) 832-8571</a>
-</div>
 
 <!-- == 1 . HERO =========================================== -->
 <header id="top">
@@ -2024,10 +2004,8 @@ ol.steps li::before{
 (function () {
   'use strict';
 
-  /* --- nav state, drawer -------------------------------- */
+  /* --- nav state ---------------------------------------- */
   var nav = document.getElementById('nav');
-  var burger = document.getElementById('burger');
-  var drawer = document.getElementById('drawer');
   var progress = document.getElementById('progress');
   var totop = document.getElementById('totop');
 
@@ -2040,21 +2018,6 @@ ol.steps li::before{
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    burger.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  burger.addEventListener('click', function () {
-    var open = drawer.classList.toggle('open');
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeDrawer); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
 
   totop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
