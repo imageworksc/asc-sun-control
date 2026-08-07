@@ -873,11 +873,6 @@ ol.steps li::before{
 
 <div class="progress" id="progress"></div>
 
-<!-- == NAV ================================================ -->
-<nav class="nav" id="nav">
-  <a class="nav-logo" href="#top"><img src="https://i.postimg.cc/26bynKyG/logo-(6).png" alt="Atlantic Sun Control"></a>
-</nav>
-
 <!-- == 1 . HERO =========================================== -->
 <header id="top">
   <div class="hero">
@@ -2004,14 +1999,12 @@ ol.steps li::before{
 (function () {
   'use strict';
 
-  /* --- nav state ---------------------------------------- */
-  var nav = document.getElementById('nav');
+  /* --- scroll state ------------------------------------- */
   var progress = document.getElementById('progress');
   var totop = document.getElementById('totop');
 
   function onScroll() {
     var y = window.pageYOffset || document.documentElement.scrollTop;
-    nav.classList.toggle('is-stuck', y > 40);
     totop.classList.toggle('show', y > 900);
     var h = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
