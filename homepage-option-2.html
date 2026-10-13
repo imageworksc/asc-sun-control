@@ -18,238 +18,266 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   ATLANTIC SUN CONTROL — HOMEPAGE
-   Base: charcoal / warm paper bands, Jost 700 + Roboto 400
-   Brand tier (.tier + navy H2) on light bands, per live site
+   ATLANTIC SUN CONTROL — HOMEPAGE (option 2)
+   Type: Jost 600/700 display + Roboto body, px scale
+   Color: charcoal surfaces, orange accents, navy for links only
+   Large displays: whole page scales via zoom at 1920 → 5120
    Copy is VERBATIM from the supplied homepage document.
    ============================================================ */
 :root{
-  --navy:#1B1B8C; --ink:#1e2129; --ink-2:#16181f;
+  --ink:#1e2129; --ink-2:#16181f; --ink-3:#2a2d36;
+  --navy:#1B1B8C;
   --orange:#E8540A; --orange-hi:#ff6b1a; --orange-ink:#b4500f;
   --slate:#4a4d55; --gray:#6b6e76;
-  --bg-light:#f5f5f5; --bg-faq:#efefef; --lavender:#e8e8e8; --white:#fff;
+  --bg-light:#f5f5f5; --white:#fff;
   --line-lt:#e2e2e2; --line-dk:rgba(255,255,255,.14);
-  --on-dk:#fff; --on-dk-2:rgba(255,255,255,.85); --on-dk-3:rgba(255,255,255,.65);
-  --tier:#8e8e8e; --tier-dk:#9A9A9A;
-  --wrap:1180px;
-  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:20px; --s6:48px; --s8:64px;
+  --on-dk-2:rgba(255,255,255,.85); --on-dk-3:rgba(255,255,255,.65);
+  --h1:clamp(32px,calc(2.4vw + 16px),52px);
+  --h2:clamp(28px,calc(1.8vw + 14px),42px);
+  --h3l:clamp(19px,calc(.8vw + 15px),24px);
+  --wrap:1280px; --gut:40px;
 }
+/* Large-display scaling: px-authored layout grows as one composition */
+@media (min-width:1920px){body{zoom:1.0625}}
+@media (min-width:2560px){body{zoom:1.25}}
+@media (min-width:3440px){body{zoom:1.5}}
+@media (min-width:3840px){body{zoom:1.75}}
+@media (min-width:5120px){body{zoom:2.25}}
+
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:0}
-body{margin:0;font-family:'Roboto',Arial,sans-serif;font-size:16px;line-height:1.55;color:var(--slate);background:var(--white);overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Roboto',Arial,sans-serif;font-size:16px;line-height:1.55;color:var(--slate);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'Jost',Arial,sans-serif;font-weight:600;color:var(--ink);margin:0;line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
 h3,h4{font-size:17px;line-height:1.25}
-p{margin:0 0 var(--s2)} p:last-child{margin-bottom:0}
+p{margin:0 0 16px;text-wrap:pretty} p:last-child{margin-bottom:0}
 img{max-width:100%;display:block}
 a{color:inherit}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 40px;width:100%}
-.band{padding:56px 0}
-.band--tight{padding:var(--s4) 0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);width:100%}
+.band{padding:104px 0}
 .lt{background:var(--bg-light)}
-.wh{background:var(--white)}
 .dk{background:var(--ink);color:var(--on-dk-2)}
-.dk2{background:var(--ink-2);color:var(--on-dk-2)}
-.dk h2,.dk h3,.dk2 h2,.dk2 h3{color:var(--white)}
-
-/* ---- brand title tier: grey uppercase over navy headline ---- */
-.tier{display:block;font-family:'Jost',sans-serif;font-weight:700;font-size:clamp(20px,2.3vw,28px);line-height:1.1;letter-spacing:.5px;text-transform:uppercase;color:var(--tier);margin:0 0 6px}
-.dk .tier,.dk2 .tier{color:var(--tier-dk)}
-.h2{font-size:clamp(28px,calc(1.8vw + 14px),42px);line-height:1.06;color:var(--ink)}
-.dk .h2,.dk2 .h2{color:var(--white)}
+.dk h2,.dk h3{color:#fff}
+.h2{font-size:var(--h2)}
 .lead{font-size:18px;line-height:1.7}
-.measure{max-width:64ch}
+.intro{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:end;margin-bottom:56px}
+.intro p{font-size:17px;line-height:1.7;max-width:56ch}
 
-/* ---- buttons: solid square orange, uppercase ---- */
-.ctas{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
-.btn{font-family:'Jost',sans-serif;font-weight:700;font-size:15px;line-height:1;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 28px;border:2px solid transparent;transition:background .15s ease,color .15s ease,border-color .15s ease}
+/* ---- buttons ---- */
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+.btn{font-family:'Jost',sans-serif;font-weight:700;font-size:15px;line-height:1;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:16px 28px;border:2px solid transparent;transition:background .15s ease,color .15s ease,border-color .15s ease}
 .btn--primary{background:var(--orange);color:#fff;border-color:var(--orange)}
 .btn--primary:hover{background:var(--orange-hi);border-color:var(--orange-hi)}
-.btn--primary:active{background:#c94808}
 .btn--line{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn--line:hover{background:var(--ink);color:#fff}
-.dk .btn--line,.dk2 .btn--line,.hero .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
-.dk .btn--line:hover,.dk2 .btn--line:hover,.hero .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
+.dk .btn--line,.hero .btn--line,.still .btn--line,.final .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
+.dk .btn--line:hover,.hero .btn--line:hover,.still .btn--line:hover,.final .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
 .go{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:'Jost',sans-serif;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none}
-.go::after{content:'\2192';transition:transform .15s ease}
-.go:hover{color:var(--orange-ink)} .go:hover::after{transform:translateX(3px)}
+.go::after{content:'\2192';color:var(--orange);transition:transform .15s ease}
+.go:hover{color:var(--orange-ink)} .go:hover::after{transform:translateX(4px)}
 
-/* ---- trust line (inline, not a badge bar) ---- */
-.trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font-family:'Jost',sans-serif;font-size:14px;font-weight:600}
+.trust{display:flex;flex-wrap:wrap;gap:8px 0;font-family:'Jost',sans-serif;font-size:14px;font-weight:600}
 .trust li{display:inline-flex;align-items:center}
-.trust li+li::before{content:'';width:5px;height:5px;background:var(--orange);margin:0 14px}
+.trust li+li::before{content:'';width:5px;height:5px;background:var(--orange);margin:0 16px}
 
 /* ============================================================
-   HERO
+   HERO — copy + a pane of glass you can apply film to
    ============================================================ */
-.hero{position:relative;padding-top:env(safe-area-inset-top,0px);background:var(--ink-2) url('https://res.cloudinary.com/dsjbq35es/image/upload/v1775065563/Shutterstock_2681641223_1_el31oa.jpg') center/cover no-repeat;color:var(--on-dk-2);overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 42%,rgba(14,16,22,.35) 100%)}
-.hero .wrap{position:relative;padding-top:var(--s6);padding-bottom:var(--s4)}
-.hero-copy{max-width:640px}
-.hero-eyebrow{font-family:'Jost',sans-serif;font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin:0 0 var(--s2)}
-.hero h1{color:#fff;font-size:clamp(32px,calc(2.4vw + 16px),52px)}
-.hero .lead{margin-top:var(--s3);color:var(--on-dk-2);max-width:56ch}
-.hero-area{margin-top:var(--s2);font-weight:500;color:#fff;display:flex;align-items:center;gap:10px}
-.hero-area::before{content:'';flex:0 0 18px;height:2px;background:var(--orange)}
-.hero .trust{margin-top:var(--s6);padding-top:var(--s3);border-top:1px solid var(--line-dk);color:var(--on-dk-2)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 88% 0%,rgba(232,84,10,.22),rgba(232,84,10,0) 42%),var(--ink-2);color:var(--on-dk-2);padding-top:env(safe-area-inset-top,0px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:center;padding-top:80px;padding-bottom:64px}
+.hero h1{color:#fff;font-size:var(--h1);max-width:15ch}
+.hero .lead{margin-top:24px;color:var(--on-dk-2);max-width:48ch}
+.hero-area{margin-top:16px;font-weight:500;color:#fff;display:flex;align-items:center;gap:12px}
+.hero-area::before{content:'';flex:0 0 20px;height:2px;background:var(--orange)}
+.hero-trust{border-top:1px solid var(--line-dk);padding:24px 0 28px;color:var(--on-dk-2)}
+
+.pane{--cut:50%;position:relative;aspect-ratio:4/5;background:#000;border:10px solid var(--ink-3);box-shadow:0 48px 90px -36px rgba(0,0,0,.75)}
+.pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pane .filmed{filter:brightness(.5) contrast(1.15) saturate(.65);clip-path:inset(0 0 0 var(--cut))}
+.pane-edge{position:absolute;top:0;bottom:0;left:var(--cut);width:2px;margin-left:-1px;background:#fff;pointer-events:none}
+.pane-grip{position:absolute;top:50%;left:50%;width:48px;height:48px;margin:-24px 0 0 -24px;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.pane-tag{position:absolute;bottom:16px;font-family:'Jost',sans-serif;font-weight:600;font-size:13px;line-height:1;color:#fff;background:rgba(22,24,31,.72);padding:8px 10px;pointer-events:none}
+.pane-tag--l{left:16px} .pane-tag--r{right:16px}
+.pane input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:2}
+.pane:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:4px}
 
 /* ============================================================
-   BAND 2 — OPENING
+   OPENING — statement + callout
    ============================================================ */
-.open{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:start}
-.open-body{padding-top:var(--s1)}
-.open-body p:first-child{font-size:18px;line-height:1.7;color:var(--slate)}
+.open{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
+.open .h2{max-width:13ch}
+.open-body > p{font-size:18px;line-height:1.7;max-width:60ch}
+.callout{margin-top:32px;background:var(--white);border-top:3px solid var(--orange);padding:28px 32px;box-shadow:0 18px 40px -28px rgba(22,24,31,.35)}
+.callout p{font-size:16px;line-height:1.6;color:var(--gray)}
 
 /* ============================================================
-   BAND 3 — PRODUCTS (problem-led rows)
+   PRODUCTS — category finder (tabs on desktop, stacked on mobile)
    ============================================================ */
-.needs{margin-top:var(--s4);border-top:2px solid var(--ink)}
-.need{
-  display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s4);
-  padding:18px 0 18px var(--s3);margin-left:calc(var(--s3) * -1);
-  border-bottom:1px solid var(--line-lt);
-  border-left:3px solid transparent;transition:border-color .15s ease,background .15s ease;
-}
-.need:hover{border-left-color:var(--orange);background:var(--bg-light)}
-/* goal first, small — the category name is the thing being chosen */
-.need-head{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:14px;align-items:center;align-content:start}
-.need-mark{width:24px;height:24px;color:var(--orange)}
-.need:hover .need-mark{color:var(--orange-ink)}
-.need h3{font-size:clamp(19px,calc(.8vw + 15px),24px);line-height:1.2;color:var(--ink);margin:0}
-.need h3 a{text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
-.need h3 a:hover{color:var(--orange-ink)}
-.need-body{max-width:64ch}
-.need-body p{margin:0 0 8px;font-size:16px;line-height:1.6;color:var(--gray)}
-.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 28px;font-size:15px;line-height:1.6}
-.tags a{
-  color:var(--ink);text-decoration:none;font-weight:500;
-  display:inline-flex;align-items:center;gap:6px;min-height:30px;
-  border-bottom:1px solid transparent;
-  transition:color .12s ease,border-color .12s ease;
-}
-.tags a::after{content:'\2192';font-size:13px;color:var(--orange);opacity:0;transform:translateX(-4px);transition:opacity .12s ease,transform .12s ease}
-.tags a:hover{color:var(--orange-ink);border-bottom-color:var(--orange)}
-.tags a:hover::after{opacity:1;transform:translateX(0)}
-.tags li{display:inline-flex;align-items:center}
-.unsure{margin-top:var(--s4);background:var(--ink);color:var(--on-dk-2);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s4);align-items:center;padding:var(--s4) var(--s6);border-left:5px solid var(--orange)}
-.unsure h3{color:#fff;font-size:clamp(19px,calc(.8vw + 15px),24px);line-height:1.2;margin-bottom:var(--s1)}
+.finder-tabs{display:none}
+.js .finder{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);align-items:stretch;border:1px solid var(--line-lt)}
+.js .finder-tabs{display:flex;flex-direction:column}
+.tab{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px;align-items:center;width:100%;text-align:left;font:600 18px/1.25 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink);background:var(--white);border:0;border-bottom:1px solid var(--line-lt);border-left:3px solid transparent;padding:22px 24px;cursor:pointer;flex:1;transition:background .15s ease}
+.tab:last-child{border-bottom:0}
+.tab svg{width:24px;height:24px;color:var(--orange)}
+.tab:hover{background:var(--bg-light)}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff;border-left-color:var(--orange)}
+.finder-panel{position:relative;overflow:hidden;background:var(--ink);color:var(--on-dk-2);padding:48px 56px;min-height:100%}
+.finder-panel + .finder-panel{margin-top:12px}
+.js .finder-panel + .finder-panel{margin-top:0}
+.finder-panel[hidden]{display:none}
+.panel-mark{width:36px;height:36px;color:var(--orange);margin-bottom:24px}
+.panel-ghost{position:absolute;right:-36px;bottom:-36px;width:260px;height:260px;color:rgba(255,255,255,.05);pointer-events:none}
+.finder-panel h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:16px}
+.finder-panel h3 a{text-decoration:none}
+.finder-panel h3 a:hover{color:var(--orange-hi)}
+.finder-panel p{position:relative;font-size:17px;line-height:1.7;max-width:56ch}
+.chips{position:relative;display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chips a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;font-size:15px;font-weight:500;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.24);transition:border-color .15s ease,background .15s ease}
+.chips a:hover{border-color:var(--orange);background:rgba(232,84,10,.14)}
+.unsure{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;background:var(--bg-light);border-left:5px solid var(--orange);padding:32px 48px}
+.unsure h3{font-size:var(--h3l);line-height:1.2;margin-bottom:8px}
 .unsure p{max-width:62ch;font-size:16px;line-height:1.6}
 
 /* ============================================================
-   BAND 4 — WHO WE SERVE
+   WHO WE SERVE — photo cards + sector tiles
    ============================================================ */
-.serve-major{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-top:var(--s4)}
-.serve-card{position:relative;display:flex;flex-direction:column}
-.serve-img{aspect-ratio:16/10;background:var(--lavender) center/cover no-repeat}
-.serve-body{position:relative;background:var(--white);margin:-56px var(--s4) 0 0;padding:var(--s3) var(--s3) var(--s2);flex:1;display:flex;flex-direction:column}
-.serve-body h3{font-size:clamp(19px,calc(.8vw + 15px),24px);line-height:1.2;color:var(--ink);margin-bottom:12px}
-.serve-body p{flex:1;font-size:16px;line-height:1.6;color:var(--gray)}
-.serve-minor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:var(--s4);border-top:1px solid var(--line-lt)}
-.serve-minor > div{padding:var(--s4) var(--s4) 0 0;display:flex;flex-direction:column}
-.serve-minor > div + div{padding-left:var(--s4);border-left:1px solid var(--line-lt)}
-.serve-minor h3{font-size:18px;color:var(--ink);margin-bottom:10px}
-.serve-minor p{flex:1;font-size:16px;line-height:1.6;color:var(--gray)}
+.serve-major{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.serve-card{position:relative;min-height:540px;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.serve-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.serve-card:hover img{transform:scale(1.03)}
+.serve-card::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(22,24,31,.96) 0%,rgba(22,24,31,.86) 45%,rgba(22,24,31,.25) 78%,rgba(22,24,31,.05) 100%)}
+.serve-body{position:relative;z-index:2;padding:40px;color:var(--on-dk-2)}
+.serve-body h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:12px}
+.serve-body p{font-size:16px;line-height:1.6;max-width:52ch}
+.serve-body .go{color:#fff;margin-top:8px}
+.serve-body .go:hover{color:var(--orange-hi)}
+.serve-minor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px}
+.sector{background:var(--white);border-top:3px solid var(--orange);padding:32px;display:flex;flex-direction:column}
+.sector svg{width:32px;height:32px;color:var(--orange);margin-bottom:20px}
+.sector h3{font-size:18px;margin-bottom:10px}
+.sector p{flex:1;font-size:16px;line-height:1.6;color:var(--gray)}
 
 /* ============================================================
-   BAND 5 — PROCESS
+   PROCESS — numbered sequence
    ============================================================ */
-.proc-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s8);align-items:end}
-.proc-head p{font-size:17px;line-height:1.7}
-.steps{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);position:relative;counter-reset:s}
-.steps::before{content:'';position:absolute;top:23px;left:24px;right:calc(25% - 24px);height:1px;background:var(--line-dk)}
-.step{position:relative;counter-increment:s}
-.step::before{content:counter(s);position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--ink);border:2px solid var(--orange);font-family:'Jost',sans-serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:var(--s3)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;counter-reset:s}
+.step{counter-increment:s;border-top:1px solid var(--line-dk);padding-top:28px}
+.step::before{content:counter(s,decimal-leading-zero);display:block;font:600 64px/1 'Jost',sans-serif;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1.5px var(--orange);margin-bottom:24px}
 .step h3{font-size:18px;margin-bottom:10px}
 .step p{font-size:16px;line-height:1.6;color:var(--on-dk-2)}
-.proc-foot{margin-top:var(--s6);padding-top:var(--s3);border-top:1px solid var(--line-dk);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
+.proc-foot{margin-top:64px;padding-top:28px;border-top:1px solid var(--line-dk);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
 .proc-foot .trust{color:var(--on-dk-2)}
 .proc-foot .ctas{margin-top:0}
 
 /* ============================================================
-   BAND 6 — WORK / PROOF
+   WORK / PROOF — full-bleed split
    ============================================================ */
-.proof p,.area-body p,.final p:not(.final-verbs){font-size:17px;line-height:1.7}
-.proof{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:center}
-.ph{background:var(--lavender);border:1px dashed #bdbdbd;color:var(--gray);font-size:13px;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--s3);min-height:320px}
+.proof{display:grid;grid-template-columns:1fr 1fr;background:var(--white)}
+.ph{background:#e8e8e8;border:1px dashed #bdbdbd;color:var(--gray);font-size:13px;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;min-height:580px}
+.proof-copy{padding:104px var(--gut) 104px 72px;max-width:calc(var(--wrap) / 2 + 32px)}
+.proof-copy p{font-size:17px;line-height:1.7}
 
 /* ============================================================
-   BAND 7 — SERVICE AREA
+   SERVICE AREA — region list
    ============================================================ */
-.area{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:start}
-.area-body{border-left:3px solid var(--orange);padding-left:var(--s4)}
+.area{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:center}
+.area-copy p{margin-top:24px;font-size:17px;line-height:1.7;max-width:52ch}
+.area-copy .go{margin-top:8px}
+.regions{border-top:2px solid var(--ink)}
+.regions li{display:flex;align-items:center;gap:18px;padding:26px 0;border-bottom:1px solid var(--line-lt);font:600 var(--h3l)/1.2 'Jost',sans-serif;letter-spacing:-.015em;color:var(--ink)}
+.regions li::before{content:'';flex:0 0 12px;height:12px;background:var(--orange)}
 
 /* ============================================================
-   BAND 8 — FAQ
+   FAQ
    ============================================================ */
-.faq-wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s6);align-items:start}
-.faq-side{position:sticky;top:var(--s4)}
-.still{margin-top:var(--s3);background:var(--white);border:1px solid var(--line-lt);padding:var(--s3)}
-.still h3{font-size:18px;color:var(--ink);margin-bottom:var(--s1)}
-.still p{font-size:16px;line-height:1.6;color:var(--gray)}
-.still .ctas{margin-top:var(--s3)}
+.faq-wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
+.faq-side{position:sticky;top:32px}
+.still{margin-top:32px;background:var(--ink);color:var(--on-dk-2);padding:32px}
+.still h3{font-size:18px;color:#fff;margin-bottom:8px}
+.still p{font-size:16px;line-height:1.6}
+.still .ctas{margin-top:24px}
 .faq{border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line-lt)}
-.faq summary{list-style:none;cursor:pointer;display:flex;gap:var(--s2);align-items:flex-start;justify-content:space-between;padding:15px 0;min-height:44px}
+.faq details{border-bottom:1px solid var(--line-lt);transition:background .15s ease}
+.faq details[open]{background:var(--bg-light)}
+.faq summary{list-style:none;cursor:pointer;display:flex;gap:16px;align-items:flex-start;justify-content:space-between;padding:20px 16px;min-height:44px}
 .faq summary::-webkit-details-marker{display:none}
 .faq .q{font-family:'Jost',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink)}
 .faq summary:hover .q{color:var(--orange-ink)}
-.faq .ic{flex:0 0 20px;width:20px;height:20px;position:relative;margin-top:3px}
-.faq .ic::before,.faq .ic::after{content:'';position:absolute;background:var(--ink);transition:transform .18s ease}
+.faq .ic{flex:0 0 20px;width:20px;height:20px;position:relative;margin-top:1px}
+.faq .ic::before,.faq .ic::after{content:'';position:absolute;background:var(--ink);transition:transform .18s ease,background .18s ease}
 .faq .ic::before{left:0;right:0;top:9px;height:2px}
 .faq .ic::after{top:0;bottom:0;left:9px;width:2px}
 .faq details[open] .ic::after{transform:scaleY(0)}
 .faq details[open] .ic::before{background:var(--orange)}
-.faq .a{color:var(--slate)}
-.faq .a{padding:0 40px 18px 0;max-width:72ch;font-size:15px;line-height:1.65}
+.faq .a{padding:0 56px 22px 16px;max-width:76ch;font-size:15px;line-height:1.65;color:var(--slate)}
 
 /* ============================================================
-   BAND 9 — FINAL CTA
+   FINAL CTA
    ============================================================ */
-.final{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s6);align-items:end}
-.final h2{font-size:clamp(28px,calc(1.8vw + 14px),42px)}
-.final-verbs{margin-top:var(--s3);font-family:'Jost',sans-serif;font-weight:600;font-size:clamp(18px,calc(.8vw + 14px),22px);line-height:1.45;letter-spacing:-.015em;color:var(--orange)}
-.final .ctas{margin-top:var(--s3)}
+.final{background:var(--ink-2);color:var(--on-dk-2)}
+.final-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:end}
+.final h2{color:#fff;font-size:var(--h2);max-width:16ch}
+.final-top p{font-size:17px;line-height:1.7}
+.verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
+.verbs li{display:flex;align-items:center;gap:14px;padding:22px 24px 22px 0;border-bottom:1px solid var(--line-dk);font:600 clamp(18px,calc(.8vw + 14px),22px)/1.3 'Jost',sans-serif;letter-spacing:-.015em;color:#fff}
+.verbs li::before{content:'';flex:0 0 10px;height:10px;background:var(--orange)}
+.verbs li:last-child{grid-column:span 2}
+.final .ctas{margin-top:40px}
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width:1100px){
+  .hero-grid{gap:48px}
+  .verbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:980px){
-  .band{padding:var(--s6) 0}
-  .open,.proc-head,.area,.faq-wrap,.final,.proof{grid-template-columns:1fr;gap:var(--s4)}
-  .need{grid-template-columns:1fr;gap:12px;padding-left:var(--s2);margin-left:calc(var(--s2) * -1)}
-  .need-body{max-width:none}
-  .steps{grid-template-columns:1fr 1fr;row-gap:var(--s6)}
-  .steps::before{display:none}
+  :root{--gut:32px}
+  .band{padding:80px 0}
+  .hero-grid,.intro,.open,.area,.faq-wrap,.final-top{grid-template-columns:1fr;gap:32px}
+  .hero-grid{padding-top:56px;padding-bottom:48px}
+  .pane{aspect-ratio:4/3}
+  .intro{margin-bottom:40px}
+  .js .finder{display:block;border:0}
+  .js .finder-tabs{display:none}
+  .finder-panel[hidden]{display:block}
+  .js .finder-panel + .finder-panel{margin-top:12px}
+  .finder-panel{padding:36px 32px}
+  .unsure{grid-template-columns:1fr;padding:32px}
   .serve-minor{grid-template-columns:1fr}
-  .serve-minor > div,.serve-minor > div + div{padding:var(--s3) 0;border-left:0;border-bottom:1px solid var(--line-lt)}
+  .steps{grid-template-columns:1fr 1fr;row-gap:48px}
+  .proof{grid-template-columns:1fr}
+  .ph{min-height:320px}
+  .proof-copy{padding:72px var(--gut);max-width:none}
   .faq-side{position:static}
-  .ph{min-height:300px}
-  .unsure{grid-template-columns:1fr;padding:var(--s4)}
 }
 @media (max-width:600px){
-  .wrap{padding:0 20px}
-  .band{padding:40px 0}
-  .band--tight{padding:40px 0}
-  .hero .wrap{padding-top:var(--s6)}
-  .hero::before{background:linear-gradient(180deg,rgba(14,16,22,.9),rgba(14,16,22,.82))}
-  .hero .trust{margin-top:var(--s6)}
-  .trust{flex-direction:column;align-items:flex-start;gap:8px}
-  .trust li+li::before{display:none}
-  .trust li::before{content:'';width:5px;height:5px;background:var(--orange);margin-right:12px}
-  .serve-major,.steps{grid-template-columns:1fr}
-  .serve-body{margin:-40px var(--s2) 0 0;padding:var(--s3) var(--s3) var(--s2)}
-  .btn{width:100%}
+  :root{--gut:20px}
+  .band{padding:64px 0}
+  .hero-grid{padding-top:40px}
+  .trust{flex-direction:column;align-items:flex-start;gap:10px}
+  .trust li::before,.trust li+li::before{content:'';display:block;flex:0 0 5px;width:5px;height:5px;background:var(--orange);margin:0 12px 0 0}
+  .btn{width:100%;text-align:center;letter-spacing:.04em;padding:16px 20px}
   .ctas{flex-direction:column}
+  .serve-major,.steps,.verbs{grid-template-columns:1fr}
+  .verbs li:last-child{grid-column:auto}
+  .serve-card{min-height:440px}
+  .serve-body{padding:28px 24px}
+  .finder-panel{padding:32px 24px}
+  .panel-ghost{width:180px;height:180px}
+  .callout{padding:24px}
+  .unsure{padding:28px 24px}
+  .sector{padding:28px 24px}
+  .step::before{font-size:52px}
   .proc-foot{flex-direction:column;align-items:stretch}
-  .area-body{padding-left:var(--s3)}
-  .faq .a{padding-right:0}
-  .still{padding:var(--s3)}
-  .mm-list{columns:1}
-  .tags{display:block}
-  .tags li{display:block}
-  .tags a{display:flex;align-items:center;min-height:44px}
+  .proof-copy{padding:56px var(--gut)}
+  .ph{min-height:260px}
+  .faq summary{padding:18px 8px}
+  .faq .a{padding:0 8px 20px}
+  .still{padding:28px 24px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
@@ -335,6 +363,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </script>
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-shield" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5 24 7v6.5c0 5.6-4 10-10 11.5-6-1.5-10-5.9-10-11.5V7l10-3.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="5"/><path d="M14 3v3M14 22v3M3 14h3M22 14h3M6.2 6.2l2.1 2.1M19.7 19.7l2.1 2.1M21.8 6.2l-2.1 2.1M8.3 19.7l-2.1 2.1"/></symbol>
+    <symbol id="i-graphic" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M4 17.5 10 12l5 4.5L19 13l5 4.5"/><circle cx="18" cy="9.5" r="1.8"/></symbol>
+    <symbol id="i-privacy" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M7 9.5h14M7 14h14M7 18.5h14"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 25 10l-11 6L3 10l11-6Z"/><path d="M3 15.5 14 21.5l11-6"/></symbol>
+    <symbol id="i-gov" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10 14 4l10.5 6"/><path d="M5 10.5h18M6.5 11v9M11 11v9M17 11v9M21.5 11v9M4 20.5h20M3 24h22"/></symbol>
+    <symbol id="i-edu" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 11 14 5.5 25.5 11 14 16.5 2.5 11Z"/><path d="M7.5 13.5v5.5c0 1.8 3 3.5 6.5 3.5s6.5-1.7 6.5-3.5v-5.5M25.5 11v6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-3.5l2.5-5.5h15L24 14.5V18"/><path d="M3 18h22v3.5H3zM8 9l1.5 5.5h9L20 9"/><circle cx="8" cy="21.5" r="1.8"/><circle cx="20" cy="21.5" r="1.8"/></symbol>
+  </defs>
+</svg>
 
 <main>
 
@@ -342,7 +384,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
      HERO
      ============================================================ -->
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1>Window Film That Makes Your Space Work Better</h1>
       <p class="lead">Heat, glare, UV, privacy, security, graphics. Professionally installed on the glass you already have.</p>
@@ -352,7 +394,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <a class="btn btn--line" href="tel:+15718328571">Call a Window Film Specialist</a>
       </div>
     </div>
-    <ul class="trust">
+    <figure class="pane" style="margin:0">
+      <img src="https://res.cloudinary.com/dsjbq35es/image/upload/v1775065563/Shutterstock_2681641223_1_el31oa.jpg" alt="Glass office towers" fetchpriority="high">
+      <img class="filmed" src="https://res.cloudinary.com/dsjbq35es/image/upload/v1775065563/Shutterstock_2681641223_1_el31oa.jpg" alt="" aria-hidden="true">
+      <span class="pane-edge" aria-hidden="true"><span class="pane-grip"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg></span></span>
+      <span class="pane-tag pane-tag--l" aria-hidden="true">Without film</span>
+      <span class="pane-tag pane-tag--r" aria-hidden="true">With film</span>
+      <input type="range" min="5" max="95" value="50" aria-label="Compare glass with and without window film">
+    </figure>
+  </div>
+  <div class="wrap">
+    <ul class="trust hero-trust">
       <li>Serving the Region Since 1991</li>
       <li>Virginia Class A Contractor</li>
       <li>Madico &amp; LLumar Films</li>
@@ -361,84 +413,75 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </section>
 
 <!-- ============================================================
-     BAND 2 — OPENING / EDUCATION
+     OPENING / EDUCATION
      ============================================================ -->
 <section class="band lt">
   <div class="wrap open">
-    <div>
-      <h2 class="h2">Your Glass Can Do More Than Let Light In</h2>
-    </div>
-    <div class="open-body measure">
+    <h2 class="h2">Your Glass Can Do More Than Let Light In</h2>
+    <div class="open-body">
       <p>Modern window film can change how existing glass performs, protects and looks—without replacing the windows. Depending on the goal, the right product can help manage solar heat and glare, reduce UV exposure, add privacy, support security glazing, or turn glass into a branded or decorative surface.</p>
-      <p>Atlantic Sun Control also installs Smart Film, blinds and shades, custom graphics, architectural finishes and other specialty products when conventional window tinting is not the right answer.</p>
+      <div class="callout"><p>Atlantic Sun Control also installs Smart Film, blinds and shades, custom graphics, architectural finishes and other specialty products when conventional window tinting is not the right answer.</p></div>
       <div class="ctas"><a class="btn btn--line" href="#products">Explore Products &amp; Services</a></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     BAND 3 — CORE PRODUCTS & SERVICES
+     CORE PRODUCTS & SERVICES
      ============================================================ -->
-<section class="band wh" id="products">
+<section class="band" id="products">
   <div class="wrap">
-    <h2 class="h2" style="max-width:24ch">Find the Right Window Film for Your Space</h2>
-    <p class="lead measure" style="margin-top:var(--s2)">You do not need to know which film or product you need. Start with what you want to improve, and we’ll help you find the right solution for your glass, property, and goals.</p>
+    <div class="intro">
+      <h2 class="h2">Find the Right Window Film for Your Space</h2>
+      <p>You do not need to know which film or product you need. Start with what you want to improve, and we’ll help you find the right solution for your glass, property, and goals.</p>
+    </div>
 
-    <div class="needs">
-      <article class="need">
-        <div class="need-head">
-          <svg class="need-mark" viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5 24 7v6.5c0 5.6-4 10-10 11.5-6-1.5-10-5.9-10-11.5V7l10-3.5Z"/></svg>
+    <div class="finder">
+      <div class="finder-tabs" role="tablist" aria-label="Product categories">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><svg aria-hidden="true"><use href="#i-shield"/></svg><span>Safety &amp; Security Films</span></button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-sun"/></svg><span>Sun Control</span></button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-graphic"/></svg><span>Decorative Films &amp; Graphics</span></button>
+        <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-privacy"/></svg><span>Privacy Films</span></button>
+        <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-layers"/></svg><span>Specialty Films</span></button>
+      </div>
+
+      <div class="finder-panels">
+        <article class="finder-panel" role="tabpanel" id="p1" aria-labelledby="t1">
+          <svg class="panel-mark" aria-hidden="true"><use href="#i-shield"/></svg>
+          <svg class="panel-ghost" aria-hidden="true"><use href="#i-shield"/></svg>
           <h3><a href="#">Safety &amp; Security Films</a></h3>
-        </div>
-        <div class="need-body">
           <p>Safety and security window film can help hold broken glass together and support glazing systems designed for forced-entry delay, blast mitigation, vandalism protection, and other specialized security needs.</p>
-          <ul class="tags"><li><a href="#">Anti-Intrusion</a></li><li><a href="#">Blast Mitigation</a></li><li><a href="#">RF Shielding</a></li><li><a href="#">Anti-Graffiti</a></li><li><a href="#">Casper Cloaking</a></li></ul>
-        </div>
-      </article>
-
-      <article class="need">
-        <div class="need-head">
-          <svg class="need-mark" viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="5"/><path d="M14 3v3M14 22v3M3 14h3M22 14h3M6.2 6.2l2.1 2.1M19.7 19.7l2.1 2.1M21.8 6.2l-2.1 2.1M8.3 19.7l-2.1 2.1"/></svg>
+          <ul class="chips"><li><a href="#">Anti-Intrusion</a></li><li><a href="#">Blast Mitigation</a></li><li><a href="#">RF Shielding</a></li><li><a href="#">Anti-Graffiti</a></li><li><a href="#">Casper Cloaking</a></li></ul>
+        </article>
+        <article class="finder-panel" role="tabpanel" id="p2" aria-labelledby="t2">
+          <svg class="panel-mark" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="panel-ghost" aria-hidden="true"><use href="#i-sun"/></svg>
           <h3><a href="#">Sun Control</a></h3>
-        </div>
-        <div class="need-body">
           <p>Sun control window film can make homes and buildings more comfortable by reducing solar heat, excessive brightness, glare, and UV exposure through existing glass.</p>
-          <ul class="tags"><li><a href="#">Anti-Glare</a></li><li><a href="#">Heat Control</a></li><li><a href="#">UV Film</a></li><li><a href="#">Low-E Film</a></li><li><a href="#">Blinds &amp; Shades</a></li></ul>
-        </div>
-      </article>
-
-      <article class="need">
-        <div class="need-head">
-          <svg class="need-mark" viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M4 17.5 10 12l5 4.5L19 13l5 4.5"/><circle cx="18" cy="9.5" r="1.8"/></svg>
+          <ul class="chips"><li><a href="#">Anti-Glare</a></li><li><a href="#">Heat Control</a></li><li><a href="#">UV Film</a></li><li><a href="#">Low-E Film</a></li><li><a href="#">Blinds &amp; Shades</a></li></ul>
+        </article>
+        <article class="finder-panel" role="tabpanel" id="p3" aria-labelledby="t3">
+          <svg class="panel-mark" aria-hidden="true"><use href="#i-graphic"/></svg>
+          <svg class="panel-ghost" aria-hidden="true"><use href="#i-graphic"/></svg>
           <h3><a href="#">Decorative Films &amp; Graphics</a></h3>
-        </div>
-        <div class="need-body">
           <p>Decorative window film and custom graphics can transform glass, windows, and walls with printed graphics, logos, murals, and frosted or etched-look finishes.</p>
-          <ul class="tags"><li><a href="#">Custom Films &amp; Graphics</a></li><li><a href="#">Signs &amp; Logos</a></li><li><a href="#">Wall Murals</a></li><li><a href="#">Frosted / Etch</a></li></ul>
-        </div>
-      </article>
-
-      <article class="need">
-        <div class="need-head">
-          <svg class="need-mark" viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M7 9.5h14M7 14h14M7 18.5h14"/></svg>
+          <ul class="chips"><li><a href="#">Custom Films &amp; Graphics</a></li><li><a href="#">Signs &amp; Logos</a></li><li><a href="#">Wall Murals</a></li><li><a href="#">Frosted / Etch</a></li></ul>
+        </article>
+        <article class="finder-panel" role="tabpanel" id="p4" aria-labelledby="t4">
+          <svg class="panel-mark" aria-hidden="true"><use href="#i-privacy"/></svg>
+          <svg class="panel-ghost" aria-hidden="true"><use href="#i-privacy"/></svg>
           <h3><a href="#">Privacy Films</a></h3>
-        </div>
-        <div class="need-body">
           <p>Privacy window film can add permanent, partial, or switchable privacy to homes, offices, conference rooms, storefronts, and other glass spaces without replacing the glass or rebuilding the room.</p>
-          <ul class="tags"><li><a href="#">Frosted / Etch</a></li><li><a href="#">Smart Films</a></li><li><a href="#">Blinds &amp; Shades</a></li><li><a href="#">One-Way Mirror</a></li><li><a href="#">Casper Cloaking</a></li></ul>
-        </div>
-      </article>
-
-      <article class="need">
-        <div class="need-head">
-          <svg class="need-mark" viewBox="0 0 28 28" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4 25 10l-11 6L3 10l11-6Z"/><path d="M3 15.5 14 21.5l11-6"/></svg>
+          <ul class="chips"><li><a href="#">Frosted / Etch</a></li><li><a href="#">Smart Films</a></li><li><a href="#">Blinds &amp; Shades</a></li><li><a href="#">One-Way Mirror</a></li><li><a href="#">Casper Cloaking</a></li></ul>
+        </article>
+        <article class="finder-panel" role="tabpanel" id="p5" aria-labelledby="t5">
+          <svg class="panel-mark" aria-hidden="true"><use href="#i-layers"/></svg>
+          <svg class="panel-ghost" aria-hidden="true"><use href="#i-layers"/></svg>
           <h3><a href="#">Specialty Films</a></h3>
-        </div>
-        <div class="need-body">
           <p>Specialty window films and finishes go beyond traditional tinting with solutions for switchable privacy, screen cloaking, blackout applications, RF shielding, and architectural surface finishes.</p>
-          <ul class="tags"><li><a href="#">Casper Cloaking</a></li><li><a href="#">Smart Films</a></li><li><a href="#">Architectural Finishes</a></li><li><a href="#">Blackout Films</a></li></ul>
-        </div>
-      </article>
+          <ul class="chips"><li><a href="#">Casper Cloaking</a></li><li><a href="#">Smart Films</a></li><li><a href="#">Architectural Finishes</a></li><li><a href="#">Blackout Films</a></li></ul>
+        </article>
+      </div>
     </div>
 
     <div class="unsure">
@@ -452,15 +495,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </section>
 
 <!-- ============================================================
-     BAND 4 — WHO WE SERVE
+     WHO WE SERVE
      ============================================================ -->
 <section class="band lt" id="serve">
   <div class="wrap">
-    <h2 class="h2" style="max-width:26ch">Solutions for Homes, Businesses &amp; Specialized Facilities</h2>
+    <div class="intro">
+      <h2 class="h2">Solutions for Homes, Businesses &amp; Specialized Facilities</h2>
+    </div>
 
     <div class="serve-major">
       <article class="serve-card">
-        <div class="serve-img" style="background-image:url('https://res.cloudinary.com/dsjbq35es/image/upload/v1775065874/residential_house_rrnvaz.jpg')" role="img" aria-label="Residential home"></div>
+        <img src="https://res.cloudinary.com/dsjbq35es/image/upload/v1775065874/residential_house_rrnvaz.jpg" alt="Residential home" loading="lazy">
         <div class="serve-body">
           <h3>Residential Window Film</h3>
           <p>Improve comfort, reduce glare and UV exposure, add privacy, protect interiors and address glass-safety concerns without replacing otherwise functional windows.</p>
@@ -468,7 +513,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         </div>
       </article>
       <article class="serve-card">
-        <div class="serve-img" style="background-image:url('https://res.cloudinary.com/dsjbq35es/image/upload/v1775065883/business_corporate_qx074m.jpg')" role="img" aria-label="Commercial office building"></div>
+        <img src="https://res.cloudinary.com/dsjbq35es/image/upload/v1775065883/business_corporate_qx074m.jpg" alt="Commercial office building" loading="lazy">
         <div class="serve-body">
           <h3>Commercial Window Film</h3>
           <p>Window film, graphics and specialty products for offices, retail, multifamily properties, hospitality, healthcare and other commercial buildings. We work with owners, property managers, facility teams, architects and contractors.</p>
@@ -478,17 +523,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     </div>
 
     <div class="serve-minor">
-      <div>
+      <div class="sector">
+        <svg aria-hidden="true"><use href="#i-gov"/></svg>
         <h3>Government</h3>
         <p>Security, privacy, solar-control and specialty film solutions for government buildings and sensitive facilities.</p>
         <a class="go" href="#">Explore Government Solutions</a>
       </div>
-      <div>
+      <div class="sector">
+        <svg aria-hidden="true"><use href="#i-edu"/></svg>
         <h3>Education</h3>
         <p>Sun control, glare reduction, privacy, security and specialty applications for schools, universities and educational facilities.</p>
         <a class="go" href="#">Explore Education Solutions</a>
       </div>
-      <div>
+      <div class="sector">
+        <svg aria-hidden="true"><use href="#i-car"/></svg>
         <h3>Automotive</h3>
         <p>Professional automotive window tinting and film solutions for drivers who want greater comfort, glare control, UV protection and privacy.</p>
         <a class="go" href="#">Explore Automotive Window Tinting</a>
@@ -498,18 +546,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </section>
 
 <!-- ============================================================
-     BAND 5 — EXPERTISE / PROCESS
+     EXPERTISE / PROCESS
      ============================================================ -->
 <section class="band dk">
   <div class="wrap">
-    <div class="proc-head">
-      <div>
-        <h2 class="h2">The Right Film Starts With the Right Recommendation</h2>
-      </div>
-      <p class="measure">Choosing window film based only on darkness, color or reflectivity can lead to the wrong result. Glass construction, Low-E coatings, window orientation, sun exposure, desired visible light, privacy needs, appearance and manufacturer compatibility can all affect which product should be installed.</p>
+    <div class="intro">
+      <h2 class="h2">The Right Film Starts With the Right Recommendation</h2>
+      <p>Choosing window film based only on darkness, color or reflectivity can lead to the wrong result. Glass construction, Low-E coatings, window orientation, sun exposure, desired visible light, privacy needs, appearance and manufacturer compatibility can all affect which product should be installed.</p>
     </div>
 
-    <ol class="steps">
+    <ol class="steps" style="margin:0;padding:0;list-style:none">
       <li class="step">
         <h3>Understand the Problem</h3>
         <p>We identify what you want to change—heat, glare, fading, privacy, security, appearance or another performance issue.</p>
@@ -541,41 +587,42 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </section>
 
 <!-- ============================================================
-     BAND 6 — WORK / PROOF
+     WORK / PROOF
      ============================================================ -->
-<section class="band wh">
-  <div class="wrap proof">
-    <div class="ph">PROJECT PHOTO — real ASC installation needed here (not stock)</div>
-    <div>
-      <h2 class="h2">See What Window Film Can Do in the Real World</h2>
-      <div style="margin-top:var(--s3)">
-        <p>From single-family homes to offices, storefronts, government facilities, schools and large commercial glass façades, Atlantic Sun Control has experience across a wide range of property types and applications.</p>
-        <p>See how sun control, privacy, security, graphics and specialty products are used to solve real problems while preserving the glass and space already in place.</p>
-      </div>
-      <div class="ctas"><a class="btn btn--line" href="#">View Our Work</a></div>
+<section class="proof">
+  <div class="ph">PROJECT PHOTO — real ASC installation needed here (not stock)</div>
+  <div class="proof-copy">
+    <h2 class="h2">See What Window Film Can Do in the Real World</h2>
+    <div style="margin-top:24px">
+      <p>From single-family homes to offices, storefronts, government facilities, schools and large commercial glass façades, Atlantic Sun Control has experience across a wide range of property types and applications.</p>
+      <p>See how sun control, privacy, security, graphics and specialty products are used to solve real problems while preserving the glass and space already in place.</p>
     </div>
+    <div class="ctas"><a class="btn btn--line" href="#">View Our Work</a></div>
   </div>
 </section>
 
 <!-- ============================================================
-     BAND 7 — SERVICE AREA
+     SERVICE AREA
      ============================================================ -->
-<section class="band band--tight lt">
+<section class="band lt">
   <div class="wrap area">
-    <div>
+    <div class="area-copy">
       <h2 class="h2">Window Film Installation Across Northern Virginia, Maryland &amp; Washington, D.C.</h2>
-    </div>
-    <div class="area-body measure">
       <p>Atlantic Sun Control provides residential and commercial window film consultation and installation throughout Northern Virginia, Maryland and Washington, D.C.</p>
       <a class="go" href="#">View Our Service Area</a>
     </div>
+    <ul class="regions" aria-label="Service regions">
+      <li>Northern Virginia</li>
+      <li>Maryland</li>
+      <li>Washington, D.C.</li>
+    </ul>
   </div>
 </section>
 
 <!-- ============================================================
-     BAND 8 — FAQ
+     FAQ
      ============================================================ -->
-<section class="band" id="faq" style="background:var(--bg-faq);border-top:1px solid var(--line-lt)">
+<section class="band" id="faq">
   <div class="wrap faq-wrap">
     <div class="faq-side">
       <h2 class="h2">Questions People Ask Before Choosing Window Film</h2>
@@ -612,25 +659,78 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </section>
 
 <!-- ============================================================
-     BAND 9 — FINAL CTA
+     FINAL CTA
      ============================================================ -->
-<section class="band dk2" id="estimate">
-  <div class="wrap final">
-    <div>
+<section class="band final" id="estimate">
+  <div class="wrap">
+    <div class="final-top">
       <h2>Tell Us What You Need the Glass or Space to Do.</h2>
-      <p class="final-verbs">Reduce heat. Cut glare. Limit UV exposure. Add privacy. Improve security. Brand the space. Solve a specialized glass or surface problem.</p>
-    </div>
-    <div>
       <p>You don’t need to know which product to choose before you contact us. Tell us about the property and what you want to accomplish, and we’ll help identify the right options and prepare a project-specific estimate.</p>
-      <div class="ctas">
-        <a class="btn btn--primary" href="#">Request a Free Estimate</a>
-        <a class="btn btn--line" href="tel:+15718328571">Call (571) 832-8571</a>
-      </div>
+    </div>
+    <ul class="verbs">
+      <li>Reduce heat.</li>
+      <li>Cut glare.</li>
+      <li>Limit UV exposure.</li>
+      <li>Add privacy.</li>
+      <li>Improve security.</li>
+      <li>Brand the space.</li>
+      <li>Solve a specialized glass or surface problem.</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn btn--primary" href="#">Request a Free Estimate</a>
+      <a class="btn btn--line" href="tel:+15718328571">Call (571) 832-8571</a>
     </div>
   </div>
 </section>
 
 </main>
 
+<script>
+(function(){
+  /* Film comparison pane */
+  var pane=document.querySelector('.pane');
+  if(pane){
+    var range=pane.querySelector('input');
+    var set=function(v){pane.style.setProperty('--cut',v+'%')};
+    range.addEventListener('input',function(){set(range.value)});
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduce){
+      var t0=null,from=88,to=50,dur=1400;
+      set(from);
+      var step=function(t){
+        if(t0===null)t0=t;
+        var k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3),v=from+(to-from)*e;
+        set(v.toFixed(2));range.value=Math.round(v);
+        if(k<1)requestAnimationFrame(step);
+      };
+      setTimeout(function(){requestAnimationFrame(step)},500);
+    }
+  }
+  /* Product category tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var select=function(tab,focus){
+    tabs.forEach(function(t){
+      var on=t===tab;
+      t.setAttribute('aria-selected',on);
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    if(focus)tab.focus();
+  };
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowDown'||e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(e.key==='Home')n=tabs[0];
+      if(e.key==='End')n=tabs[tabs.length-1];
+      if(n){e.preventDefault();select(n,true)}
+    });
+  });
+  if(tabs.length)select(tabs[0]);
+})();
+</script>
 </body>
+
 </html>
