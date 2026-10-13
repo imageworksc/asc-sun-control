@@ -190,26 +190,39 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    FAQ
    ============================================================ */
-.faq-wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
-.faq-side{position:sticky;top:32px}
-.still{margin-top:32px;background:var(--ink);color:var(--on-dk-2);padding:32px}
-.still h3{font-size:18px;color:#fff;margin-bottom:8px}
-.still p{font-size:16px;line-height:1.6}
-.still .ctas{margin-top:24px}
-.faq{border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line-lt);transition:background .15s ease}
-.faq details[open]{background:var(--bg-light)}
-.faq summary{list-style:none;cursor:pointer;display:flex;gap:16px;align-items:flex-start;justify-content:space-between;padding:20px 16px;min-height:44px}
+.faq-sec{background:var(--white)}
+.faq-wrap{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:48px;align-items:start}
+.faq{display:grid;gap:12px}
+.faq details{position:relative;background:var(--white);border:1px solid var(--line-lt);transition:border-color .25s ease,box-shadow .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)}
+.faq details::before{content:'';position:absolute;left:-1px;top:-1px;bottom:-1px;width:4px;background:var(--orange);transform:scaleY(0);transform-origin:top;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.faq details:hover{transform:translateX(6px);border-color:#d3d3d3;box-shadow:0 18px 36px -24px rgba(22,24,31,.4)}
+.faq details:hover::before,.faq details[open]::before{transform:scaleY(1)}
+.faq details[open]{box-shadow:0 22px 44px -26px rgba(22,24,31,.45);border-color:#d3d3d3}
+.faq summary{list-style:none;cursor:pointer;display:flex;gap:24px;align-items:center;justify-content:space-between;padding:22px 24px 22px 28px;min-height:44px}
 .faq summary::-webkit-details-marker{display:none}
-.faq .q{font-family:'Jost',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink)}
-.faq summary:hover .q{color:var(--orange-ink)}
-.faq .ic{flex:0 0 20px;width:20px;height:20px;position:relative;margin-top:1px}
-.faq .ic::before,.faq .ic::after{content:'';position:absolute;background:var(--ink);transition:transform .18s ease,background .18s ease}
-.faq .ic::before{left:0;right:0;top:9px;height:2px}
-.faq .ic::after{top:0;bottom:0;left:9px;width:2px}
-.faq details[open] .ic::after{transform:scaleY(0)}
-.faq details[open] .ic::before{background:var(--orange)}
-.faq .a{padding:0 56px 22px 16px;max-width:76ch;font-size:15px;line-height:1.65;color:var(--slate)}
+.faq .q{font-family:'Jost',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);transition:color .2s ease}
+.faq summary:hover .q,.faq details[open] .q{color:var(--orange-ink)}
+.faq .ic{flex:0 0 36px;width:36px;height:36px;position:relative;background:var(--bg-light);transition:background .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.faq .ic::before,.faq .ic::after{content:'';position:absolute;left:11px;right:11px;top:17px;height:2px;background:var(--ink);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .25s ease}
+.faq .ic::after{transform:rotate(90deg)}
+.faq summary:hover .ic{background:var(--orange)}
+.faq summary:hover .ic::before,.faq summary:hover .ic::after{background:#fff}
+.faq details[open] .ic{background:var(--ink);transform:rotate(180deg)}
+.faq details[open] .ic::before,.faq details[open] .ic::after{background:#fff}
+.faq details[open] .ic::after{transform:rotate(0deg)}
+.faq .a{overflow:hidden}
+.faq .a p{padding:0 72px 26px 28px;max-width:76ch;font-size:15px;line-height:1.65;color:var(--slate)}
+.js .faq:not(.in) details{opacity:0}
+.faq.in details{animation:faq-rise .6s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0) * 70ms)}
+@keyframes faq-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.faq-side{position:sticky;top:32px}
+.still{position:relative;overflow:hidden;background:var(--ink);color:var(--on-dk-2);padding:36px 32px;border-top:4px solid var(--orange);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
+.still:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(22,24,31,.6)}
+.still-ic{width:40px;height:40px;color:var(--orange-on-dk);margin-bottom:20px}
+.still h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:10px}
+.still p{font-size:16px;line-height:1.6}
+.still .ctas{margin-top:28px}
+.still .btn{width:100%;text-align:center}
 
 /* ============================================================
    FINAL CTA
@@ -275,8 +288,9 @@ ul{margin:0;padding:0;list-style:none}
   .proc-foot{flex-direction:column;align-items:stretch}
   .proof-copy{padding:56px var(--gut)}
   .ph{min-height:260px}
-  .faq summary{padding:18px 8px}
-  .faq .a{padding:0 8px 20px}
+  .faq summary{padding:18px 16px 18px 20px;gap:16px}
+  .faq .a p{padding:0 16px 20px 20px}
+  .faq details:hover{transform:none}
   .still{padding:28px 24px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
@@ -624,39 +638,43 @@ ul{margin:0;padding:0;list-style:none}
 <!-- ============================================================
      FAQ
      ============================================================ -->
-<section class="band" id="faq">
-  <div class="wrap faq-wrap">
-    <div class="faq-side">
+<section class="band faq-sec" id="faq">
+  <div class="wrap">
+    <div class="intro">
       <h2 class="h2">Questions People Ask Before Choosing Window Film</h2>
-      <div class="still">
-        <h3>Still Have Questions?</h3>
-        <p>Talk with a window film specialist about your glass, property and what you’re trying to accomplish.</p>
-        <div class="ctas"><a class="btn btn--line" href="tel:+15718328571">Talk to a Window Film Specialist</a></div>
-      </div>
     </div>
-
+  </div>
+  <div class="wrap faq-wrap">
     <div class="faq">
-      <details><summary><span class="q" role="heading" aria-level="3">What is the difference between window film and window tinting?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:0"><summary><span class="q" role="heading" aria-level="3">What is the difference between window film and window tinting?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Window tinting is a common term for film applied to glass, but window film is the broader category. It can include solar-control, heat-control, UV, privacy, security, decorative and specialty films—not just darker tint.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Does window film really reduce heat and glare?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:1"><summary><span class="q" role="heading" aria-level="3">Does window film really reduce heat and glare?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Yes. Selected sun-control, solar-control and heat-control films are designed to reduce a portion of the solar energy entering through glass, while anti-glare films reduce excessive brightness and reflections. The right choice depends on the glass, exposure, desired light level and appearance.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Can window film help protect floors, furniture and artwork from fading?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:2"><summary><span class="q" role="heading" aria-level="3">Can window film help protect floors, furniture and artwork from fading?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Many sun-control and UV-filtering films reduce ultraviolet exposure through treated glass, which can help slow one contributor to fading. Heat, visible light, humidity, material age and other conditions can also contribute to fading.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Can I add privacy to existing glass without replacing it?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:3"><summary><span class="q" role="heading" aria-level="3">Can I add privacy to existing glass without replacing it?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Yes. Depending on the space, options can include frosted or etched-look film, one-way reflective film, Smart Film, Casper Cloaking and blinds or shades. The best option depends on whether you need daytime, nighttime, permanent or switchable privacy.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Does security window film make glass unbreakable?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:4"><summary><span class="q" role="heading" aria-level="3">Does security window film make glass unbreakable?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>No. Security film does not make glass unbreakable. It is designed to help retain broken glass and may be used as part of a glazing system intended to increase resistance or delay entry. Performance also depends on the glass, attachment system and frame.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Can window film be installed on double-pane or Low-E windows?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:5"><summary><span class="q" role="heading" aria-level="3">Can window film be installed on double-pane or Low-E windows?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Many films can be installed on insulated or Low-E glazing, but not every film is compatible with every window. The glass construction, coatings, film type and manufacturer requirements should be evaluated before installation.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">How much does window film cost?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:6"><summary><span class="q" role="heading" aria-level="3">How much does window film cost?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Pricing depends on the film, total glass area, number and size of panes, access, preparation, removal of existing film and installation conditions. A project-specific estimate is the best way to price the work accurately.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Do you install both residential and commercial window film?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:7"><summary><span class="q" role="heading" aria-level="3">Do you install both residential and commercial window film?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Yes. Atlantic Sun Control works on residential, commercial, government, educational and other specialty projects, with product recommendations based on the property, glass and performance goal.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">How do I know which window film I need?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:8"><summary><span class="q" role="heading" aria-level="3">How do I know which window film I need?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Start with the problem, not the product name. Tell us whether you’re trying to reduce heat or glare, limit fading, create privacy, improve security, add graphics or solve another issue, and we can evaluate the property and recommend appropriate options.</p></div></details>
-      <details><summary><span class="q" role="heading" aria-level="3">Where does Atlantic Sun Control install window film?</span><span class="ic" aria-hidden="true"></span></summary>
+      <details style="--i:9"><summary><span class="q" role="heading" aria-level="3">Where does Atlantic Sun Control install window film?</span><span class="ic" aria-hidden="true"></span></summary>
         <div class="a"><p>Atlantic Sun Control serves Northern Virginia, Maryland and Washington, D.C. Contact the team to confirm service for your specific city, county or project location.</p></div></details>
     </div>
+    <aside class="faq-side">
+      <div class="still">
+        <svg class="still-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+        <h3>Still Have Questions?</h3>
+        <p>Talk with a window film specialist about your glass, property and what you’re trying to accomplish.</p>
+        <div class="ctas"><a class="btn btn--primary" href="tel:+15718328571">Talk to a Window Film Specialist</a></div>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -689,6 +707,32 @@ ul{margin:0;padding:0;list-style:none}
 
 <script>
 (function(){
+  /* FAQ: staggered reveal + animated open/close */
+  var faq=document.querySelector('.faq');
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(faq){
+    if(reduceMotion||!('IntersectionObserver' in window)){faq.classList.add('in')}
+    else{
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){faq.classList.add('in');io.disconnect()}})},{threshold:.15});
+      io.observe(faq);
+    }
+    [].forEach.call(faq.querySelectorAll('details'),function(d){
+      var sum=d.querySelector('summary'),a=d.querySelector('.a'),busy=false;
+      sum.addEventListener('click',function(e){
+        if(reduceMotion||!a.animate)return;
+        e.preventDefault();
+        if(busy)return;busy=true;
+        if(d.open){
+          var h=a.offsetHeight;
+          a.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:280,easing:'ease-in'}).onfinish=function(){d.open=false;busy=false};
+        }else{
+          d.open=true;
+          var h2=a.offsetHeight;
+          a.animate([{height:'0px',opacity:0},{height:h2+'px',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.7,.2,1)'}).onfinish=function(){busy=false};
+        }
+      });
+    });
+  }
   /* Product category tabs */
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   var select=function(tab,focus){
