@@ -62,8 +62,9 @@ ul{margin:0;padding:0;list-style:none}
 .dk h2,.dk h3{color:#fff}
 .h2{font-size:var(--h2)}
 .lead{font-size:18px;line-height:1.7}
-.intro{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:end;margin-bottom:56px}
-.intro p{font-size:17px;line-height:1.7;max-width:56ch}
+.intro{margin-bottom:56px}
+.intro .h2{max-width:22ch}
+.intro p{margin-top:20px;font-size:17px;line-height:1.7;max-width:68ch}
 
 /* ---- buttons ---- */
 .ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
@@ -100,11 +101,13 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    OPENING — statement + callout
    ============================================================ */
-.open{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
-.open .h2{max-width:13ch}
-.open-body > p{font-size:18px;line-height:1.7;max-width:60ch}
-.callout{margin-top:32px;background:var(--white);border-top:3px solid var(--orange);padding:28px 32px;box-shadow:0 18px 40px -28px rgba(22,24,31,.35)}
-.callout p{font-size:16px;line-height:1.6;color:var(--gray)}
+.abilities{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line-lt);border:1px solid var(--line-lt)}
+.abilities li{background:var(--white);padding:32px 24px 28px;display:flex;flex-direction:column;gap:20px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.abilities svg{width:32px;height:32px;color:var(--orange)}
+.callout{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;background:var(--ink);color:var(--on-dk-2);border-left:5px solid var(--orange);padding:32px 40px}
+.callout p{font-size:17px;line-height:1.7;max-width:70ch}
+.callout .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
+.callout .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
 /* ============================================================
    PRODUCTS — category finder (tabs on desktop, stacked on mobile)
@@ -211,9 +214,9 @@ ul{margin:0;padding:0;list-style:none}
    FINAL CTA
    ============================================================ */
 .final{background:var(--ink-2);color:var(--on-dk-2)}
-.final-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:end}
+.final-top{display:block}
 .final h2{color:#fff;font-size:var(--h2);max-width:16ch}
-.final-top p{font-size:17px;line-height:1.7}
+.final-top p{margin-top:24px;font-size:17px;line-height:1.7;max-width:64ch}
 .verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
 .verbs li{display:flex;align-items:center;gap:14px;padding:22px 24px 22px 0;border-bottom:1px solid var(--line-dk);font:600 clamp(18px,calc(.8vw + 14px),22px)/1.3 'Jost',sans-serif;letter-spacing:-.015em;color:#fff}
 .verbs li::before{content:'';flex:0 0 10px;height:10px;background:var(--orange)}
@@ -229,7 +232,10 @@ ul{margin:0;padding:0;list-style:none}
 @media (max-width:980px){
   :root{--gut:32px}
   .band{padding:80px 0}
-  .intro,.open,.area,.faq-wrap,.final-top{grid-template-columns:1fr;gap:32px}
+  .area,.faq-wrap{grid-template-columns:1fr;gap:32px}
+  .abilities{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .abilities li:last-child{grid-column:span 2}
+  .callout{grid-template-columns:1fr;gap:24px;padding:32px}
   .hero-grid{padding-top:56px;padding-bottom:40px}
   .intro{margin-bottom:40px}
   .js .finder{display:block;border:0}
@@ -260,7 +266,8 @@ ul{margin:0;padding:0;list-style:none}
   .serve-body{padding:28px 24px}
   .finder-panel{padding:32px 24px}
   .panel-ghost{width:180px;height:180px}
-  .callout{padding:24px}
+  .callout{padding:28px 24px}
+  .abilities li{padding:24px 20px;gap:14px}
   .unsure{padding:28px 24px}
   .sector{padding:28px 24px}
   .step::before{font-size:52px}
@@ -364,6 +371,7 @@ ul{margin:0;padding:0;list-style:none}
     <symbol id="i-graphic" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M4 17.5 10 12l5 4.5L19 13l5 4.5"/><circle cx="18" cy="9.5" r="1.8"/></symbol>
     <symbol id="i-privacy" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="20" height="18" rx="1"/><path d="M7 9.5h14M7 14h14M7 18.5h14"/></symbol>
     <symbol id="i-layers" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 25 10l-11 6L3 10l11-6Z"/><path d="M3 15.5 14 21.5l11-6"/></symbol>
+    <symbol id="i-uv" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17a6 6 0 0 1 12 0"/><path d="M14 5v3M5.5 9.5l2 2M22.5 9.5l-2 2M3 17h3M22 17h3M4 22h20"/></symbol>
     <symbol id="i-gov" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10 14 4l10.5 6"/><path d="M5 10.5h18M6.5 11v9M11 11v9M17 11v9M21.5 11v9M4 20.5h20M3 24h22"/></symbol>
     <symbol id="i-edu" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 11 14 5.5 25.5 11 14 16.5 2.5 11Z"/><path d="M7.5 13.5v5.5c0 1.8 3 3.5 6.5 3.5s6.5-1.7 6.5-3.5v-5.5M25.5 11v6"/></symbol>
     <symbol id="i-car" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-3.5l2.5-5.5h15L24 14.5V18"/><path d="M3 18h22v3.5H3zM8 9l1.5 5.5h9L20 9"/><circle cx="8" cy="21.5" r="1.8"/><circle cx="20" cy="21.5" r="1.8"/></symbol>
@@ -400,12 +408,21 @@ ul{margin:0;padding:0;list-style:none}
      OPENING / EDUCATION
      ============================================================ -->
 <section class="band lt">
-  <div class="wrap open">
-    <h2 class="h2">Your Glass Can Do More Than Let Light In</h2>
-    <div class="open-body">
+  <div class="wrap">
+    <div class="intro">
+      <h2 class="h2">Your Glass Can Do More Than Let Light In</h2>
       <p>Modern window film can change how existing glass performs, protects and looks—without replacing the windows. Depending on the goal, the right product can help manage solar heat and glare, reduce UV exposure, add privacy, support security glazing, or turn glass into a branded or decorative surface.</p>
-      <div class="callout"><p>Atlantic Sun Control also installs Smart Film, blinds and shades, custom graphics, architectural finishes and other specialty products when conventional window tinting is not the right answer.</p></div>
-      <div class="ctas"><a class="btn btn--line" href="#products">Explore Products &amp; Services</a></div>
+    </div>
+    <ul class="abilities">
+      <li><svg aria-hidden="true"><use href="#i-sun"/></svg>Solar heat &amp; glare</li>
+      <li><svg aria-hidden="true"><use href="#i-uv"/></svg>UV exposure</li>
+      <li><svg aria-hidden="true"><use href="#i-privacy"/></svg>Privacy</li>
+      <li><svg aria-hidden="true"><use href="#i-shield"/></svg>Security glazing</li>
+      <li><svg aria-hidden="true"><use href="#i-graphic"/></svg>Branded or decorative surface</li>
+    </ul>
+    <div class="callout">
+      <p>Atlantic Sun Control also installs Smart Film, blinds and shades, custom graphics, architectural finishes and other specialty products when conventional window tinting is not the right answer.</p>
+      <a class="btn btn--line" href="#products">Explore Products &amp; Services</a>
     </div>
   </div>
 </section>
