@@ -147,8 +147,8 @@
 .track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--orange),var(--orange-on-dk));transform:scaleX(var(--p));transform-origin:left;transition:transform .7s var(--ease-out)}
 .steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .step{display:flex;flex-direction:column;cursor:pointer;outline-offset:6px}
-.node{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:var(--ink);border:1.5px solid rgba(255,255,255,.28);font:600 18px/1 'Jost',sans-serif;color:var(--on-dk-3);margin-bottom:24px;transition:background .4s ease var(--d,0s),border-color .4s ease var(--d,0s),color .4s ease var(--d,0s),box-shadow .4s ease var(--d,0s),transform .45s cubic-bezier(.34,1.56,.64,1)}
-.node::after{content:'';position:absolute;inset:-1.5px;border-radius:50%;border:2px solid var(--orange-on-dk);opacity:0;pointer-events:none}
+.node{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;background:var(--ink);border:1.5px solid rgba(255,255,255,.28);font:600 18px/1 'Jost',sans-serif;color:var(--on-dk-3);margin-bottom:24px;transition:background .4s ease var(--d,0s),border-color .4s ease var(--d,0s),color .4s ease var(--d,0s),box-shadow .4s ease var(--d,0s),transform .45s cubic-bezier(.34,1.56,.64,1)}
+.node::after{content:'';position:absolute;inset:-1.5px;border:2px solid var(--orange-on-dk);opacity:0;pointer-events:none}
 
 /* Step panel: translucent glass, white when it is the current step */
 .step-body{flex:1;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(2px);padding:28px 26px 30px;transition:background .45s ease var(--d,0s),border-color .45s ease var(--d,0s),opacity .5s ease var(--d,0s),transform .5s var(--ease-out) var(--d,0s),box-shadow .45s ease}
@@ -303,6 +303,7 @@
    9. FINAL CTA
    ============================================================ */
 .final{background:var(--ink-2);color:var(--on-dk-2)}
+.final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 55%,rgba(14,16,22,.7) 100%)}
 .final h2{color:#fff;font-size:var(--h2);max-width:26ch}
 .final-top p{margin-top:24px;font-size:17px;line-height:1.7;max-width:64ch}
 .verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
