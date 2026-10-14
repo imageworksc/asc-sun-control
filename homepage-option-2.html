@@ -141,21 +141,35 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    WHO WE SERVE — photo cards + sector tiles
    ============================================================ */
-.serve-major{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.serve-card{position:relative;min-height:540px;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-.serve-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.serve-card:hover img{transform:scale(1.03)}
-.serve-card::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(22,24,31,.96) 0%,rgba(22,24,31,.86) 45%,rgba(22,24,31,.25) 78%,rgba(22,24,31,.05) 100%)}
-.serve-body{position:relative;z-index:2;padding:40px;color:var(--on-dk-2)}
-.serve-body h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:12px}
-.serve-body p{font-size:16px;line-height:1.6;max-width:52ch}
+.serve-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto;gap:24px}
+.serve-card{position:relative;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);min-height:340px;isolation:isolate}
+.serve-card--tall{grid-row:span 2;min-height:640px}
+.serve-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.serve-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(22,24,31,.95) 0%,rgba(22,24,31,.72) 38%,rgba(22,24,31,.1) 75%);transition:opacity .4s ease}
+.serve-card::after{content:'';position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.serve-card:hover img,.serve-card:focus-within img{transform:scale(1.06)}
+.serve-card:hover::after,.serve-card:focus-within::after{transform:scaleX(1)}
+.serve-body{padding:40px;color:var(--on-dk-2);max-width:620px}
+.serve-body h3{font-size:var(--h3l);line-height:1.2;color:#fff}
+.serve-body p{margin-top:12px;font-size:16px;line-height:1.6;max-width:52ch}
 .serve-body .go{color:#fff;margin-top:8px}
 .serve-body .go:hover{color:var(--orange-hi)}
-.serve-minor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px}
-.sector{background:var(--white);border-top:3px solid var(--orange);padding:32px;display:flex;flex-direction:column}
-.sector svg{width:32px;height:32px;color:var(--orange);margin-bottom:20px}
-.sector h3{font-size:18px;margin-bottom:10px}
-.sector p{flex:1;font-size:16px;line-height:1.6;color:var(--gray)}
+@media (hover:hover) and (min-width:981px){
+  .serve-body p{max-height:0;opacity:0;margin-top:0;overflow:hidden;transform:translateY(12px);transition:max-height .5s cubic-bezier(.2,.7,.2,1),opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1),margin-top .5s ease}
+  .serve-card:hover .serve-body p,.serve-card:focus-within .serve-body p{max-height:220px;opacity:1;margin-top:12px;transform:none}
+}
+.sectors{background:var(--ink);color:var(--on-dk-2)}
+.sector{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:20px;padding:28px 32px;border-bottom:1px solid var(--line-dk);transition:background .3s ease}
+.sector:last-child{border-bottom:0}
+.sector::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange);transform:scaleY(0);transform-origin:top;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sector:hover,.sector:focus-within{background:var(--ink-3)}
+.sector:hover::before,.sector:focus-within::before{transform:scaleY(1)}
+.sector svg{width:32px;height:32px;color:var(--orange-on-dk);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sector:hover svg{transform:translateY(-3px)}
+.sector h3{font-size:18px;color:#fff;margin:4px 0 8px}
+.sector p{font-size:16px;line-height:1.6;color:var(--on-dk-2)}
+.sector .go{color:#fff;margin-top:4px}
+.sector .go:hover{color:var(--orange-hi)}
 
 /* ============================================================
    PROCESS — numbered sequence
@@ -258,7 +272,10 @@ ul{margin:0;padding:0;list-style:none}
   .js .finder-panel + .finder-panel{margin-top:12px}
   .finder-panel{padding:36px 32px}
   .unsure{grid-template-columns:1fr;padding:32px}
-  .serve-minor{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .serve-card--tall{grid-row:auto;min-height:480px}
+  .serve-card{min-height:420px}
+  .serve-card::before{background:linear-gradient(to top,rgba(22,24,31,.96) 0%,rgba(22,24,31,.86) 55%,rgba(22,24,31,.4) 100%)}
   .steps{grid-template-columns:1fr 1fr;row-gap:48px}
   .proof{grid-template-columns:1fr}
   .ph{min-height:320px}
@@ -274,16 +291,16 @@ ul{margin:0;padding:0;list-style:none}
   .trust li::before,.trust li+li::before{content:'';display:block;flex:0 0 5px;width:5px;height:5px;background:var(--orange);margin:0 12px 0 0}
   .btn{width:100%;text-align:center;letter-spacing:.04em;padding:16px 20px}
   .ctas{flex-direction:column}
-  .serve-major,.steps,.verbs{grid-template-columns:1fr}
+  .steps,.verbs{grid-template-columns:1fr}
   .verbs li:last-child{grid-column:auto}
-  .serve-card{min-height:440px}
+  .serve-card,.serve-card--tall{min-height:400px}
   .serve-body{padding:28px 24px}
   .finder-panel{padding:32px 24px}
   .panel-ghost{width:180px;height:180px}
   .callout{padding:28px 24px}
   .abilities li{padding:24px 20px;gap:14px}
   .unsure{padding:28px 24px}
-  .sector{padding:28px 24px}
+  .sector{padding:24px 20px;grid-template-columns:32px minmax(0,1fr);column-gap:16px}
   .step::before{font-size:52px}
   .proc-foot{flex-direction:column;align-items:stretch}
   .proof-copy{padding:56px var(--gut)}
@@ -519,8 +536,8 @@ ul{margin:0;padding:0;list-style:none}
       <h2 class="h2">Solutions for Homes, Businesses &amp; Specialized Facilities</h2>
     </div>
 
-    <div class="serve-major">
-      <article class="serve-card">
+    <div class="serve-grid">
+      <article class="serve-card serve-card--tall">
         <img src="https://res.cloudinary.com/dsjbq35es/image/upload/v1775065874/residential_house_rrnvaz.jpg" alt="Residential home" loading="lazy">
         <div class="serve-body">
           <h3>Residential Window Film</h3>
@@ -536,26 +553,31 @@ ul{margin:0;padding:0;list-style:none}
           <a class="go" href="#">Explore Commercial Window Film</a>
         </div>
       </article>
-    </div>
-
-    <div class="serve-minor">
-      <div class="sector">
-        <svg aria-hidden="true"><use href="#i-gov"/></svg>
-        <h3>Government</h3>
-        <p>Security, privacy, solar-control and specialty film solutions for government buildings and sensitive facilities.</p>
-        <a class="go" href="#">Explore Government Solutions</a>
-      </div>
-      <div class="sector">
-        <svg aria-hidden="true"><use href="#i-edu"/></svg>
-        <h3>Education</h3>
-        <p>Sun control, glare reduction, privacy, security and specialty applications for schools, universities and educational facilities.</p>
-        <a class="go" href="#">Explore Education Solutions</a>
-      </div>
-      <div class="sector">
-        <svg aria-hidden="true"><use href="#i-car"/></svg>
-        <h3>Automotive</h3>
-        <p>Professional automotive window tinting and film solutions for drivers who want greater comfort, glare control, UV protection and privacy.</p>
-        <a class="go" href="#">Explore Automotive Window Tinting</a>
+      <div class="sectors">
+        <div class="sector">
+          <svg aria-hidden="true"><use href="#i-gov"/></svg>
+          <div>
+            <h3>Government</h3>
+            <p>Security, privacy, solar-control and specialty film solutions for government buildings and sensitive facilities.</p>
+            <a class="go" href="#">Explore Government Solutions</a>
+          </div>
+        </div>
+        <div class="sector">
+          <svg aria-hidden="true"><use href="#i-edu"/></svg>
+          <div>
+            <h3>Education</h3>
+            <p>Sun control, glare reduction, privacy, security and specialty applications for schools, universities and educational facilities.</p>
+            <a class="go" href="#">Explore Education Solutions</a>
+          </div>
+        </div>
+        <div class="sector">
+          <svg aria-hidden="true"><use href="#i-car"/></svg>
+          <div>
+            <h3>Automotive</h3>
+            <p>Professional automotive window tinting and film solutions for drivers who want greater comfort, glare control, UV protection and privacy.</p>
+            <a class="go" href="#">Explore Automotive Window Tinting</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
