@@ -77,6 +77,7 @@ const initTimeline = () => {
       const delay = n > from && i > from && i <= n ? (i - from) * 0.18 : 0;
       step.style.setProperty('--d', `${delay}s`);
       step.classList.toggle('on', i <= n);
+      step.classList.toggle('current', i === n);
     });
   };
 
