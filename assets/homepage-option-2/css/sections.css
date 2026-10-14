@@ -24,26 +24,24 @@
 }
 
 /* ============================================================
-   2. OPENING — benefits row + specialty callout
+   2. OPENING — intro + specialty note beside a benefits list
    ============================================================ */
 .open-sec{padding:72px 0}
 .open-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:center}
 .open-sec .intro{margin-bottom:0}
-.abilities{border-top:2px solid var(--ink)}
-.abilities li{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-lt);font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.open-sec .intro p + p{margin-top:12px}
+.abilities{display:grid;gap:18px}
+.abilities li{display:flex;align-items:center;gap:14px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
 .abilities li::before{content:'';flex:0 0 8px;height:8px;background:var(--orange)}
-.callout{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;background:var(--ink);color:var(--on-dk-2);border-left:5px solid var(--orange);padding:22px 32px}
-.callout p{font-size:16px;line-height:1.6;max-width:80ch}
 
 @media (max-width:980px){
   .open-sec{padding:56px 0}
-  .open-grid{grid-template-columns:1fr;gap:28px}
-  .callout{grid-template-columns:1fr;gap:18px;padding:24px}
+  .open-grid{grid-template-columns:1fr;gap:32px}
 }
 @media (max-width:600px){
   .open-sec{padding:48px 0}
-  .abilities li{font-size:16px;padding:11px 0}
-  .callout{padding:22px 20px}
+  .abilities{gap:14px}
+  .abilities li{font-size:16px}
 }
 
 /* ============================================================

@@ -13,8 +13,8 @@
 .btn--line:hover{background:var(--ink);color:#fff}
 
 /* Outline button on dark surfaces */
-:is(.dk,.hero,.callout,.still,.final) .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
-:is(.dk,.hero,.callout,.still,.final) .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
+:is(.dk,.hero,.still,.final) .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
+:is(.dk,.hero,.still,.final) .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
 
 @media (max-width:600px){
   .ctas{flex-direction:column}
