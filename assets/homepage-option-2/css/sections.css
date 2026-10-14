@@ -108,7 +108,7 @@
 .sector:is(:hover,:focus-within){background:var(--ink-3)}
 .sector:is(:hover,:focus-within)::before{transform:scaleX(1)}
 .sector svg{width:28px;height:28px;color:var(--orange-on-dk);transition:transform .35s var(--ease-out)}
-.sector:hover svg{transform:translateY(-3px)}
+.sector:is(:hover,:focus-within) svg{transform:translateY(-3px)}
 .sector > div{display:flex;flex-direction:column;align-items:flex-start}
 .sector h3{font-size:18px;color:#fff;margin:2px 0 8px}
 .sector p{flex:1;font-size:16px;line-height:1.6;color:var(--on-dk-2)}
@@ -134,18 +134,14 @@
 }
 
 /* ============================================================
-   5. PROCESS — darkened photo band, glass step panels on a
-      timeline driven by hover / tap / focus
+   5. PROCESS — glass step panels on a timeline driven by
+      hover / tap / focus (sits on a .photo-band)
    ============================================================ */
-.photo-band{position:relative;isolation:isolate;background-color:var(--ink)}
-.photo-band > .bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
-.photo-band > .bg img{width:100%;height:100%;object-fit:cover}
-.photo-band > .bg::after{content:'';position:absolute;inset:0;background:rgba(22,24,31,.9)}
-
-.timeline{--p:0;position:relative;margin-top:8px}
-.track{position:absolute;top:23px;left:24px;right:calc((100% - 60px) / 4 - 24px);height:2px;background:var(--line-dk);overflow:hidden}
+/* --gap is the column gap; the track runs from the centre of node 1 to node 4 */
+.timeline{--p:0;--gap:20px;position:relative;margin-top:8px}
+.track{position:absolute;top:23px;left:24px;right:calc((100% - 3 * var(--gap)) / 4 - 24px);height:2px;background:var(--line-dk);overflow:hidden}
 .track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--orange),var(--orange-on-dk));transform:scaleX(var(--p));transform-origin:left;transition:transform .7s var(--ease-out)}
-.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
 .step{display:flex;flex-direction:column;cursor:pointer;outline-offset:6px}
 .node{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;background:var(--ink);border:1.5px solid rgba(255,255,255,.28);font:600 18px/1 'Jost',sans-serif;color:var(--on-dk-3);margin-bottom:24px;transition:background .4s ease var(--d,0s),border-color .4s ease var(--d,0s),color .4s ease var(--d,0s),box-shadow .4s ease var(--d,0s),transform .45s cubic-bezier(.34,1.56,.64,1)}
 .node::after{content:'';position:absolute;inset:-1.5px;border:2px solid var(--orange-on-dk);opacity:0;pointer-events:none}
@@ -300,7 +296,7 @@
 }
 
 /* ============================================================
-   9. FINAL CTA
+   9. FINAL CTA (sits on a .photo-band)
    ============================================================ */
 .final{background:var(--ink-2);color:var(--on-dk-2)}
 .final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 55%,rgba(14,16,22,.7) 100%)}

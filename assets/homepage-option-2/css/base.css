@@ -69,6 +69,12 @@ p:last-child{margin-bottom:0}
 .dk{background:var(--ink);color:var(--on-dk-2)}
 .dk h2,.dk h3{color:#fff}
 
+/* Dark band with a darkened photo behind it: <section class="photo-band"><div class="bg"><img></div>… */
+.photo-band{position:relative;isolation:isolate;background-color:var(--ink)}
+.photo-band > .bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.photo-band > .bg img{width:100%;height:100%;object-fit:cover}
+.photo-band > .bg::after{content:'';position:absolute;inset:0;background:rgba(22,24,31,.9)}
+
 /* Section intro: title with its description underneath */
 .intro{margin-bottom:56px}
 .intro .h2{max-width:22ch}
