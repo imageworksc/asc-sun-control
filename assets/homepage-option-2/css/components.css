@@ -1,0 +1,46 @@
+/* =========================================================================
+   components.css — buttons, arrow links, trust line
+   ========================================================================= */
+
+/* ---------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------- */
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+.btn{font-family:'Jost',sans-serif;font-weight:700;font-size:15px;line-height:1;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;text-align:center;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:16px 28px;border:2px solid transparent;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.btn--primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn--primary:hover{background:var(--orange-hi);border-color:var(--orange-hi)}
+.btn--line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:#fff}
+
+/* Outline button on dark surfaces */
+:is(.dk,.hero,.callout,.still,.final) .btn--line{color:#fff;border-color:rgba(255,255,255,.6)}
+:is(.dk,.hero,.callout,.still,.final) .btn--line:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+@media (max-width:600px){
+  .ctas{flex-direction:column}
+  .btn{width:100%;letter-spacing:.04em;padding:16px 20px}
+}
+
+/* ---------------------------------------------------------------------
+   Arrow link
+   --------------------------------------------------------------------- */
+.go{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:'Jost',sans-serif;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none}
+.go::after{content:'\2192';color:var(--orange);transition:transform .15s ease}
+.go:hover{color:var(--orange-ink)}
+.go:hover::after{transform:translateX(4px)}
+
+/* Arrow link on dark surfaces */
+:is(.serve-body,.sector,.area-copy) .go{color:#fff}
+:is(.serve-body,.sector,.area-copy) .go:hover{color:var(--orange-hi)}
+
+/* ---------------------------------------------------------------------
+   Trust line
+   --------------------------------------------------------------------- */
+.trust{display:flex;flex-wrap:wrap;gap:8px 0;font-family:'Jost',sans-serif;font-size:14px;font-weight:600}
+.trust li{display:inline-flex;align-items:center}
+.trust li+li::before{content:'';width:5px;height:5px;background:var(--orange);margin:0 16px}
+
+@media (max-width:600px){
+  .trust{flex-direction:column;align-items:flex-start;gap:10px}
+  .trust li::before,.trust li+li::before{content:'';display:block;flex:0 0 5px;width:5px;height:5px;background:var(--orange);margin:0 12px 0 0}
+}
