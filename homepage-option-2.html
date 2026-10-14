@@ -207,12 +207,24 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    SERVICE AREA — region list
    ============================================================ */
-.area{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:center}
-.area-copy p{margin-top:24px;font-size:17px;line-height:1.7;max-width:52ch}
-.area-copy .go{margin-top:8px}
-.regions{border-top:2px solid var(--ink)}
-.regions li{display:flex;align-items:center;gap:18px;padding:26px 0;border-bottom:1px solid var(--line-lt);font:600 var(--h3l)/1.2 'Jost',sans-serif;letter-spacing:-.015em;color:var(--ink)}
-.regions li::before{content:'';flex:0 0 12px;height:12px;background:var(--orange)}
+.area-sec{position:relative;overflow:hidden}
+.area-copy{max-width:760px}
+.area-copy p{margin-top:20px;font-size:17px;line-height:1.7;max-width:64ch;color:var(--on-dk-2)}
+.area-copy .go{color:#fff;margin-top:12px}
+.area-copy .go:hover{color:var(--orange-hi)}
+.maps{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);gap:24px;margin-top:56px}
+.map{position:relative;display:flex;flex-direction:column;border-top:1px solid var(--line-dk);padding-top:28px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.map::before{content:'';position:absolute;left:0;top:-1px;height:2px;width:100%;background:var(--orange-on-dk);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.map svg{display:block;width:100%;height:220px;overflow:visible}
+.map path{fill:rgba(255,98,20,.06);stroke:var(--orange-on-dk);stroke-width:1.3;stroke-linejoin:round;vector-effect:non-scaling-stroke;transition:fill .45s ease,stroke-width .3s ease,filter .45s ease}
+.map h3{margin-top:24px;text-align:center;font-size:var(--h3l);line-height:1.2;color:#fff;transition:color .3s ease}
+.map:hover{transform:translateY(-6px)}
+.map:hover::before{transform:scaleX(1)}
+.map:hover path{fill:rgba(255,98,20,.18);stroke-width:1.8;filter:drop-shadow(0 0 10px rgba(255,98,20,.35))}
+.map:hover h3{color:var(--orange-on-dk)}
+.js .maps:not(.in) path{stroke-dasharray:1;stroke-dashoffset:1;fill:rgba(255,98,20,0)}
+.maps.in path{stroke-dasharray:1;animation:map-draw 2.2s cubic-bezier(.45,.05,.2,1) backwards;animation-delay:var(--md,0s)}
+@keyframes map-draw{0%{stroke-dashoffset:1;fill:rgba(255,98,20,0)}75%{stroke-dashoffset:0;fill:rgba(255,98,20,0)}100%{stroke-dashoffset:0}}
 
 /* ============================================================
    FAQ
@@ -273,7 +285,10 @@ ul{margin:0;padding:0;list-style:none}
 @media (max-width:980px){
   :root{--gut:32px}
   .band{padding:80px 0}
-  .area,.faq-wrap{grid-template-columns:1fr;gap:32px}
+  .faq-wrap{grid-template-columns:1fr;gap:32px}
+  .maps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .map--md{grid-column:1 / -1;order:-1}
+  .map svg{height:200px}
   .abilities{grid-template-columns:repeat(2,minmax(0,1fr))}
   .abilities li:last-child{grid-column:span 2}
   .callout{grid-template-columns:1fr;gap:24px;padding:32px}
@@ -325,6 +340,9 @@ ul{margin:0;padding:0;list-style:none}
   .proc-foot{flex-direction:column;align-items:stretch}
   .proof-copy{padding:56px var(--gut)}
   .ph{min-height:260px}
+  .maps{grid-template-columns:1fr}
+  .map--md{order:0}
+  .map svg{height:180px}
   .faq summary{padding:18px 16px 18px 20px;gap:16px}
   .faq .a p{padding:0 16px 20px 20px}
   .faq details:hover{transform:none}
@@ -677,18 +695,27 @@ ul{margin:0;padding:0;list-style:none}
 <!-- ============================================================
      SERVICE AREA
      ============================================================ -->
-<section class="band lt">
-  <div class="wrap area">
+<section class="band dk area-sec">
+  <div class="wrap">
     <div class="area-copy">
       <h2 class="h2">Window Film Installation Across Northern Virginia, Maryland &amp; Washington, D.C.</h2>
       <p>Atlantic Sun Control provides residential and commercial window film consultation and installation throughout Northern Virginia, Maryland and Washington, D.C.</p>
       <a class="go" href="#">View Our Service Area</a>
     </div>
-    <ul class="regions" aria-label="Service regions">
-      <li>Northern Virginia</li>
-      <li>Maryland</li>
-      <li>Washington, D.C.</li>
-    </ul>
+    <div class="maps" aria-label="Service regions" role="list">
+      <div class="map" role="listitem" style="--md:0s">
+        <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path pathLength="1" d="M250.8 142.5L241.1 132.4L241.6 127.5L245.9 127.3L252.0 128.7L250.9 140.9ZM192.1 125.7L193.3 122.2L204.9 121.9L204.9 128.3L195.3 129.9ZM252.0 128.7L245.9 127.3L241.6 127.5L241.1 132.4L224.4 115.0L227.3 112.1L234.8 104.6L238.5 110.5L240.6 112.2L245.0 113.3L250.5 120.6L252.2 125.9ZM153.2 200.9L116.6 130.6L121.9 116.0L123.6 115.0L126.5 109.2L128.6 102.4L152.3 126.7L169.5 138.0L181.6 152.0L183.1 158.5L214.4 180.0L210.8 179.8L209.2 182.4L209.9 184.4L209.5 192.1L206.1 194.1L206.8 198.5L203.7 203.2L202.3 208.8L198.5 214.0L161.0 192.0ZM165.0 157.1L169.0 154.5L169.8 148.7L167.4 145.7L173.7 150.6L175.1 148.4L174.8 146.7L171.1 143.2L170.2 146.2L167.4 144.3L167.6 142.0L164.7 141.8L164.2 143.5L160.2 146.3L154.1 156.0L154.5 158.1ZM228.7 119.4L227.8 120.4L224.2 118.7L220.9 118.9L220.0 116.8L221.1 114.2L224.4 115.0ZM167.4 145.7L169.8 148.7L169.0 154.5L165.0 157.1L154.5 158.1L154.1 156.0L160.2 146.3L164.4 143.5L166.9 145.3ZM164.2 143.5L164.7 141.8L167.6 142.0L167.4 144.3L170.2 146.2L171.1 143.2L174.8 146.7L175.1 148.4L173.7 150.6L164.4 143.5ZM241.1 132.4L250.8 142.5L250.3 148.0L243.7 161.4L237.5 165.1L232.3 170.9L231.6 177.0L232.7 180.8L227.3 180.4L223.8 183.5L218.5 185.3L215.6 180.1L214.4 180.0L183.1 158.5L181.6 152.0L169.5 138.0L152.3 126.7L193.5 72.9L206.7 79.9L208.6 84.9L207.8 87.2L209.0 91.4L214.6 95.1L219.4 96.3L225.4 95.9L229.1 96.7L234.8 104.6L224.4 115.0L221.1 114.2L220.0 116.8L220.9 118.9L224.2 118.7L227.8 120.4L228.7 119.4L236.6 127.7ZM192.1 125.7L195.3 129.9L204.9 128.3L204.9 121.9L193.3 122.2ZM128.6 102.4L67.8 84.3L94.3 54.1L105.5 27.5L106.0 22.5L109.2 17.2L109.7 14.1L115.9 6.0L126.1 6.8L141.0 11.1L147.3 14.9L150.3 18.6L152.5 21.0L162.4 25.2L167.8 30.5L163.6 39.6L158.3 41.4L156.1 44.3L154.0 50.6L155.4 57.0L167.7 69.0L184.1 72.2L191.0 71.8L193.5 72.9L152.3 126.7Z"/></svg>
+        <h3>Northern Virginia</h3>
+      </div>
+      <div class="map map--md" role="listitem" style="--md:.25s">
+        <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path pathLength="1" d="M76.7 47.7L70.0 47.5L62.3 45.6L56.0 41.4L56.5 39.4L54.6 37.9L48.5 47.2L42.0 54.4L36.9 51.0L35.1 51.1L44.6 29.4L85.4 29.4L86.0 37.1L84.6 36.7L79.4 38.2L77.4 42.0L79.2 43.8L78.9 45.7ZM217.6 89.0L219.9 90.8L220.7 92.7L218.7 94.7L215.1 96.2L216.8 99.0L216.1 102.0L213.8 101.7L214.0 104.0L212.0 105.9L212.1 107.0L213.5 106.8L214.0 108.1L211.4 112.3L209.2 114.4L209.7 117.3L211.4 118.0L211.3 119.2L205.3 118.6L204.8 114.4L200.4 116.1L198.7 110.1L199.9 98.1L189.7 84.5L193.4 82.3L195.0 78.9L197.9 77.4L199.7 74.4L202.1 73.1L204.2 73.8L205.1 72.6L207.6 75.3L209.8 76.2L211.0 75.2L211.5 77.9L218.3 82.0L218.7 86.5L218.0 88.2ZM220.0 152.2L219.9 154.5L216.2 155.5L215.3 153.8L214.1 153.6L214.4 151.8L213.2 149.6L210.9 147.3L209.3 147.5L205.3 144.4L202.6 141.5L201.2 138.3L202.0 135.9L201.1 135.1L200.8 131.1L201.4 127.8L199.9 126.1L200.6 123.9L199.4 123.4L200.3 122.1L199.3 119.5L200.4 116.1L204.8 114.4L205.3 118.6L211.3 119.2L211.1 122.4L212.5 127.9L212.2 135.7L213.8 139.8L221.1 148.2L221.2 150.6L220.1 152.1ZM169.9 127.6L169.4 122.8L172.6 119.9L177.9 124.7L188.1 124.1L196.1 127.9L202.0 135.9L200.6 138.7L198.5 137.3L194.2 137.5L187.5 148.1L189.0 150.2L188.8 152.5L190.1 156.1L189.3 156.3L190.1 158.4L189.6 160.1L184.1 156.8L183.5 154.2L180.3 151.8L178.7 146.2L177.5 143.1L175.8 143.2L172.3 146.5L170.1 146.2L169.1 147.9L165.7 150.2L164.2 150.7L161.3 148.7L159.6 139.9L160.3 137.1L165.9 129.3L169.9 127.8ZM244.6 172.0L243.8 171.5L241.7 172.6L241.4 171.6L241.9 165.6L243.9 164.6L246.5 166.9L245.8 169.6ZM253.2 159.0L251.4 159.0L251.2 160.2L252.1 160.8L249.9 162.0L250.5 160.3L246.8 155.2L250.1 154.3L250.6 152.4L249.8 150.2L247.8 149.4L246.8 153.2L244.6 155.2L246.1 157.8L244.9 160.6L245.8 163.5L244.0 162.5L242.8 160.3L241.1 160.2L240.3 157.2L238.4 157.7L236.5 156.9L235.5 158.1L236.6 160.5L239.2 161.1L238.9 162.0L237.5 161.9L236.0 160.8L233.3 155.8L230.1 154.4L229.7 151.9L231.4 151.6L230.7 150.3L229.1 150.1L228.4 145.9L224.7 138.9L229.7 137.9L230.8 136.1L230.7 134.8L228.7 135.4L228.6 133.2L226.6 131.9L229.4 129.5L228.6 128.5L231.6 126.8L233.3 128.7L237.4 126.5L246.4 131.7L248.6 130.0L251.8 122.7L264.5 121.7L268.3 126.2L268.7 132.8L265.6 135.0L264.3 137.7L260.2 139.9L260.9 141.2L259.3 142.9L260.4 144.5L258.7 145.2L258.3 146.7L259.2 148.4L257.7 148.6L257.9 151.0L253.0 156.3ZM257.2 70.6L256.7 71.5L252.3 72.8L247.0 72.9L244.1 75.0L243.2 76.6L245.2 78.2L242.3 80.6L243.0 81.4L239.9 84.2L233.9 86.1L233.5 92.8L231.2 91.2L231.8 85.6L229.9 81.0L228.7 80.7L232.8 70.4L235.7 67.1L235.1 65.3L238.8 63.4L240.3 60.6L246.4 61.5L248.0 60.2L249.3 61.1L251.0 60.4L255.9 61.6L258.5 61.0L260.6 59.7L264.2 60.1L264.9 71.8ZM237.0 85.4L243.0 81.4L242.3 80.6L245.2 78.2L243.2 76.6L247.0 72.9L252.3 72.8L256.7 71.5L257.2 70.6L264.9 71.8L265.5 81.0L259.5 84.1L252.9 94.6L251.5 101.0L241.3 98.7L240.8 104.2L234.2 107.0L233.9 100.1L231.9 98.8L230.6 99.2L230.2 101.0L229.1 98.9L227.5 100.1L227.7 102.4L226.6 102.8L225.5 101.6L224.6 103.6L224.8 106.2L222.0 108.0L222.9 99.1L226.4 90.6L227.1 90.2L228.8 95.3L234.0 96.1L236.6 93.8L235.2 89.6L237.9 85.5ZM215.4 172.2L215.2 173.6L213.3 170.6L211.2 170.8L209.6 166.1L207.0 163.7L201.3 161.9L196.7 161.8L195.8 163.0L192.7 161.7L191.7 160.3L192.3 157.8L190.1 156.1L188.8 152.5L189.0 150.2L187.5 148.1L194.9 137.1L201.2 138.3L202.6 141.5L209.0 146.9L210.9 147.3L213.3 149.7L214.4 151.8L214.1 153.6L215.3 153.8L216.2 155.5L219.9 154.5L222.0 156.1L220.3 159.0L221.3 163.4L225.8 170.4L224.5 172.1L225.7 179.5L222.9 177.5L220.8 173.6L218.8 173.3L217.5 170.4L216.1 170.3L215.4 172.1ZM245.8 169.6L247.1 171.0L246.5 173.2L247.6 175.9L246.4 176.5L243.9 174.2L245.3 172.8L244.6 172.0ZM274.1 183.3L270.9 187.1L270.8 185.7L267.9 184.8L266.2 186.0L263.0 185.2L259.6 188.7L256.0 190.6L255.1 189.4L255.0 185.0L256.8 179.7L258.6 179.7L261.0 177.5L258.8 176.3L257.8 176.8L256.9 177.5L256.3 176.1L260.0 170.9L258.8 169.9L257.1 170.8L254.9 170.2L251.8 172.7L250.8 170.6L252.0 166.1L258.7 164.0L257.4 161.5L264.1 157.4L274.9 158.0L279.5 166.9L279.9 174.8L271.5 179.0ZM248.4 186.9L244.8 186.9L244.8 180.5L247.1 179.2L249.6 180.9L250.1 182.2L249.1 182.4L248.8 186.3ZM237.8 126.0L235.9 122.8L234.1 123.0L233.2 122.1L231.4 119.3L231.4 117.3L230.3 117.2L228.9 119.3L226.1 117.8L224.8 120.2L225.6 122.3L224.4 123.0L224.3 115.8L226.6 110.3L228.8 108.7L229.2 106.9L230.9 109.6L234.3 110.2L234.2 107.0L240.8 104.2L241.3 98.7L251.9 101.2L252.1 104.0L251.4 104.4L252.3 104.4L252.0 105.3L253.6 107.4L253.0 108.1L255.2 110.2L251.5 113.5L250.3 113.3L248.1 115.5L248.3 117.2L247.1 117.5L251.8 122.7L248.6 130.0L246.4 131.7L237.8 126.1ZM251.6 101.6L252.9 94.6L259.5 84.1L265.5 81.0L268.3 126.2L264.5 121.7L251.8 122.7L247.0 117.9L248.3 117.2L248.1 115.5L250.3 113.3L251.5 113.5L254.7 110.9L254.8 109.5L253.0 108.1L253.6 107.4L252.0 105.3L252.3 104.4L251.4 104.4L252.1 104.0L252.0 102.0ZM163.6 29.6L193.4 29.6L187.9 49.1L186.8 62.5L167.0 62.2L171.2 50.0L164.7 42.2L158.7 39.9ZM146.8 74.1L145.0 71.8L141.5 70.4L137.5 66.9L131.6 65.4L139.1 38.5L146.7 29.6L163.6 29.6L158.7 39.9L164.7 42.2L171.2 50.0L167.0 62.2L147.0 74.0ZM35.2 51.5L34.0 51.8L25.0 61.0L22.0 62.0L11.9 71.5L6.1 75.4L6.1 70.1L6.8 29.5L44.6 29.4L35.1 51.1ZM170.3 99.6L168.3 96.8L163.2 96.3L161.3 95.0L160.5 91.0L155.0 88.1L146.8 87.2L142.2 82.3L142.8 78.5L145.4 76.9L146.8 74.1L155.2 69.2L166.9 62.3L165.7 63.6L168.6 67.5L186.4 82.1L179.4 94.1L179.6 95.7L178.4 96.8L175.8 94.2L171.6 98.3ZM174.5 117.4L175.9 112.3L184.9 103.3L178.4 96.8L186.4 82.1L189.7 84.5L199.9 98.1L198.7 110.1L200.5 117.0L199.8 117.3L199.6 119.8L200.3 122.1L199.4 123.4L200.6 123.9L199.9 126.1L201.4 127.8L201.1 135.1L196.1 127.9L188.1 124.1L177.9 124.7L173.3 121.3L172.6 119.9L173.4 119.5ZM121.3 49.7L118.6 47.7L116.0 41.4L112.9 41.6L108.5 40.0L106.7 37.1L101.7 33.0L96.5 31.8L90.4 38.6L86.0 37.1L85.4 29.4L90.6 29.4L146.1 29.6L139.1 38.5L131.6 65.4L128.1 65.1L125.8 63.6L127.3 59.4L122.6 50.1ZM300.6 180.3L274.1 183.3L271.5 179.0L279.9 174.8L279.5 166.9L274.9 158.0L292.1 156.9L296.1 151.2L293.7 142.5L314.0 142.6L313.7 145.1L311.5 153.9L310.3 155.0L305.1 171.2L300.6 180.3ZM231.8 29.5L262.7 29.5L264.2 60.1L260.4 59.7L255.9 61.6L251.0 60.4L249.3 61.1L247.8 59.4L245.2 59.2L249.6 54.1L248.7 52.9L247.2 53.4L250.3 45.8L250.1 44.1L248.5 43.6L247.6 44.7L242.8 45.4L238.0 38.7ZM168.6 67.5L165.7 63.6L167.0 62.2L186.8 62.5L196.7 73.1L199.6 74.7L198.1 76.7L195.0 78.9L193.4 82.3L189.7 84.5L186.4 82.1ZM253.5 159.2L253.0 156.3L257.9 151.0L257.7 148.6L259.2 148.4L258.3 146.7L258.7 145.2L260.4 144.5L259.3 142.9L260.9 141.2L260.2 139.9L264.3 137.7L265.6 135.0L268.7 133.0L269.3 141.8L293.7 142.5L296.1 151.2L292.1 156.9L274.9 158.0L264.1 157.4L257.4 161.5L256.1 161.0L255.6 162.5L253.6 159.3ZM198.6 29.5L208.5 29.5L211.2 45.3L217.7 49.0L223.1 59.0L225.5 60.4L224.3 62.2L225.3 65.8L224.3 66.8L222.7 66.0L221.6 67.1L220.1 70.7L221.5 71.5L221.0 72.8L217.3 76.3L215.8 75.4L214.0 75.7L211.9 73.8L211.3 74.3L211.2 60.6L198.6 60.6L198.7 69.0L205.1 72.6L204.2 73.8L202.1 73.1L199.6 74.7L196.7 73.1L186.8 62.5L187.9 49.1L193.4 29.6L198.4 29.5ZM208.5 29.5L231.8 29.5L242.8 45.4L241.3 45.9L239.9 49.6L240.7 51.1L243.0 51.4L243.8 53.5L237.0 57.6L235.5 60.1L232.1 62.5L231.1 61.5L229.5 62.3L230.4 63.7L228.8 65.0L228.5 66.8L227.3 66.8L227.5 62.6L225.1 62.0L225.5 60.4L223.1 59.0L217.7 49.0L211.2 45.3L210.5 42.8ZM205.1 72.6L198.7 69.0L198.6 60.6L211.2 60.6L211.2 66.5L211.0 75.2L209.8 76.2L207.6 75.3L205.6 72.9Z"/></svg>
+        <h3>Maryland</h3>
+      </div>
+      <div class="map" role="listitem" style="--md:.5s">
+        <svg viewBox="0 0 320 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path pathLength="1" d="M145.4 165.0L146.4 153.7L139.4 132.6L117.4 103.4L99.9 98.9L91.2 91.8L76.3 68.1L139.1 6.0L160.7 27.1L243.7 110.5L141.0 214.0Z"/></svg>
+        <h3>Washington, D.C.</h3>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -810,6 +837,15 @@ ul{margin:0;padding:0;list-style:none}
       st.addEventListener('click',function(){go(i)});
     });
     go(0);
+  }
+  /* Service area: draw the region outlines once when they come into view */
+  var maps=document.querySelector('.maps');
+  if(maps){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){maps.classList.add('in')}
+    else{
+      var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){maps.classList.add('in');mo.disconnect()}})},{threshold:.25});
+      mo.observe(maps);
+    }
   }
   /* Product category tabs */
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
