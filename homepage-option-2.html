@@ -141,15 +141,15 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    WHO WE SERVE — photo cards + sector tiles
    ============================================================ */
-.serve-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto;gap:24px}
-.serve-card{position:relative;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);min-height:340px;isolation:isolate}
-.serve-card--tall{grid-row:span 2;min-height:640px}
+.serve-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px}
+.serve-card{position:relative;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);min-height:380px;isolation:isolate}
+.serve-card--tall{min-height:380px}
 .serve-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 .serve-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(22,24,31,.95) 0%,rgba(22,24,31,.72) 38%,rgba(22,24,31,.1) 75%);transition:opacity .4s ease}
 .serve-card::after{content:'';position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .serve-card:hover img,.serve-card:focus-within img{transform:scale(1.06)}
 .serve-card:hover::after,.serve-card:focus-within::after{transform:scaleX(1)}
-.serve-body{padding:40px;color:var(--on-dk-2);max-width:620px}
+.serve-body{padding:32px 36px;color:var(--on-dk-2);max-width:620px}
 .serve-body h3{font-size:var(--h3l);line-height:1.2;color:#fff}
 .serve-body p{margin-top:12px;font-size:16px;line-height:1.6;max-width:52ch}
 .serve-body .go{color:#fff;margin-top:8px}
@@ -158,16 +158,17 @@ ul{margin:0;padding:0;list-style:none}
   .serve-body p{max-height:0;opacity:0;margin-top:0;overflow:hidden;transform:translateY(12px);transition:max-height .5s cubic-bezier(.2,.7,.2,1),opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1),margin-top .5s ease}
   .serve-card:hover .serve-body p,.serve-card:focus-within .serve-body p{max-height:220px;opacity:1;margin-top:12px;transform:none}
 }
-.sectors{background:var(--ink);color:var(--on-dk-2)}
-.sector{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:20px;padding:28px 32px;border-bottom:1px solid var(--line-dk);transition:background .3s ease}
-.sector:last-child{border-bottom:0}
-.sector::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange);transform:scaleY(0);transform-origin:top;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sectors{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--ink);color:var(--on-dk-2)}
+.sector{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:16px;padding:28px;border-left:1px solid var(--line-dk);transition:background .3s ease}
+.sector:first-child{border-left:0}
+.sector::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .sector:hover,.sector:focus-within{background:var(--ink-3)}
-.sector:hover::before,.sector:focus-within::before{transform:scaleY(1)}
-.sector svg{width:32px;height:32px;color:var(--orange-on-dk);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sector:hover::before,.sector:focus-within::before{transform:scaleX(1)}
+.sector svg{width:28px;height:28px;color:var(--orange-on-dk);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .sector:hover svg{transform:translateY(-3px)}
-.sector h3{font-size:18px;color:#fff;margin:4px 0 8px}
-.sector p{font-size:16px;line-height:1.6;color:var(--on-dk-2)}
+.sector h3{font-size:18px;color:#fff;margin:2px 0 8px}
+.sector > div{display:flex;flex-direction:column;align-items:flex-start}
+.sector p{flex:1;font-size:16px;line-height:1.6;color:var(--on-dk-2)}
 .sector .go{color:#fff;margin-top:4px}
 .sector .go:hover{color:var(--orange-hi)}
 
@@ -273,8 +274,10 @@ ul{margin:0;padding:0;list-style:none}
   .finder-panel{padding:36px 32px}
   .unsure{grid-template-columns:1fr;padding:32px}
   .serve-grid{grid-template-columns:1fr}
-  .serve-card--tall{grid-row:auto;min-height:480px}
-  .serve-card{min-height:420px}
+  .serve-card,.serve-card--tall{min-height:360px}
+  .sectors{grid-template-columns:1fr}
+  .sector{border-left:0;border-top:1px solid var(--line-dk)}
+  .sector:first-child{border-top:0}
   .serve-card::before{background:linear-gradient(to top,rgba(22,24,31,.96) 0%,rgba(22,24,31,.86) 55%,rgba(22,24,31,.4) 100%)}
   .steps{grid-template-columns:1fr 1fr;row-gap:48px}
   .proof{grid-template-columns:1fr}
@@ -293,7 +296,7 @@ ul{margin:0;padding:0;list-style:none}
   .ctas{flex-direction:column}
   .steps,.verbs{grid-template-columns:1fr}
   .verbs li:last-child{grid-column:auto}
-  .serve-card,.serve-card--tall{min-height:400px}
+  .serve-card,.serve-card--tall{min-height:340px}
   .serve-body{padding:28px 24px}
   .finder-panel{padding:32px 24px}
   .panel-ghost{width:180px;height:180px}
