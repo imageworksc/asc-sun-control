@@ -40,8 +40,8 @@
 .go:hover::after{transform:translateX(4px)}
 
 /* Arrow link on dark surfaces */
-:is(.serve-body,.sector,.area-copy) .go{color:#fff}
-:is(.serve-body,.sector,.area-copy) .go:hover{color:var(--orange-hi)}
+.area-copy .go{color:#fff}
+.area-copy .go:hover{color:var(--orange-hi)}
 
 /* ---------------------------------------------------------------------
    Trust line

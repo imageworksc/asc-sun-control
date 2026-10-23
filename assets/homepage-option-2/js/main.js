@@ -60,6 +60,32 @@ const initTabs = () => {
 };
 
 /* ---------------------------------------------------------------------
+   Who we serve: hovering, tapping or focusing an audience opens its
+   description and cross-fades the matching photo
+   --------------------------------------------------------------------- */
+const initAudience = () => {
+  const items = [...document.querySelectorAll('.aud')];
+  const photos = [...document.querySelectorAll('.aud-media img')];
+  if (!items.length) return;
+
+  const activate = (n) => {
+    items.forEach((item, i) => {
+      const on = i === n;
+      item.classList.toggle('is-active', on);
+      item.querySelector('.aud-head').setAttribute('aria-expanded', on);
+    });
+    photos.forEach((photo, i) => photo.classList.toggle('is-active', i === n));
+  };
+
+  items.forEach((item, i) => {
+    const head = item.querySelector('.aud-head');
+    ['mouseenter', 'focus', 'click'].forEach((type) => head.addEventListener(type, () => activate(i)));
+  });
+
+  activate(0);
+};
+
+/* ---------------------------------------------------------------------
    Process timeline: hovering, tapping or focusing a step fills the line
    up to it; the steps it passes light up in turn
    --------------------------------------------------------------------- */
@@ -139,6 +165,7 @@ const initFaq = () => {
 };
 
 initTabs();
+initAudience();
 initTimeline();
 initMaps();
 initFaq();
