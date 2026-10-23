@@ -64,7 +64,7 @@
 .chips{position:relative;display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .chips a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border:1px solid #cfcfcf;transition:border-color .15s ease,background .15s ease}
 .chips a:hover{border-color:var(--orange);background:rgba(232,84,10,.08);color:var(--orange-ink)}
-.unsure{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;background:var(--bg-light);border-left:5px solid var(--orange);padding:32px 48px}
+.unsure{margin-top:48px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .unsure h3{font-size:var(--h3l);line-height:1.2;margin-bottom:8px}
 .unsure p{max-width:62ch;font-size:16px;line-height:1.6}
 
@@ -74,12 +74,11 @@
   .finder-panel[hidden]{display:block}
   .js .finder-panel + .finder-panel{margin-top:12px}
   .finder-panel{padding:36px 32px;border:1px solid var(--line-lt)}
-  .unsure{grid-template-columns:1fr;padding:32px}
 }
 @media (max-width:600px){
   .finder-panel{padding:32px 24px}
   .panel-ghost{width:180px;height:180px}
-  .unsure{padding:28px 24px}
+  .unsure{margin-top:40px;align-items:stretch}
 }
 
 /* ============================================================
