@@ -24,23 +24,18 @@
 }
 
 /* ============================================================
-   2. OPENING — intro + specialty note beside a benefits list
+   2. OPENING — intro, benefits row, specialty note
    ============================================================ */
 .open-sec{padding:72px 0}
-.open-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:center}
 .open-sec .intro{margin-bottom:0}
-.open-sec .intro p + p{margin-top:12px}
-.abilities{display:grid;gap:18px}
-.abilities li{display:flex;align-items:center;gap:14px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.abilities{display:flex;flex-wrap:wrap;gap:12px 36px;margin:24px 0}
+.abilities li{display:flex;align-items:center;gap:12px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
 .abilities li::before{content:'';flex:0 0 8px;height:8px;background:var(--orange)}
 
-@media (max-width:980px){
-  .open-sec{padding:56px 0}
-  .open-grid{grid-template-columns:1fr;gap:32px}
-}
+@media (max-width:980px){.open-sec{padding:56px 0}}
 @media (max-width:600px){
   .open-sec{padding:48px 0}
-  .abilities{gap:14px}
+  .abilities{flex-direction:column;gap:12px;margin:20px 0}
   .abilities li{font-size:16px}
 }
 
