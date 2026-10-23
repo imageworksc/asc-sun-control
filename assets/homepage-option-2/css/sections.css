@@ -43,27 +43,26 @@
    3. PRODUCTS — category finder (tabs on desktop, stacked on mobile)
    ============================================================ */
 .finder-tabs{display:none}
-.js .finder{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);align-items:stretch;border:1px solid var(--line-lt)}
+.js .finder{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);align-items:stretch;border:1px solid var(--line-lt);background:var(--white)}
 .js .finder-tabs{display:flex;flex-direction:column}
-.tab{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px;align-items:center;width:100%;flex:1;text-align:left;font:600 18px/1.25 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink);background:var(--white);border:0;border-bottom:1px solid var(--line-lt);border-left:3px solid transparent;padding:22px 24px;cursor:pointer;transition:background .15s ease}
+.tab{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px;align-items:center;width:100%;flex:1;text-align:left;font:600 18px/1.25 'Jost',sans-serif;letter-spacing:-.01em;color:var(--gray);background:#ececec;border:0;border-bottom:1px solid var(--line-lt);border-left:3px solid transparent;padding:22px 24px;cursor:pointer;transition:background .2s ease,color .2s ease}
 .tab:last-child{border-bottom:0}
 .tab svg{width:24px;height:24px;color:var(--orange)}
-.tab:hover{background:var(--bg-light)}
-.tab[aria-selected="true"]{background:var(--ink);color:#fff;border-left-color:var(--orange)}
-.tab[aria-selected="true"] svg{color:var(--orange-on-dk)}
-.finder-panel{position:relative;overflow:hidden;background:var(--ink);color:var(--on-dk-2);padding:48px 56px;min-height:100%}
+.tab:hover{background:#f4f4f4;color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--white);color:var(--ink);border-left-color:var(--orange)}
+.finder-panel{position:relative;overflow:hidden;background:var(--white);color:var(--slate);padding:48px 56px;min-height:100%}
 .finder-panel + .finder-panel{margin-top:12px}
 .js .finder-panel + .finder-panel{margin-top:0}
 .finder-panel[hidden]{display:none}
-.panel-mark{width:36px;height:36px;color:var(--orange-on-dk);margin-bottom:24px}
-.panel-ghost{position:absolute;right:-36px;bottom:-36px;width:260px;height:260px;color:rgba(255,255,255,.05);pointer-events:none}
-.finder-panel h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:16px}
+.panel-mark{width:36px;height:36px;color:var(--orange);margin-bottom:24px}
+.panel-ghost{position:absolute;right:-36px;bottom:-36px;width:260px;height:260px;color:rgba(22,24,31,.05);pointer-events:none}
+.finder-panel h3{font-size:var(--h3l);line-height:1.2;color:var(--ink);margin-bottom:16px}
 .finder-panel h3 a{text-decoration:none}
-.finder-panel h3 a:hover{color:var(--orange-hi)}
+.finder-panel h3 a:hover{color:var(--orange-ink)}
 .finder-panel p{position:relative;font-size:17px;line-height:1.7;max-width:56ch}
 .chips{position:relative;display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chips a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;font-size:15px;font-weight:500;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.24);transition:border-color .15s ease,background .15s ease}
-.chips a:hover{border-color:var(--orange);background:rgba(232,84,10,.14)}
+.chips a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border:1px solid #cfcfcf;transition:border-color .15s ease,background .15s ease}
+.chips a:hover{border-color:var(--orange);background:rgba(232,84,10,.08);color:var(--orange-ink)}
 .unsure{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;background:var(--bg-light);border-left:5px solid var(--orange);padding:32px 48px}
 .unsure h3{font-size:var(--h3l);line-height:1.2;margin-bottom:8px}
 .unsure p{max-width:62ch;font-size:16px;line-height:1.6}
@@ -73,7 +72,7 @@
   .js .finder-tabs{display:none}
   .finder-panel[hidden]{display:block}
   .js .finder-panel + .finder-panel{margin-top:12px}
-  .finder-panel{padding:36px 32px}
+  .finder-panel{padding:36px 32px;border:1px solid var(--line-lt)}
   .unsure{grid-template-columns:1fr;padding:32px}
 }
 @media (max-width:600px){
