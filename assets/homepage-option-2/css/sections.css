@@ -243,7 +243,8 @@
    8. FINAL CTA (sits on a .photo-band)
    ============================================================ */
 .final{background:var(--ink-2);color:var(--on-dk-2)}
-.final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 55%,rgba(14,16,22,.7) 100%)}
+.final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.86) 0%,rgba(14,16,22,.66) 50%,rgba(14,16,22,.38) 100%)}
+@media (max-width:980px){.final.photo-band > .bg::after{background:rgba(14,16,22,.78)}}
 .final h2{color:#fff;font-size:var(--h2);max-width:26ch}
 .final-top p{margin-top:24px;font-size:17px;line-height:1.7;max-width:64ch}
 .verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
