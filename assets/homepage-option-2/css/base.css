@@ -75,6 +75,14 @@ p:last-child{margin-bottom:0}
 .photo-band > .bg img{width:100%;height:100%;object-fit:cover}
 .photo-band > .bg::after{content:'';position:absolute;inset:0;background:rgba(22,24,31,.9)}
 
+/* Dark band drawn as tinted glass: soft diagonal reflections over faint pane joints */
+.glass-band{position:relative;isolation:isolate;background:
+  linear-gradient(115deg,transparent 0 16%,rgba(255,255,255,.055) 22%,transparent 30%,transparent 56%,rgba(255,255,255,.04) 62%,transparent 69%),
+  repeating-linear-gradient(90deg,transparent 0 239px,rgba(255,255,255,.035) 239px 240px),
+  repeating-linear-gradient(180deg,transparent 0 319px,rgba(255,255,255,.03) 319px 320px),
+  radial-gradient(120% 80% at 85% 0%,rgba(150,180,210,.12),transparent 60%),
+  var(--ink)}
+
 /* Section intro: title with its description underneath */
 .intro{margin-bottom:56px}
 .intro .h2{max-width:22ch}

@@ -135,7 +135,7 @@
 
 /* ============================================================
    5. PROCESS — glass step panels on a timeline driven by
-      hover / tap / focus (sits on a .photo-band)
+      hover / tap / focus (sits on a .glass-band)
    ============================================================ */
 /* --gap is the column gap; the track runs from the centre of node 1 to node 4 */
 .timeline{--p:0;--gap:20px;position:relative;margin-top:8px}
@@ -240,7 +240,26 @@
 }
 
 /* ============================================================
-   8. FAQ — staggered reveal, animated accordion, sticky contact card
+   8. FINAL CTA (sits on a .photo-band)
+   ============================================================ */
+.final{background:var(--ink-2);color:var(--on-dk-2)}
+.final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 55%,rgba(14,16,22,.7) 100%)}
+.final h2{color:#fff;font-size:var(--h2);max-width:26ch}
+.final-top p{margin-top:24px;font-size:17px;line-height:1.7;max-width:64ch}
+.verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
+.verbs li{display:flex;align-items:center;gap:14px;padding:22px 24px 22px 0;border-bottom:1px solid var(--line-dk);font:600 clamp(18px,calc(.8vw + 14px),22px)/1.3 'Jost',sans-serif;letter-spacing:-.015em;color:#fff}
+.verbs li::before{content:'';flex:0 0 10px;height:10px;background:var(--orange)}
+.verbs li:last-child{grid-column:span 2}
+.final .ctas{margin-top:40px}
+
+@media (max-width:1100px){.verbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){
+  .verbs{grid-template-columns:1fr}
+  .verbs li:last-child{grid-column:auto}
+}
+
+/* ============================================================
+   9. FAQ — staggered reveal, animated accordion, sticky contact card
    ============================================================ */
 .faq-wrap{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:48px;align-items:start}
 .faq{display:grid;gap:12px}
@@ -276,10 +295,10 @@
 .faq.in details{animation:faq-rise .6s var(--ease-out) calc(var(--i) * 70ms) backwards}
 @keyframes faq-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .faq-side{position:sticky;top:32px}
-.still{position:relative;overflow:hidden;background:var(--ink);color:var(--on-dk-2);padding:36px 32px;border-top:4px solid var(--orange);transition:transform .3s var(--ease-out),box-shadow .3s ease}
-.still:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(22,24,31,.6)}
-.still-ic{width:40px;height:40px;color:var(--orange-on-dk);margin-bottom:20px}
-.still h3{font-size:var(--h3l);line-height:1.2;color:#fff;margin-bottom:10px}
+.still{position:relative;overflow:hidden;background:var(--bg-light);color:var(--slate);padding:36px 32px;border-top:4px solid var(--orange);transition:transform .3s var(--ease-out),box-shadow .3s ease}
+.still:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(22,24,31,.35)}
+.still-ic{width:40px;height:40px;color:var(--orange);margin-bottom:20px}
+.still h3{font-size:var(--h3l);line-height:1.2;color:var(--ink);margin-bottom:10px}
 .still p{font-size:16px;line-height:1.6}
 .still .ctas{margin-top:28px}
 .still .btn{width:100%}
@@ -293,23 +312,4 @@
   .faq .a p{padding:0 16px 20px 20px}
   .faq details:hover{transform:none}
   .still{padding:28px 24px}
-}
-
-/* ============================================================
-   9. FINAL CTA (sits on a .photo-band)
-   ============================================================ */
-.final{background:var(--ink-2);color:var(--on-dk-2)}
-.final.photo-band > .bg::after{background:linear-gradient(90deg,rgba(14,16,22,.94) 0%,rgba(14,16,22,.86) 55%,rgba(14,16,22,.7) 100%)}
-.final h2{color:#fff;font-size:var(--h2);max-width:26ch}
-.final-top p{margin-top:24px;font-size:17px;line-height:1.7;max-width:64ch}
-.verbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line-dk)}
-.verbs li{display:flex;align-items:center;gap:14px;padding:22px 24px 22px 0;border-bottom:1px solid var(--line-dk);font:600 clamp(18px,calc(.8vw + 14px),22px)/1.3 'Jost',sans-serif;letter-spacing:-.015em;color:#fff}
-.verbs li::before{content:'';flex:0 0 10px;height:10px;background:var(--orange)}
-.verbs li:last-child{grid-column:span 2}
-.final .ctas{margin-top:40px}
-
-@media (max-width:1100px){.verbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){
-  .verbs{grid-template-columns:1fr}
-  .verbs li:last-child{grid-column:auto}
 }
