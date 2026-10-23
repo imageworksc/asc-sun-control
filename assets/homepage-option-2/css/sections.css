@@ -55,7 +55,7 @@
 .js .finder-panel + .finder-panel{margin-top:0}
 .finder-panel[hidden]{display:none}
 .panel-mark{width:36px;height:36px;color:var(--orange);margin-bottom:24px}
-.panel-ghost{position:absolute;right:-36px;bottom:-36px;width:260px;height:260px;color:rgba(22,24,31,.05);pointer-events:none}
+.panel-ghost{position:absolute;right:-36px;bottom:-36px;width:260px;height:260px;color:rgba(22,24,31,.03);pointer-events:none}
 .finder-panel h3{font-size:var(--h3l);line-height:1.2;color:var(--ink);margin-bottom:16px}
 .finder-panel h3 a{text-decoration:none}
 .finder-panel h3 a:hover{color:var(--orange-ink)}
