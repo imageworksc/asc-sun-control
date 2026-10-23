@@ -29,7 +29,7 @@
 .open-sec{padding:72px 0}
 .open-sec .intro{margin-bottom:0}
 .abilities{display:flex;flex-wrap:wrap;gap:12px 36px;margin:24px 0}
-.abilities li{display:flex;align-items:center;gap:12px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.abilities li{flex:0 0 auto;white-space:nowrap;display:flex;align-items:center;gap:12px;font:600 17px/1.3 'Jost',sans-serif;letter-spacing:-.01em;color:var(--ink)}
 .abilities li::before{content:'';flex:0 0 8px;height:8px;background:var(--orange)}
 
 @media (max-width:980px){.open-sec{padding:56px 0}}
