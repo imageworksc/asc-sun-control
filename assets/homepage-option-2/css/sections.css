@@ -6,7 +6,7 @@
 /* ============================================================
    1. HERO
    ============================================================ */
-.hero{position:relative;overflow:hidden;background:var(--ink-2) url('https://res.cloudinary.com/dsjbq35es/image/upload/v1775065563/Shutterstock_2681641223_1_el31oa.jpg') center/cover no-repeat;color:var(--on-dk-2);padding-top:env(safe-area-inset-top,0px)}
+.hero{position:relative;overflow:hidden;background:var(--ink-2) url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=2400&q=70') center/cover no-repeat;color:var(--on-dk-2);padding-top:env(safe-area-inset-top,0px)}
 .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,22,.95) 0%,rgba(14,16,22,.86) 45%,rgba(14,16,22,.3) 100%)}
 .hero .wrap{position:relative}
 .hero-grid{padding-top:72px;padding-bottom:56px}
