@@ -23,8 +23,8 @@
 .btn--line:hover::before{transform:scaleX(1)}
 
 /* Outline button on dark surfaces */
-:is(.dk,.hero,.final) .btn--line{--fill:#fff;--fill-text:var(--ink);color:#fff;border-color:rgba(255,255,255,.6)}
-:is(.dk,.hero,.final) .btn--line:hover{color:var(--fill-text);border-color:#fff;box-shadow:0 14px 26px -14px rgba(0,0,0,.6)}
+:is(.dk,.hero,.still,.final) .btn--line{--fill:#fff;--fill-text:var(--ink);color:#fff;border-color:rgba(255,255,255,.6)}
+:is(.dk,.hero,.still,.final) .btn--line:hover{color:var(--fill-text);border-color:#fff;box-shadow:0 14px 26px -14px rgba(0,0,0,.6)}
 
 @media (max-width:600px){
   .ctas{flex-direction:column}
