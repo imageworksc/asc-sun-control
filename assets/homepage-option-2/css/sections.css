@@ -85,11 +85,11 @@
    4. WHO WE SERVE — audience selector: list on the left drives
       a cross-fading photo on the right (stacked on mobile)
    ============================================================ */
-.audience{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:stretch}
-.aud-media{position:relative;overflow:hidden;min-height:520px;background:var(--ink)}
-.aud-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s ease,transform 1.4s var(--ease-out)}
-.aud-media img:first-child,.aud-media img.is-active{opacity:1;transform:none}
-.js .aud-media img:first-child:not(.is-active){opacity:0;transform:scale(1.06)}
+.audience{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start}
+.aud-media{position:relative;overflow:hidden;height:560px;background:var(--ink)}
+.aud-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+.aud-media img:first-child,.aud-media img.is-active{opacity:1}
+.js .aud-media img:first-child:not(.is-active){opacity:0}
 
 .aud-list{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
 .aud{position:relative;border-bottom:1px solid var(--line-lt);transition:background .35s ease}
@@ -97,8 +97,8 @@
 .aud h3{margin:0;font-size:inherit}
 .aud-head{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:22px 24px;background:none;border:0;cursor:pointer;text-align:left;font:600 var(--h3l)/1.2 'Jost',sans-serif;letter-spacing:-.015em;color:var(--gray);transition:color .3s ease}
 .aud-head svg{flex:0 0 22px;width:22px;height:22px;color:var(--orange);opacity:0;transform:translateX(-8px);transition:opacity .3s ease,transform .4s var(--ease-out)}
-.aud-head:hover,.aud.is-active .aud-head{color:var(--ink)}
-.aud-head:hover svg,.aud.is-active .aud-head svg{opacity:1;transform:none}
+.aud.is-active .aud-head{color:var(--ink)}
+.aud.is-active .aud-head svg{opacity:1;transform:none}
 .aud-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s var(--ease-out)}
 .aud-body > div{overflow:hidden;padding:0 24px}
 .aud-body p{font-size:16px;line-height:1.6;color:var(--slate);max-width:56ch}
@@ -108,7 +108,7 @@
 
 @media (max-width:980px){
   .audience{grid-template-columns:1fr;gap:0}
-  .aud-media{min-height:0;aspect-ratio:16/10}
+  .aud-media{height:auto;aspect-ratio:16/10}
 }
 @media (max-width:600px){
   .aud-head{padding:18px 20px}
