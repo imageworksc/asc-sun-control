@@ -60,8 +60,8 @@ const initTabs = () => {
 };
 
 /* ---------------------------------------------------------------------
-   Who we serve: clicking (or pressing Enter / Space on) an audience
-   opens its description and cross-fades the matching photo
+   Who we serve: hovering, tapping or focusing an audience opens its
+   description and cross-fades the matching photo
    --------------------------------------------------------------------- */
 const initAudience = () => {
   const items = [...document.querySelectorAll('.aud')];
@@ -78,7 +78,8 @@ const initAudience = () => {
   };
 
   items.forEach((item, i) => {
-    item.querySelector('.aud-head').addEventListener('click', () => activate(i));
+    const head = item.querySelector('.aud-head');
+    ['mouseenter', 'focus', 'click'].forEach((type) => head.addEventListener(type, () => activate(i)));
   });
 
   activate(0);
