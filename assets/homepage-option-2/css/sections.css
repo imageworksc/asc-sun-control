@@ -119,7 +119,7 @@
    5. PROCESS — glass step panels on a timeline driven by
       hover / tap / focus (sits on a .photo-band)
    ============================================================ */
-.process-sec > .bg::after{background:rgba(22,24,31,.95)}
+.process-sec > .bg::after{background:rgba(22,24,31,.98)}
 
 /* --gap is the column gap; the track runs from the centre of node 1 to node 4 */
 .timeline{--p:0;--gap:20px;position:relative;margin-top:8px}
