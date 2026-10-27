@@ -20,9 +20,9 @@
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);
   border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,19,24,.02);}
 .asc-bar__inner{position:relative;max-width:var(--shell);margin:0 auto;
-  padding:0 var(--pad);display:flex;align-items:center;gap:28px;min-height:88px;}
+  padding:0 var(--pad);display:flex;align-items:center;gap:28px;min-height:100px;}
 .asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;}
-.asc-logo img{height:56px;width:auto;}
+.asc-logo img{height:80px;width:auto;}
 
 .asc-nav{flex:1 1 auto;display:flex;align-items:center;justify-content:center;
   gap:4px;list-style:none;min-width:0;}
@@ -124,7 +124,8 @@
 }
 @media (max-width:940px){
   .asc-nav,.asc-actions{display:none;}
-  .asc-bar__inner{min-height:66px;gap:12px;}
+  .asc-bar__inner{min-height:76px;gap:12px;}
+  .asc-logo img{height:60px;}
   .asc-panel{display:none !important;}
   .asc-burger{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
     width:48px;height:48px;background:none;border:1px solid rgba(17,19,24,.2);cursor:pointer;padding:0;}
