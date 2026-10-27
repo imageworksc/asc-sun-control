@@ -1,19 +1,18 @@
 /* =========================================================================
-   Atlantic Sun Control — Mega menu (standalone)
-   menu.css — tokens + navbar, mega panel and mobile drawer
+   Atlantic Sun Control — Mega menu
+   menu.css — navbar, mega panel and mobile drawer (shared by menu.html
+   and homepage-option-2.html). Tokens are scoped to the bar so the menu
+   looks the same on any page.
    ========================================================================= */
-:root{
+.asc-bar{
   --orange:#E8540A; --orange-light:#FF6B1A; --orange-soft:#FDF1EA;
   --dark:#111318; --text-body:#4A4F5C;
-  --white:#FFFFFF; --offwhite:#F5F5F3; --line:#E4E0D9;
+  --white:#FFFFFF; --line:#E4E0D9;
   --shell:1240px; --pad:64px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-text-size-adjust:100%;}
-body{font-family:'Roboto',sans-serif;background:var(--offwhite);color:var(--text-body);min-height:100vh;}
-img{display:block;max-width:100%;}
-:focus-visible{outline:3px solid var(--orange);outline-offset:3px;}
+.asc-bar *,.asc-bar *::before,.asc-bar *::after{box-sizing:border-box;margin:0;padding:0;}
+.asc-bar img{display:block;max-width:100%;}
 
 /* ============================================================
    MEGA NAV  (asc-*)  - brand-matched navbar with mega menu

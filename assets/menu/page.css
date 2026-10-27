@@ -1,0 +1,5 @@
+/* menu.html — page backdrop for previewing the menu on its own */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Roboto',sans-serif;background:#F5F5F3;color:#4A4F5C;min-height:100vh;}
+:focus-visible{outline:3px solid #E8540A;outline-offset:3px;}
