@@ -23,9 +23,10 @@
   border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,19,24,.02);}
 .asc-bar__inner{position:relative;max-width:var(--shell);margin:0 auto;
   padding:0 var(--pad);display:flex;align-items:center;gap:28px;min-height:112px;}
-.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;}
-/* logo.png has ~13% blank space on its left; pull it back so the mark lines up with the content edge */
-.asc-logo img{--logo-h:96px;height:var(--logo-h);width:auto;margin-left:calc(var(--logo-h) * -.134);}
+.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;overflow-x:visible;overflow-y:clip;}
+/* logo.png has blank space on its left and more below the mark than above it:
+   pull it left to the content edge and nudge it down so the mark sits centred in the bar */
+.asc-logo img{--logo-h:96px;height:var(--logo-h);width:auto;margin-left:calc(var(--logo-h) * -.134);transform:translateY(calc(var(--logo-h) * .11));}
 
 .asc-nav{flex:1 1 auto;display:flex;align-items:center;justify-content:center;
   gap:4px;list-style:none;min-width:0;}
