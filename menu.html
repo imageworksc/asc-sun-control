@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Menu | Atlantic Sun Control</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/menu/menu.css?v=1">
+<script src="assets/menu/menu.js?v=1" defer></script>
+</head>
+<body>
+
+<!-- == NAV (mega menu) ==================================== -->
+<div class="asc-bar" id="ascBar">
+  <div class="asc-bar__inner">
+    <a class="asc-logo" href="#top" aria-label="Atlantic Sun Control - home">
+      <img src="logo.png" alt="Atlantic Sun Control" width="223" height="164">
+    </a>
+    <ul class="asc-nav" id="ascNav"></ul>
+    <div class="asc-actions">
+      <a class="asc-tel" href="tel:5718328571">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"/></svg>
+        <span class="asc-tel-num">(571) 832-8571</span>
+      </a>
+      <a class="asc-cta" href="#estimate">Request a Free Estimate</a>
+    </div>
+    <button class="asc-burger" id="ascBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="ascMnav"><i></i></button>
+  </div>
+  <div class="asc-panel" id="ascPanel" role="region" aria-label="Products and services"></div>
+  <nav class="asc-mnav" id="ascMnav" aria-label="Mobile menu" hidden></nav>
+</div>
+
+</body>
+</html>
