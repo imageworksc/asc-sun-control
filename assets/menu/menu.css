@@ -43,10 +43,7 @@
 .asc-navbtn{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;background:none;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;font:600 13px/1 'Jost',sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--slate);transition:color .2s var(--ease)}
 .asc-navbtn::after{content:'';position:absolute;left:15px;right:15px;bottom:13px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease)}
 .asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
-.asc-navbtn:hover::after{transform:scaleX(1)}
-/* the open item is highlighted in the mega menu's grey, from the top of the bar down into the panel */
-.asc-nav > li:has(> .asc-navbtn[aria-expanded="true"]){background:var(--bg-light)}
-.asc-navbtn[aria-expanded="true"]::after{transform:none;opacity:0}
+.asc-navbtn:hover::after,.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(1)}
 .asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
 .asc-navbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg)}
 
@@ -75,8 +72,8 @@
 .asc-btn-line:hover::before{transform:scaleX(1)}
 
 /* ---------------------------------------------------------------------
-   5. Products & Services panel: a grey row of categories that flows out of
-      the highlighted menu item, setting the mega menu apart from the bar.
+   5. Products & Services panel: a grey row of categories under the bar,
+      setting the mega menu apart from it.
       Each category opens its own white dropdown; the open category turns
       white too, so the two read as one piece with no lines
    --------------------------------------------------------------------- */
