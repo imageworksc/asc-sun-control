@@ -20,7 +20,9 @@
    MEGA NAV  (asc-*)  - brand-matched navbar with mega menu
    ============================================================ */
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);
-  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,19,24,.02);}
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,19,24,.02);transition:border-color .15s var(--ease);}
+/* while the mega menu is open the bar flows straight into it: no dividing line */
+.asc-bar:has(.asc-panel.is-open){border-bottom-color:transparent;box-shadow:none;}
 .asc-bar__inner{position:relative;max-width:var(--shell);margin:0 auto;
   padding:0 var(--pad);display:flex;align-items:center;gap:28px;min-height:112px;}
 .asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;overflow-x:visible;overflow-y:clip;}
@@ -60,7 +62,7 @@
 
 /* mega panel: full-width category tabs row + per-tab flyout */
 .asc-panel{display:none;position:absolute;left:0;right:0;top:100%;
-  background:var(--white);border-top:3px solid var(--orange);
+  background:var(--white);
   box-shadow:0 12px 26px rgba(17,19,24,.10);z-index:40;}
 .asc-panel.is-open{display:block;}
 .asc-mm-wrap{position:relative;max-width:var(--shell);margin:0 auto;padding:0 var(--pad);}
@@ -70,10 +72,9 @@
   font-family:'Jost',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;
   color:var(--dark);transition:color .15s var(--ease);}
 .asc-mm-tab:hover,.asc-mm-tab.is-active{color:var(--orange);}
-.asc-mm-tab.is-active::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--orange);}
 
 .asc-mm-flyout{display:none;position:absolute;top:100%;left:0;
-  background:var(--white);border:1px solid var(--line);border-top:3px solid var(--orange);
+  background:var(--white);border:1px solid var(--line);border-top:0;
   box-shadow:0 16px 30px rgba(17,19,24,.14);margin-top:-1px;
   padding:22px 28px 24px;z-index:2;min-width:300px;}
 .asc-mm-flyout.is-open{display:block;}
