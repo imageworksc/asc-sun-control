@@ -73,26 +73,25 @@
 
 /* ---------------------------------------------------------------------
    5. Dropdown: hangs from "Products & Services" and flows out of the bar.
-      Categories on the left; the active one shares the grey of the
-      products column so the two read as one piece
+      Categories sit in a row; the active one shares the grey of the
+      products area below so the two read as one piece
    --------------------------------------------------------------------- */
-.asc-panel{display:none;position:absolute;left:0;top:100%;z-index:40;background:var(--white);box-shadow:0 18px 34px rgba(22,24,31,.14)}
-.asc-panel.is-open{display:flex}
+.asc-panel{display:none;position:absolute;left:0;top:100%;z-index:40;width:max-content;max-width:calc(100vw - 2 * var(--gut));background:var(--white);box-shadow:0 18px 34px rgba(22,24,31,.14)}
+.asc-panel.is-open{display:block}
 
-.asc-dd-cats{width:280px;padding:10px 0 14px}
-.asc-dd-cat{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:50px;padding:0 24px;text-decoration:none;white-space:nowrap;font:600 15px/1.2 'Jost',sans-serif;color:var(--ink);transition:color .15s var(--ease),background .15s var(--ease)}
-.asc-dd-cat::after{content:'\203A';font-size:20px;line-height:1;color:var(--orange);opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease)}
+.asc-dd-cats{display:flex}
+.asc-dd-cat{display:flex;align-items:center;min-height:56px;padding:0 20px;text-decoration:none;white-space:nowrap;font:600 14px/1.2 'Jost',sans-serif;color:var(--ink);transition:color .15s var(--ease),background .15s var(--ease)}
 .asc-dd-cat:hover,.asc-dd-cat.is-active{color:var(--orange);background:var(--bg-light)}
-.asc-dd-cat.is-active::after{opacity:1;transform:none}
 
-.asc-dd-items{width:320px;padding:22px 30px 26px;background:var(--bg-light)}
+.asc-dd-items{padding:24px 32px 28px;background:var(--bg-light)}
+.asc-dd-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
 .asc-dd-list a{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:6px 2px;text-decoration:none;font:500 16px/1.3 'Roboto',sans-serif;color:var(--slate);transition:color .15s var(--ease)}
 .asc-dd-list a::before{content:'';position:absolute;left:2px;right:2px;bottom:0;height:1px;background:var(--line-lt)}
 .asc-dd-list a::after{content:'\2192';flex:none;font-size:14px;color:var(--orange);opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease)}
 .asc-dd-list a:hover{color:var(--ink)}
 .asc-dd-list a:hover::after{opacity:1;transform:none}
-.asc-dd-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-lt)}
-.asc-dd-foot .asc-btn-line{width:100%;line-height:1.25}
+.asc-dd-foot{margin-top:20px}
+
 
 /* ---------------------------------------------------------------------
    6. Burger + mobile drawer
@@ -119,6 +118,7 @@
   .asc-navbtn::after{left:10px;right:10px}
   .asc-tel-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .asc-cta{padding:16px 20px;letter-spacing:.04em}
+  .asc-dd-cat{padding:0 14px}
 }
 @media (max-width:1080px){
   .asc-bar{--logo-h:66px}
