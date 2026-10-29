@@ -37,15 +37,14 @@ const link = (className, text, href = '#') => {
 };
 
 /* ---------------------------------------------------------------------
-   Desktop: top links + dropdown under "Products & Services"
-   (categories on the left, the hovered category's products on the right)
+   Desktop: top links + "Products & Services" panel — a row of categories
+   under the bar, each with its own dropdown of products
    --------------------------------------------------------------------- */
 const initDesktop = (bar) => {
   const nav = bar.querySelector('#ascNav');
   const panel = bar.querySelector('#ascPanel');
   let dropBtn = null;
   let open = false;
-  let activeCat = 0;
 
   TOP.forEach((item) => {
     const li = el('li');
@@ -55,48 +54,62 @@ const initDesktop = (bar) => {
       dropBtn.setAttribute('aria-expanded', 'false');
       dropBtn.setAttribute('aria-controls', panel.id);
       dropBtn.append(el('span', null, item.label), el('span', 'asc-caret'));
-      li.append(dropBtn, panel);
+      li.append(dropBtn);
     } else {
       li.append(link('asc-navbtn', item.label, item.href));
     }
     nav.append(li);
   });
 
+  const row = el('div', 'asc-panel__inner');
   const cats = el('ul', 'asc-dd-cats');
-  const products = el('div', 'asc-dd-items');
-  panel.append(cats, products);
+  row.append(cats);
+  panel.append(row);
 
-  const show = (n) => {
-    activeCat = n;
-    [...cats.querySelectorAll('.asc-dd-cat')].forEach((cat, i) => cat.classList.toggle('is-active', i === n));
+  const items = CATS.map((cat, i) => {
+    const li = el('li', 'asc-dd-item');
+    const head = el('button', 'asc-dd-cat', cat.head);
+    head.type = 'button';
+    head.setAttribute('aria-expanded', 'false');
+    head.setAttribute('aria-controls', `asc-dd-${i}`);
+
+    const drop = el('div', 'asc-dd-drop');
+    drop.id = `asc-dd-${i}`;
     const list = el('ul', 'asc-dd-list');
-    CATS[n].items.forEach((label) => {
-      const li = el('li');
-      li.append(link(null, label));
-      list.append(li);
+    cat.items.forEach((label) => {
+      const item = el('li');
+      item.append(link(null, label));
+      list.append(item);
     });
     const foot = el('div', 'asc-dd-foot');
-    foot.append(link('asc-btn-line', `View ${CATS[n].head}`));
-    products.replaceChildren(list, foot);
+    foot.append(link('asc-btn-line', `View ${cat.head}`));
+    drop.append(list, foot);
+
+    li.append(head, drop);
+    cats.append(li);
+    return li;
+  });
+
+  /* Opens one category's dropdown (or none with -1) */
+  const showCat = (n) => {
+    items.forEach((li, i) => {
+      li.classList.toggle('is-open', i === n);
+      li.querySelector('.asc-dd-cat').setAttribute('aria-expanded', i === n);
+    });
   };
 
-  CATS.forEach((cat, i) => {
-    const li = el('li');
-    const a = link('asc-dd-cat', cat.head);
-    ['mouseenter', 'focus'].forEach((type) => a.addEventListener(type, () => show(i)));
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      show(i);
-    });
-    li.append(a);
-    cats.append(li);
+  items.forEach((li, i) => {
+    li.addEventListener('mouseenter', () => showCat(i));
+    li.addEventListener('mouseleave', () => showCat(-1));
+    li.addEventListener('focusin', () => showCat(i));
+    li.querySelector('.asc-dd-cat').addEventListener('click', () => showCat(li.classList.contains('is-open') ? -1 : i));
   });
 
   const setOpen = (on) => {
     open = on;
     dropBtn.setAttribute('aria-expanded', on);
     panel.classList.toggle('is-open', on);
-    if (on) show(activeCat);
+    if (!on) showCat(-1);
   };
 
   dropBtn.addEventListener('click', () => setOpen(!open));
@@ -116,7 +129,7 @@ const initDesktop = (bar) => {
   });
   panel.addEventListener('click', (e) => {
     const a = e.target.closest('a');
-    if (!a || a.classList.contains('asc-dd-cat')) return;
+    if (!a) return;
     if (isPlaceholder(a)) e.preventDefault();
     setOpen(false);
   });
