@@ -26,8 +26,8 @@
    2. Bar
    --------------------------------------------------------------------- */
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);border-bottom:1px solid var(--line-lt);transition:border-color .15s var(--ease)}
-/* while the dropdown is open the bar flows straight into it: no dividing line */
-.asc-bar:has(.asc-panel.is-open){border-bottom-color:transparent}
+/* while the mega menu is open the bar flows straight into it: no dividing line */
+.asc-bar:has(.asc-panel.is-open){border-bottom-color:var(--bg-light)}
 .asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:112px}
 
 /* logo.png has blank space on its left and more below the mark than above it:
@@ -43,7 +43,10 @@
 .asc-navbtn{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;background:none;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;font:600 13px/1 'Jost',sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--slate);transition:color .2s var(--ease)}
 .asc-navbtn::after{content:'';position:absolute;left:15px;right:15px;bottom:13px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease)}
 .asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
-.asc-navbtn:hover::after,.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(1)}
+.asc-navbtn:hover::after{transform:scaleX(1)}
+/* the open item is highlighted in the mega menu's grey, from the top of the bar down into the panel */
+.asc-nav > li:has(> .asc-navbtn[aria-expanded="true"]){background:var(--bg-light)}
+.asc-navbtn[aria-expanded="true"]::after{transform:none;opacity:0}
 .asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
 .asc-navbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg)}
 
@@ -72,11 +75,12 @@
 .asc-btn-line:hover::before{transform:scaleX(1)}
 
 /* ---------------------------------------------------------------------
-   5. Products & Services panel: a row of categories that flows out of the
-      bar, and under each category its own dropdown of products. The open
-      category shares the grey of its dropdown, so there are no lines
+   5. Products & Services panel: a grey row of categories that flows out of
+      the highlighted menu item, setting the mega menu apart from the bar.
+      Each category opens its own white dropdown; the open category turns
+      white too, so the two read as one piece with no lines
    --------------------------------------------------------------------- */
-.asc-panel{display:none;position:absolute;left:0;right:0;top:100%;z-index:40;background:var(--white);box-shadow:0 12px 24px -12px rgba(22,24,31,.18)}
+.asc-panel{display:none;position:absolute;left:0;right:0;top:100%;z-index:40;background:var(--bg-light);box-shadow:0 14px 26px -12px rgba(22,24,31,.28)}
 .asc-panel.is-open{display:block}
 .asc-panel__inner{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 
@@ -84,9 +88,9 @@
 .asc-dd-item{position:relative;flex:1 1 0}
 .asc-dd-cat{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:58px;padding:0 12px;background:none;border:0;cursor:pointer;white-space:nowrap;font:700 13px/1 'Jost',sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--ink);transition:color .15s var(--ease),background .15s var(--ease)}
 .asc-dd-cat:hover,.asc-dd-item.is-open .asc-dd-cat{color:var(--orange)}
-.asc-dd-item.is-open .asc-dd-cat{background:var(--bg-light)}
+.asc-dd-item.is-open .asc-dd-cat{background:var(--white)}
 
-.asc-dd-drop{display:none;position:absolute;left:0;top:100%;width:max-content;min-width:max(100%,300px);padding:14px 28px 26px;background:var(--bg-light);box-shadow:0 18px 30px -10px rgba(22,24,31,.22)}
+.asc-dd-drop{display:none;position:absolute;left:0;top:100%;width:max-content;min-width:max(100%,300px);padding:14px 28px 26px;background:var(--white);box-shadow:0 18px 30px -10px rgba(22,24,31,.22)}
 .asc-dd-item.is-open .asc-dd-drop{display:block}
 /* the last categories open towards the left so their dropdowns stay on screen */
 .asc-dd-item:nth-last-child(-n+2) .asc-dd-drop{left:auto;right:0}
