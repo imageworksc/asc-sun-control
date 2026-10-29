@@ -48,7 +48,7 @@
       var li=el('li'),a=el('a');a.href='#';a.appendChild(el('span',null,label));li.appendChild(a);ul.appendChild(li);
     });
     var fw=el('div','asc-mm-foot-wrap');
-    var foot=el('a','asc-mm-foot','View '+CATS[i].head+' →');foot.href='#';
+    var foot=el('a','asc-mm-foot','View '+CATS[i].head);foot.href='#';
     fw.appendChild(foot);
     box.append(ul,fw);
   }
