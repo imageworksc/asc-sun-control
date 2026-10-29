@@ -39,11 +39,15 @@
    3. Top links
    --------------------------------------------------------------------- */
 .asc-nav{flex:1 1 auto;align-self:stretch;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0}
-.asc-nav > li{flex:0 0 auto;align-self:stretch;display:flex;align-items:center;position:relative}
+.asc-nav > li{flex:0 0 auto;align-self:stretch;display:flex;align-items:center;position:relative;isolation:isolate}
 .asc-navbtn{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;background:none;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;font:600 13px/1 'Jost',sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--slate);transition:color .2s var(--ease)}
 .asc-navbtn::after{content:'';position:absolute;left:15px;right:15px;bottom:13px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease)}
 .asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
-.asc-navbtn:hover::after,.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(1)}
+.asc-navbtn:hover::after{transform:scaleX(1)}
+/* the open item becomes a grey tab: the mega panel's colour rises up around it, no orange bar */
+.asc-nav > li::before{content:'';position:absolute;top:22px;bottom:0;left:0;right:0;z-index:-1;background:var(--bg-light);opacity:0;transition:opacity .15s var(--ease)}
+.asc-nav > li:has(> .asc-navbtn[aria-expanded="true"])::before{opacity:1}
+.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(0)}
 .asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
 .asc-navbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg)}
 
@@ -72,8 +76,8 @@
 .asc-btn-line:hover::before{transform:scaleX(1)}
 
 /* ---------------------------------------------------------------------
-   5. Products & Services panel: a grey row of categories under the bar,
-      setting the mega menu apart from it.
+   5. Products & Services panel: a grey row of categories under the bar that
+      rises into a tab around the open menu item, setting the mega menu apart.
       Each category opens its own white dropdown; the open category turns
       white too, so the two read as one piece with no lines
    --------------------------------------------------------------------- */
