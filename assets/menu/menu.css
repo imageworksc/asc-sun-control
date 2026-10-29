@@ -1,152 +1,144 @@
 /* =========================================================================
    Atlantic Sun Control — Mega menu
-   menu.css — navbar, mega panel and mobile drawer (shared by menu.html
-   and homepage-option-2.html). Tokens are scoped to the bar so the menu
-   looks the same on any page.
+   menu.css — navbar, Products & Services dropdown and mobile drawer.
+   Shared by menu.html and homepage-option-2.html; the tokens are scoped to
+   the bar and use the homepage palette, so it looks the same on any page.
    ========================================================================= */
+
+/* ---------------------------------------------------------------------
+   1. Tokens + scoped reset
+   --------------------------------------------------------------------- */
 .asc-bar{
-  --orange:#E8540A; --orange-light:#FF6B1A; --orange-soft:#FDF1EA;
-  --dark:#111318; --text-body:#4A4F5C;
-  --white:#FFFFFF; --line:#E4E0D9; --grey-bg:#F5F5F3;
-  --shell:1280px; --pad:40px; /* same content edge as the page (.wrap) */
+  --ink:#1e2129; --slate:#4a4d55;
+  --orange:#E8540A; --orange-hi:#ff6b1a; --orange-soft:#fdf1ea;
+  --white:#fff; --bg-light:#f5f5f5; --line-lt:#e2e2e2;
   --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.2,.7,.2,1);
-  --ink:#1e2129;
+  --wrap:1280px; --gut:40px; /* same content edge as the page's .wrap */
+  --logo-h:96px;
 }
-@media (max-width:980px){.asc-bar{--pad:32px;}}
-@media (max-width:600px){.asc-bar{--pad:20px;}}
-.asc-bar *,.asc-bar *::before,.asc-bar *::after{box-sizing:border-box;margin:0;padding:0;}
-.asc-bar img{display:block;max-width:100%;}
+@media (max-width:980px){.asc-bar{--gut:32px}}
+@media (max-width:600px){.asc-bar{--gut:20px}}
+.asc-bar *,.asc-bar *::before,.asc-bar *::after{box-sizing:border-box;margin:0;padding:0}
+.asc-bar ul{list-style:none}
+.asc-bar img{display:block;max-width:100%}
 
-/* ============================================================
-   MEGA NAV  (asc-*)  - brand-matched navbar with mega menu
-   ============================================================ */
-.asc-bar{position:sticky;top:0;z-index:150;background:var(--white);
-  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,19,24,.02);transition:border-color .15s var(--ease);}
-/* while the mega menu is open the bar flows straight into it: no dividing line */
-.asc-bar:has(.asc-panel.is-open){border-bottom-color:transparent;box-shadow:none;}
-.asc-bar__inner{position:relative;max-width:var(--shell);margin:0 auto;
-  padding:0 var(--pad);display:flex;align-items:center;gap:28px;min-height:112px;}
-.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;overflow-x:visible;overflow-y:clip;}
+/* ---------------------------------------------------------------------
+   2. Bar
+   --------------------------------------------------------------------- */
+.asc-bar{position:sticky;top:0;z-index:150;background:var(--white);border-bottom:1px solid var(--line-lt);transition:border-color .15s var(--ease)}
+/* while the dropdown is open the bar flows straight into it: no dividing line */
+.asc-bar:has(.asc-panel.is-open){border-bottom-color:transparent}
+.asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:112px}
+
 /* logo.png has blank space on its left and more below the mark than above it:
-   pull it left to the content edge and nudge it down so the mark sits centred in the bar */
-.asc-logo img{--logo-h:96px;height:var(--logo-h);width:auto;margin-left:calc(var(--logo-h) * -.134);transform:translateY(calc(var(--logo-h) * .11));}
+   pull it left to the content edge and nudge it down so the mark sits centred */
+.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;overflow-x:visible;overflow-y:clip}
+.asc-logo img{height:var(--logo-h);width:auto;margin-left:calc(var(--logo-h) * -.134);transform:translateY(calc(var(--logo-h) * .11))}
 
-.asc-nav{flex:1 1 auto;align-self:stretch;display:flex;align-items:center;justify-content:center;
-  gap:4px;list-style:none;min-width:0;}
-.asc-nav>li{flex:0 0 auto;align-self:stretch;display:flex;align-items:center;position:relative;}
-.asc-navbtn{appearance:none;background:none;border:0;cursor:pointer;text-decoration:none;
-  font-family:'Jost',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.3px;
-  text-transform:uppercase;color:var(--text-body);
-  display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;
-  position:relative;white-space:nowrap;transition:color .2s var(--ease);}
-.asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--dark);}
-.asc-navbtn::after{content:'';position:absolute;left:15px;right:15px;bottom:13px;height:2px;
-  background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease);}
-.asc-navbtn:hover::after,.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(1);}
-.asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;
-  border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease);}
-.asc-navbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg);}
+/* ---------------------------------------------------------------------
+   3. Top links
+   --------------------------------------------------------------------- */
+.asc-nav{flex:1 1 auto;align-self:stretch;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0}
+.asc-nav > li{flex:0 0 auto;align-self:stretch;display:flex;align-items:center;position:relative}
+.asc-navbtn{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 15px;background:none;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;font:600 13px/1 'Jost',sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--slate);transition:color .2s var(--ease)}
+.asc-navbtn::after{content:'';position:absolute;left:15px;right:15px;bottom:13px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease)}
+.asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
+.asc-navbtn:hover::after,.asc-navbtn[aria-expanded="true"]::after{transform:scaleX(1)}
+.asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
+.asc-navbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg)}
 
-.asc-actions{flex:0 0 auto;display:flex;align-items:center;gap:16px;}
-.asc-tel{display:inline-flex;align-items:center;gap:8px;color:var(--dark);text-decoration:none;
-  font-family:'Jost',sans-serif;font-weight:600;font-size:14px;letter-spacing:.4px;
-  white-space:nowrap;transition:color .2s var(--ease);}
-.asc-tel svg{width:15px;height:15px;fill:var(--orange);flex:none;}
-.asc-tel:hover{color:var(--orange);}
-/* Buttons match the page's .btn--primary / .btn--line: same type, size and hover motion */
-.asc-cta,.asc-mm-foot{position:relative;isolation:isolate;overflow:hidden;
-  display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;
-  font-family:'Jost',sans-serif;font-weight:700;font-size:15px;line-height:1;letter-spacing:.08em;text-transform:uppercase;
-  min-height:52px;padding:16px 28px;border:2px solid transparent;
-  transition:transform .3s var(--ease-out),box-shadow .3s ease,background .3s ease,color .3s ease,border-color .3s ease;}
-.asc-cta:hover,.asc-mm-foot:hover{transform:translateY(-3px);}
-.asc-cta:active,.asc-mm-foot:active{transform:translateY(-1px);transition-duration:.1s;}
+/* ---------------------------------------------------------------------
+   4. Phone + buttons (match the page's .btn--primary / .btn--line)
+   --------------------------------------------------------------------- */
+.asc-actions{flex:0 0 auto;display:flex;align-items:center;gap:16px}
+.asc-tel{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;white-space:nowrap;font:600 14px/1 'Jost',sans-serif;letter-spacing:.4px;transition:color .2s var(--ease)}
+.asc-tel svg{flex:none;width:15px;height:15px;fill:var(--orange)}
+.asc-tel:hover{color:var(--orange)}
+
+.asc-cta,.asc-btn-line{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:16px 28px;border:2px solid transparent;text-align:center;text-decoration:none;font:700 15px/1 'Jost',sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:transform .3s var(--ease-out),box-shadow .3s ease,background .3s ease,color .3s ease,border-color .3s ease}
+.asc-cta:hover,.asc-btn-line:hover{transform:translateY(-3px)}
+.asc-cta:active,.asc-btn-line:active{transform:translateY(-1px);transition-duration:.1s}
+
 /* primary: lifts with an orange glow and a light sweep across the face */
-.asc-cta{color:#fff;background:var(--orange);border-color:var(--orange);white-space:nowrap;}
-.asc-cta::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;
-  background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));
-  transform:skewX(-20deg);transition:left .6s var(--ease-out);}
-.asc-cta:hover{background:var(--orange-light);border-color:var(--orange-light);box-shadow:0 14px 26px -12px rgba(232,84,10,.75);}
-.asc-cta:hover::after{left:120%;}
+.asc-cta{color:#fff;background:var(--orange);border-color:var(--orange);white-space:nowrap}
+.asc-cta::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));transform:skewX(-20deg);transition:left .6s var(--ease-out)}
+.asc-cta:hover{background:var(--orange-hi);border-color:var(--orange-hi);box-shadow:0 14px 26px -12px rgba(232,84,10,.75)}
+.asc-cta:hover::after{left:120%}
 
-/* dropdown: hangs from the "Products & Services" item and flows out of the bar.
-   Categories on the left; the active one shares the grey of the products column */
-.asc-panel{display:none;position:absolute;left:0;top:100%;z-index:40;
-  background:var(--white);box-shadow:0 18px 34px rgba(17,19,24,.14);}
-.asc-panel.is-open{display:flex;}
-.asc-dd-cats{list-style:none;width:280px;padding:10px 0 14px;}
-.asc-dd-cat{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  min-height:50px;padding:0 24px;text-decoration:none;white-space:nowrap;
-  font-family:'Jost',sans-serif;font-weight:600;font-size:15px;color:var(--dark);
-  transition:color .15s var(--ease),background .15s var(--ease);}
-.asc-dd-cat::after{content:'\203A';font-size:20px;line-height:1;color:var(--orange);
-  opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease);}
-.asc-dd-cat:hover,.asc-dd-cat.is-active{color:var(--orange);background:var(--grey-bg);}
-.asc-dd-cat.is-active::after{opacity:1;transform:none;}
-.asc-dd-items{width:320px;background:var(--grey-bg);padding:22px 30px 26px;}
-.asc-mm-list{list-style:none;margin:0;padding:0;}
-.asc-mm-list a{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;
-  min-height:44px;padding:6px 2px;
-  font-family:'Roboto',sans-serif;font-size:15.5px;font-weight:500;color:var(--text-body);text-decoration:none;
-  transition:color .15s var(--ease);}
-.asc-mm-list a::before{content:'';position:absolute;left:2px;bottom:0;width:calc(100% - 4px);height:1px;background:var(--line);}
-.asc-mm-list a::after{content:"\2192";flex:none;font-size:14px;color:var(--orange);
-  opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease);}
-.asc-mm-list a:hover{color:var(--dark);}
-.asc-mm-list a:hover::after{opacity:1;transform:translateX(0);}
-.asc-mm-foot-wrap{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
 /* outline: the fill slides in from the left */
-.asc-mm-foot{width:100%;line-height:1.25;color:var(--ink);background:transparent;border-color:var(--ink);}
-.asc-mm-foot::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);
-  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out);}
-.asc-mm-foot:hover{color:#fff;box-shadow:0 14px 26px -14px rgba(22,24,31,.5);}
-.asc-mm-foot:hover::before{transform:scaleX(1);}
+.asc-btn-line{color:var(--ink);background:transparent;border-color:var(--ink)}
+.asc-btn-line::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out)}
+.asc-btn-line:hover{color:#fff;box-shadow:0 14px 26px -14px rgba(22,24,31,.5)}
+.asc-btn-line:hover::before{transform:scaleX(1)}
 
-/* burger + mobile drawer */
-.asc-burger{display:none;}
-.asc-mnav{display:none;}
-.asc-mnav__group{font-family:'Jost',sans-serif;font-weight:600;font-size:12px;letter-spacing:1.6px;
-  text-transform:uppercase;color:var(--orange);padding:18px 20px 6px;}
-.asc-msec{border-top:1px solid var(--line);}
-.asc-mbtn{width:100%;appearance:none;background:none;border:0;cursor:pointer;text-decoration:none;
-  font-family:'Jost',sans-serif;font-weight:600;font-size:16px;letter-spacing:.4px;color:var(--dark);
-  text-align:left;min-height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.asc-mbtn .asc-caret{border-top-color:var(--dark);transform:rotate(45deg);}
-.asc-mbtn[aria-expanded="true"] .asc-caret{transform:translateY(3px) rotate(225deg);}
-.asc-mbody{padding:0 20px 14px;}
-.asc-mbody[hidden]{display:none;}
-.asc-mbody ul{list-style:none;margin:0;padding:0;}
-.asc-mbody a{display:block;min-height:46px;padding:10px 12px;text-decoration:none;
-  font-family:'Roboto',sans-serif;font-size:15.5px;color:var(--text-body);border-radius:2px;
-  transition:background .15s var(--ease),color .15s var(--ease);}
-.asc-mbody a:hover{background:var(--orange-soft);color:var(--dark);}
-.asc-mactions{padding:18px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);}
-.asc-mactions .asc-cta,.asc-mactions .asc-tel{width:100%;justify-content:center;min-height:52px;}
-.asc-mactions .asc-tel{border:2px solid var(--ink);color:var(--ink);font-weight:700;font-size:15px;letter-spacing:.08em;}
-.asc-mactions .asc-tel svg{fill:var(--orange);}
+/* ---------------------------------------------------------------------
+   5. Dropdown: hangs from "Products & Services" and flows out of the bar.
+      Categories on the left; the active one shares the grey of the
+      products column so the two read as one piece
+   --------------------------------------------------------------------- */
+.asc-panel{display:none;position:absolute;left:0;top:100%;z-index:40;background:var(--white);box-shadow:0 18px 34px rgba(22,24,31,.14)}
+.asc-panel.is-open{display:flex}
 
+.asc-dd-cats{width:280px;padding:10px 0 14px}
+.asc-dd-cat{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:50px;padding:0 24px;text-decoration:none;white-space:nowrap;font:600 15px/1.2 'Jost',sans-serif;color:var(--ink);transition:color .15s var(--ease),background .15s var(--ease)}
+.asc-dd-cat::after{content:'\203A';font-size:20px;line-height:1;color:var(--orange);opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease)}
+.asc-dd-cat:hover,.asc-dd-cat.is-active{color:var(--orange);background:var(--bg-light)}
+.asc-dd-cat.is-active::after{opacity:1;transform:none}
+
+.asc-dd-items{width:320px;padding:22px 30px 26px;background:var(--bg-light)}
+.asc-dd-list a{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:6px 2px;text-decoration:none;font:500 16px/1.3 'Roboto',sans-serif;color:var(--slate);transition:color .15s var(--ease)}
+.asc-dd-list a::before{content:'';position:absolute;left:2px;right:2px;bottom:0;height:1px;background:var(--line-lt)}
+.asc-dd-list a::after{content:'\2192';flex:none;font-size:14px;color:var(--orange);opacity:0;transform:translateX(-4px);transition:opacity .15s var(--ease),transform .15s var(--ease)}
+.asc-dd-list a:hover{color:var(--ink)}
+.asc-dd-list a:hover::after{opacity:1;transform:none}
+.asc-dd-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-lt)}
+.asc-dd-foot .asc-btn-line{width:100%;line-height:1.25}
+
+/* ---------------------------------------------------------------------
+   6. Burger + mobile drawer
+   --------------------------------------------------------------------- */
+.asc-burger,.asc-mnav{display:none}
+.asc-mnav__group{padding:18px 20px 6px;font:600 12px/1 'Jost',sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:var(--orange)}
+.asc-msec{border-top:1px solid var(--line-lt)}
+.asc-mbtn{width:100%;min-height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;cursor:pointer;text-align:left;text-decoration:none;font:600 16px/1.2 'Jost',sans-serif;letter-spacing:.4px;color:var(--ink)}
+.asc-mbtn .asc-caret{transform:none}
+.asc-mbtn[aria-expanded="true"] .asc-caret{transform:rotate(180deg)}
+.asc-mbody{padding:0 20px 14px}
+.asc-mbody[hidden]{display:none}
+.asc-mbody a{display:block;min-height:46px;padding:12px;text-decoration:none;font:400 16px/1.4 'Roboto',sans-serif;color:var(--slate);transition:background .15s var(--ease),color .15s var(--ease)}
+.asc-mbody a:hover{background:var(--orange-soft);color:var(--ink)}
+.asc-mactions{display:flex;flex-direction:column;gap:12px;padding:18px 20px 24px;border-top:1px solid var(--line-lt)}
+.asc-mactions a{width:100%}
+
+/* ---------------------------------------------------------------------
+   7. Responsive
+   --------------------------------------------------------------------- */
 @media (max-width:1180px){
-  .asc-bar__inner{gap:16px;}
-  .asc-navbtn{padding:0 10px;letter-spacing:.8px;}
-  .asc-tel .asc-tel-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
-  .asc-tel{padding:0;}
-  .asc-cta{padding:16px 20px;letter-spacing:.04em;}
+  .asc-bar__inner{gap:16px}
+  .asc-navbtn{padding:0 10px;letter-spacing:.8px}
+  .asc-navbtn::after{left:10px;right:10px}
+  .asc-tel-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .asc-cta{padding:16px 20px;letter-spacing:.04em}
 }
 @media (max-width:1080px){
-  .asc-nav,.asc-actions{display:none;}
-  .asc-bar__inner{min-height:80px;gap:12px;}
-  .asc-logo img{--logo-h:66px;}
-  .asc-panel{display:none !important;}
-  .asc-burger{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
-    width:48px;height:48px;background:none;border:1px solid rgba(17,19,24,.2);cursor:pointer;padding:0;}
-  .asc-burger i{display:block;width:22px;height:2px;background:var(--dark);position:relative;}
-  .asc-burger i::before,.asc-burger i::after{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--dark);}
-  .asc-burger i::before{top:-7px;}
-  .asc-burger i::after{top:7px;}
-  .asc-burger[aria-expanded="true"] i{background:transparent;}
-  .asc-burger[aria-expanded="true"] i::before{top:0;transform:rotate(45deg);}
-  .asc-burger[aria-expanded="true"] i::after{top:0;transform:rotate(-45deg);}
-  .asc-mnav{display:block;background:var(--white);border-top:1px solid var(--line);}
-  .asc-mnav[hidden]{display:none;}
-  .asc-msec:first-child{border-top:0;}
+  .asc-bar{--logo-h:66px}
+  .asc-bar__inner{min-height:80px;gap:12px}
+  .asc-nav,.asc-actions,.asc-panel.is-open{display:none}
+  .asc-burger{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-left:auto;padding:0;background:none;border:1px solid rgba(22,24,31,.2);cursor:pointer}
+  .asc-burger i,.asc-burger i::before,.asc-burger i::after{display:block;width:22px;height:2px;background:var(--ink)}
+  .asc-burger i{position:relative}
+  .asc-burger i::before,.asc-burger i::after{content:'';position:absolute;left:0}
+  .asc-burger i::before{top:-7px}
+  .asc-burger i::after{top:7px}
+  .asc-burger[aria-expanded="true"] i{background:transparent}
+  .asc-burger[aria-expanded="true"] i::before{top:0;transform:rotate(45deg)}
+  .asc-burger[aria-expanded="true"] i::after{top:0;transform:rotate(-45deg)}
+  .asc-mnav{display:block;max-height:calc(100dvh - 80px);overflow-y:auto;overscroll-behavior:contain;background:var(--white);border-top:1px solid var(--line-lt)}
+  .asc-mnav[hidden]{display:none}
+  .asc-msec:first-child{border-top:0}
 }
+
+/* ---------------------------------------------------------------------
+   8. Motion preference
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){.asc-bar *,.asc-bar *::before,.asc-bar *::after{transition:none !important}}

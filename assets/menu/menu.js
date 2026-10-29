@@ -1,135 +1,190 @@
-/* Atlantic Sun Control — Mega menu (standalone): builds the navbar, mega panel and mobile drawer */
-(function(){
-  'use strict';
-  var CATS=[
-    {head:"Safety & Security Films",items:["Anti-Intrusion","Blast Mitigation","Radio Frequency Shielding","Anti-Graffiti Films","Casper Cloaking Film"]},
-    {head:"Sun Control",items:["Anti-Glare Window Film","Heat Control Window Films","UV Window Film","Low-E Films","Blinds & Shades"]},
-    {head:"Decorative Films & Graphics",items:["Custom Window Films & Graphics","Signs, Graphics & Logos","Wall Murals","Frosted & Etch Look Films"]},
-    {head:"Privacy Films",items:["Frosted / Etch Look Films","Smart Films","Blinds & Shades","One-Way Mirror Films","Casper Cloaking Film"]},
-    {head:"Specialty Films",items:["Casper Cloaking Film","Smart Films","Architectural Finishes","Blackout Films"]}
-  ];
-  var TOP=[
-    {label:"About Us",href:"#"},
-    {label:"Products & Services",mega:true},
-    {label:"Who We Serve",href:"#serve"},
-    {label:"Resources",href:"#faq"}
-  ];
-  var nav=document.getElementById('ascNav');
-  var panel=document.getElementById('ascPanel');
-  var mnav=document.getElementById('ascMnav');
-  var burger=document.getElementById('ascBurger');
-  var bar=document.getElementById('ascBar');
-  var open=false, activeCat=0;
-  var PHONE_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"/></svg>';
+/* =========================================================================
+   Atlantic Sun Control — Mega menu
+   menu.js — builds the navbar links, the Products & Services dropdown and
+   the mobile drawer from one list of categories
+   ========================================================================= */
 
-  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+const CATS = [
+  { head: 'Safety & Security Films', items: ['Anti-Intrusion', 'Blast Mitigation', 'Radio Frequency Shielding', 'Anti-Graffiti Films', 'Casper Cloaking Film'] },
+  { head: 'Sun Control', items: ['Anti-Glare Window Film', 'Heat Control Window Films', 'UV Window Film', 'Low-E Films', 'Blinds & Shades'] },
+  { head: 'Decorative Films & Graphics', items: ['Custom Window Films & Graphics', 'Signs, Graphics & Logos', 'Wall Murals', 'Frosted & Etch Look Films'] },
+  { head: 'Privacy Films', items: ['Frosted / Etch Look Films', 'Smart Films', 'Blinds & Shades', 'One-Way Mirror Films', 'Casper Cloaking Film'] },
+  { head: 'Specialty Films', items: ['Casper Cloaking Film', 'Smart Films', 'Architectural Finishes', 'Blackout Films'] },
+];
 
-  /* ---- top nav ---- */
-  TOP.forEach(function(item){
-    var li=el('li');
-    if(item.mega){
-      var b=el('button','asc-navbtn');b.type='button';b.dataset.mega='1';b.setAttribute('aria-expanded','false');
-      b.appendChild(el('span',null,item.label));b.appendChild(el('span','asc-caret'));
-      li.appendChild(b);
-    }else{
-      var a=el('a','asc-navbtn',item.label);a.href=item.href;li.appendChild(a);
+const TOP = [
+  { label: 'About Us', href: '#' },
+  { label: 'Products & Services', dropdown: true },
+  { label: 'Who We Serve', href: '#serve' },
+  { label: 'Resources', href: '#faq' },
+];
+
+/* Creates an element with an optional class and text */
+const el = (tag, className, text) => {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+};
+
+/* Placeholder links (#) don't jump to the top of the page */
+const isPlaceholder = (link) => link.getAttribute('href') === '#';
+
+const link = (className, text, href = '#') => {
+  const a = el('a', className, text);
+  a.href = href;
+  return a;
+};
+
+/* ---------------------------------------------------------------------
+   Desktop: top links + dropdown under "Products & Services"
+   (categories on the left, the hovered category's products on the right)
+   --------------------------------------------------------------------- */
+const initDesktop = (bar) => {
+  const nav = bar.querySelector('#ascNav');
+  const panel = bar.querySelector('#ascPanel');
+  let dropBtn = null;
+  let open = false;
+  let activeCat = 0;
+
+  TOP.forEach((item) => {
+    const li = el('li');
+    if (item.dropdown) {
+      dropBtn = el('button', 'asc-navbtn');
+      dropBtn.type = 'button';
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropBtn.setAttribute('aria-controls', panel.id);
+      dropBtn.append(el('span', null, item.label), el('span', 'asc-caret'));
+      li.append(dropBtn, panel);
+    } else {
+      li.append(link('asc-navbtn', item.label, item.href));
     }
-    nav.appendChild(li);
+    nav.append(li);
   });
-  var megaBtn=nav.querySelector('.asc-navbtn[data-mega]');
 
-  /* ---- dropdown under "Products & Services": categories on the left,
-          the hovered category's products on the right ---- */
-  if(megaBtn)megaBtn.parentNode.appendChild(panel);
-  function renderItems(box,i){
-    box.innerHTML='';
-    var ul=el('ul','asc-mm-list');
-    CATS[i].items.forEach(function(label){
-      var li=el('li'),a=el('a');a.href='#';a.appendChild(el('span',null,label));li.appendChild(a);ul.appendChild(li);
+  const cats = el('ul', 'asc-dd-cats');
+  const products = el('div', 'asc-dd-items');
+  panel.append(cats, products);
+
+  const show = (n) => {
+    activeCat = n;
+    [...cats.querySelectorAll('.asc-dd-cat')].forEach((cat, i) => cat.classList.toggle('is-active', i === n));
+    const list = el('ul', 'asc-dd-list');
+    CATS[n].items.forEach((label) => {
+      const li = el('li');
+      li.append(link(null, label));
+      list.append(li);
     });
-    var fw=el('div','asc-mm-foot-wrap');
-    var foot=el('a','asc-mm-foot','View '+CATS[i].head);foot.href='#';
-    fw.appendChild(foot);
-    box.append(ul,fw);
-  }
-  function buildPanel(){
-    panel.innerHTML='';
-    var cats=el('ul','asc-dd-cats');
-    var box=el('div','asc-dd-items');
-    function show(i){
-      activeCat=i;
-      cats.querySelectorAll('.asc-dd-cat').forEach(function(x,j){x.classList.toggle('is-active',j===i);});
-      renderItems(box,i);
-    }
-    CATS.forEach(function(c,i){
-      var li=el('li'),t=el('a','asc-dd-cat',c.head);t.href='#';
-      t.addEventListener('mouseenter',function(){show(i);});
-      t.addEventListener('focus',function(){show(i);});
-      t.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();show(i);});
-      li.appendChild(t);cats.appendChild(li);
+    const foot = el('div', 'asc-dd-foot');
+    foot.append(link('asc-btn-line', `View ${CATS[n].head}`));
+    products.replaceChildren(list, foot);
+  };
+
+  CATS.forEach((cat, i) => {
+    const li = el('li');
+    const a = link('asc-dd-cat', cat.head);
+    ['mouseenter', 'focus'].forEach((type) => a.addEventListener(type, () => show(i)));
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      show(i);
     });
-    panel.append(cats,box);
-    show(activeCat);
+    li.append(a);
+    cats.append(li);
+  });
+
+  const setOpen = (on) => {
+    open = on;
+    dropBtn.setAttribute('aria-expanded', on);
+    panel.classList.toggle('is-open', on);
+    if (on) show(activeCat);
+  };
+
+  dropBtn.addEventListener('click', () => setOpen(!open));
+  if (window.matchMedia('(hover: hover)').matches) {
+    dropBtn.addEventListener('mouseenter', () => setOpen(true));
+    nav.addEventListener('mouseover', (e) => {
+      const item = e.target.closest('.asc-navbtn');
+      if (item && item !== dropBtn) setOpen(false);
+    });
+    bar.addEventListener('mouseleave', () => setOpen(false));
   }
-  function setOpen(v){
-    open=v;
-    if(megaBtn)megaBtn.setAttribute('aria-expanded',String(v));
-    if(v){buildPanel();panel.classList.add('is-open');}
-    else{panel.classList.remove('is-open');}
-  }
-  if(megaBtn){
-    megaBtn.addEventListener('click',function(e){e.preventDefault();setOpen(!open);});
-    if(window.matchMedia('(hover:hover)').matches){
-      megaBtn.addEventListener('mouseenter',function(){setOpen(true);});
-      nav.addEventListener('mouseover',function(e){
-        var b=e.target.closest('.asc-navbtn');if(b&&!b.dataset.mega)setOpen(false);
-      });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && open) {
+      setOpen(false);
+      dropBtn.focus();
     }
-  }
-  bar.addEventListener('mouseleave',function(){setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open){setOpen(false);if(megaBtn)megaBtn.focus();}});
-  panel.addEventListener('click',function(e){
-    var a=e.target.closest('a');if(!a)return;
-    if(a.classList.contains('asc-dd-cat'))return;
-    if(a.getAttribute('href')==='#')e.preventDefault();
+  });
+  panel.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a || a.classList.contains('asc-dd-cat')) return;
+    if (isPlaceholder(a)) e.preventDefault();
     setOpen(false);
   });
+};
 
-  /* ---- mobile drawer ---- */
-  (function buildMobile(){
-    mnav.appendChild(el('div','asc-mnav__group','Products & Services'));
-    CATS.forEach(function(c){
-      var sec=el('div','asc-msec');
-      var b=el('button','asc-mbtn');b.type='button';b.setAttribute('aria-expanded','false');
-      b.appendChild(el('span',null,c.head));b.appendChild(el('span','asc-caret'));
-      var body=el('div','asc-mbody');body.hidden=true;
-      var ul=el('ul');
-      c.items.forEach(function(label){var li=el('li'),a=el('a',null,label);a.href='#';li.appendChild(a);ul.appendChild(li);});
-      body.appendChild(ul);
-      b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));body.hidden=o;});
-      sec.append(b,body);mnav.appendChild(sec);
+/* ---------------------------------------------------------------------
+   Mobile: burger + drawer with collapsible categories
+   --------------------------------------------------------------------- */
+const initMobile = (bar) => {
+  const burger = bar.querySelector('#ascBurger');
+  const drawer = bar.querySelector('#ascMnav');
+
+  drawer.append(el('div', 'asc-mnav__group', 'Products & Services'));
+  CATS.forEach((cat) => {
+    const sec = el('div', 'asc-msec');
+    const head = el('button', 'asc-mbtn');
+    head.type = 'button';
+    head.setAttribute('aria-expanded', 'false');
+    head.append(el('span', null, cat.head), el('span', 'asc-caret'));
+    const body = el('div', 'asc-mbody');
+    body.hidden = true;
+    const list = el('ul');
+    cat.items.forEach((label) => {
+      const li = el('li');
+      li.append(link(null, label));
+      list.append(li);
     });
-    TOP.forEach(function(item){
-      if(item.mega)return;
-      var sec=el('div','asc-msec');
-      var a=el('a','asc-mbtn',item.label);a.href=item.href;sec.appendChild(a);mnav.appendChild(sec);
+    body.append(list);
+    head.addEventListener('click', () => {
+      const expanded = head.getAttribute('aria-expanded') === 'true';
+      head.setAttribute('aria-expanded', !expanded);
+      body.hidden = expanded;
     });
-    var acts=el('div','asc-mactions');
-    var cta=el('a','asc-cta','Request a Free Estimate');cta.href='#estimate';
-    var tel=el('a','asc-tel');tel.href='tel:5718328571';
-    tel.innerHTML=PHONE_SVG+'<span>(571) 832-8571</span>';
-    acts.append(cta,tel);mnav.appendChild(acts);
-  })();
-  function closeMobile(){burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');mnav.hidden=true;}
-  burger.addEventListener('click',function(){
-    var o=burger.getAttribute('aria-expanded')==='true';
-    burger.setAttribute('aria-expanded',String(!o));
-    burger.setAttribute('aria-label',o?'Open menu':'Close menu');
-    mnav.hidden=o;
+    sec.append(head, body);
+    drawer.append(sec);
   });
-  mnav.addEventListener('click',function(e){
-    var a=e.target.closest('a');if(!a)return;
-    if(a.getAttribute('href')==='#')e.preventDefault();
-    closeMobile();
+
+  TOP.filter((item) => !item.dropdown).forEach((item) => {
+    const sec = el('div', 'asc-msec');
+    sec.append(link('asc-mbtn', item.label, item.href));
+    drawer.append(sec);
   });
-})();
+
+  /* Reuse the bar's call-to-action and phone link */
+  const actions = el('div', 'asc-mactions');
+  const tel = bar.querySelector('.asc-actions .asc-tel').cloneNode(true);
+  tel.querySelector('.asc-tel-num').className = '';
+  tel.classList.add('asc-btn-line');
+  actions.append(bar.querySelector('.asc-actions .asc-cta').cloneNode(true), tel);
+  drawer.append(actions);
+
+  const setOpen = (on) => {
+    burger.setAttribute('aria-expanded', on);
+    burger.setAttribute('aria-label', on ? 'Close menu' : 'Open menu');
+    drawer.hidden = !on;
+  };
+
+  burger.addEventListener('click', () => setOpen(burger.getAttribute('aria-expanded') !== 'true'));
+  drawer.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    if (isPlaceholder(a)) e.preventDefault();
+    setOpen(false);
+  });
+};
+
+const bar = document.getElementById('ascBar');
+if (bar) {
+  initDesktop(bar);
+  initMobile(bar);
+}
