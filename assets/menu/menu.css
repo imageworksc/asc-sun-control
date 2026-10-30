@@ -14,7 +14,7 @@
   --white:#fff; --bg-light:#f5f5f5; --line-lt:#e2e2e2;
   --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.2,.7,.2,1);
   --wrap:1280px; --gut:40px; /* same content edge as the page's .wrap */
-  --logo-h:96px;
+  --logo-h:120px;
 }
 @media (max-width:980px){.asc-bar{--gut:32px}}
 @media (max-width:600px){.asc-bar{--gut:20px}}
@@ -28,7 +28,7 @@
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);border-bottom:1px solid var(--line-lt);transition:border-color .15s var(--ease)}
 /* while the mega menu is open the bar flows straight into it: no dividing line */
 .asc-bar:has(.asc-panel.is-open){border-bottom-color:var(--bg-light)}
-.asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:112px}
+.asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:128px}
 
 /* logo.png has blank space on its left and more below the mark than above it:
    pull it left to the content edge and nudge it down so the mark sits centred */
@@ -45,7 +45,7 @@
 .asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
 .asc-navbtn:hover::after{transform:scaleX(1)}
 /* the open item becomes a grey tab: the mega panel's colour rises up around it, no orange bar */
-.asc-nav > li::before{content:'';position:absolute;top:22px;bottom:0;left:0;right:0;z-index:-1;background:var(--bg-light);opacity:0;transition:opacity .15s var(--ease)}
+.asc-nav > li::before{content:'';position:absolute;top:calc(50% - 34px);bottom:0;left:0;right:0;z-index:-1;background:var(--bg-light);opacity:0;transition:opacity .15s var(--ease)}
 .asc-nav > li:has(> .asc-navbtn[aria-expanded="true"])::before{opacity:1}
 .asc-navbtn[aria-expanded="true"]::after{transform:scaleX(0)}
 .asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
@@ -68,6 +68,12 @@
 .asc-cta::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));transform:skewX(-20deg);transition:left .6s var(--ease-out)}
 .asc-cta:hover{background:var(--orange-hi);border-color:var(--orange-hi);box-shadow:0 14px 26px -12px rgba(232,84,10,.75)}
 .asc-cta:hover::after{left:120%}
+
+/* bar CTA: a smaller orange outline whose fill slides in on hover */
+.asc-actions .asc-cta{min-height:44px;padding:12px 20px;font-size:13px;color:var(--orange);background:transparent}
+.asc-actions .asc-cta::after{inset:0;left:0;width:auto;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out)}
+.asc-actions .asc-cta:hover{color:#fff;background:transparent;border-color:var(--orange);box-shadow:0 14px 26px -14px rgba(232,84,10,.6)}
+.asc-actions .asc-cta:hover::after{left:0;transform:scaleX(1)}
 
 /* outline: the fill slides in from the left */
 .asc-btn-line{color:var(--ink);background:transparent;border-color:var(--ink)}
@@ -128,12 +134,12 @@
   .asc-navbtn{padding:0 10px;letter-spacing:.8px}
   .asc-navbtn::after{left:10px;right:10px}
   .asc-tel-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .asc-cta{padding:16px 20px;letter-spacing:.04em}
+  .asc-actions .asc-cta{padding:12px 16px;letter-spacing:.04em}
   .asc-dd-cat{padding:0 8px;letter-spacing:.6px}
 }
 @media (max-width:1080px){
-  .asc-bar{--logo-h:66px}
-  .asc-bar__inner{min-height:80px;gap:12px}
+  .asc-bar{--logo-h:76px}
+  .asc-bar__inner{min-height:88px;gap:12px}
   .asc-nav,.asc-actions,.asc-panel.is-open{display:none}
   .asc-burger{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-left:auto;padding:0;background:none;border:1px solid rgba(22,24,31,.2);cursor:pointer}
   .asc-burger i,.asc-burger i::before,.asc-burger i::after{display:block;width:22px;height:2px;background:var(--ink)}
@@ -144,7 +150,7 @@
   .asc-burger[aria-expanded="true"] i{background:transparent}
   .asc-burger[aria-expanded="true"] i::before{top:0;transform:rotate(45deg)}
   .asc-burger[aria-expanded="true"] i::after{top:0;transform:rotate(-45deg)}
-  .asc-mnav{display:block;max-height:calc(100dvh - 80px);overflow-y:auto;overscroll-behavior:contain;background:var(--white);border-top:1px solid var(--line-lt)}
+  .asc-mnav{display:block;max-height:calc(100dvh - 88px);overflow-y:auto;overscroll-behavior:contain;background:var(--white);border-top:1px solid var(--line-lt)}
   .asc-mnav[hidden]{display:none}
   .asc-msec:first-child{border-top:0}
 }
