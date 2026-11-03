@@ -4,19 +4,70 @@
    the mobile drawer from one list of categories
    ========================================================================= */
 
+/* Pages on the live Atlantic Sun Control site */
+const site = (path) => `https://www.atlanticsun.net${path}`;
+
 const CATS = [
-  { head: 'Safety & Security Films', items: ['Anti-Intrusion', 'Blast Mitigation', 'Radio Frequency Shielding', 'Anti-Graffiti Films', 'Casper Cloaking Film'] },
-  { head: 'Sun Control', items: ['Anti-Glare Window Film', 'Heat Control Window Films', 'UV Window Film', 'Low-E Films', 'Blinds & Shades'] },
-  { head: 'Decorative Films & Graphics', items: ['Custom Window Films & Graphics', 'Signs, Graphics & Logos', 'Wall Murals', 'Frosted & Etch Look Films'] },
-  { head: 'Privacy Films', items: ['Frosted / Etch Look Films', 'Smart Films', 'Blinds & Shades', 'One-Way Mirror Films', 'Casper Cloaking Film'] },
-  { head: 'Specialty Films', items: ['Casper Cloaking Film', 'Smart Films', 'Architectural Finishes', 'Blackout Films'] },
-];
+  {
+    head: 'Safety & Security Films',
+    href: site('/safety-security-films'),
+    items: [
+      ['Anti-Intrusion', '/safety-and-security-window-film'],
+      ['Blast Mitigation', '/blast-mitigation-film'],
+      ['Radio Frequency Shielding', '/radio-frequency-shielding-film'],
+      ['Anti-Graffiti Films', '/anti-graffiti-film'],
+      ['Casper Cloaking Film', '/casper-cloaking-film'],
+    ],
+  },
+  {
+    head: 'Sun Control',
+    href: site('/solar-window-films'),
+    items: [
+      ['Anti-Glare Window Film', '/anti-glare-window-film'],
+      ['Heat Control Window Films', '/heat-control-window-film'],
+      ['UV Window Film', '/products/solar-window-films/uv-window-film'],
+      ['Low-E Films', '/low-e-films'],
+      ['Blinds & Shades', '/products/blinds-and-shades'],
+    ],
+  },
+  {
+    head: 'Decorative Films & Graphics',
+    href: site('/decorative-frosted-films'),
+    items: [
+      ['Custom Window Films & Graphics', '/custom-window-film'],
+      ['Signs, Graphics & Logos', '/signs-graphics-logos'],
+      ['Wall Murals', '/wall-murals'],
+      ['Frosted & Etch Look Films', '/frosted-window-films'],
+    ],
+  },
+  {
+    head: 'Privacy Films',
+    href: site('/privacy-window-glass-films'),
+    items: [
+      ['Frosted / Etch Look Films', '/frosted-window-films'],
+      ['Smart Films', '/electric-privacy-glass-films'],
+      ['Blinds & Shades', '/products/blinds-and-shades'],
+      ['One-Way Mirror Films', '/one-way-mirror-film'],
+      ['Casper Cloaking Film', '/casper-cloaking-film'],
+    ],
+  },
+  {
+    head: 'Specialty Films',
+    href: site('/solutions-overview'),
+    items: [
+      ['Casper Cloaking Film', '/casper-cloaking-film'],
+      ['Smart Films', '/electric-privacy-glass-films'],
+      ['Architectural Finishes', '/architectural-finishes'],
+      ['Blackout Films', '/blackout-film'],
+    ],
+  },
+].map((cat) => ({ ...cat, items: cat.items.map(([label, path]) => ({ label, href: site(path) })) }));
 
 const TOP = [
-  { label: 'About Us', href: '#' },
+  { label: 'About Us', href: site('/about-us') },
   { label: 'Products & Services', dropdown: true },
   { label: 'Who We Serve', href: '#serve' },
-  { label: 'Resources', href: '#faq' },
+  { label: 'Resources', href: site('/resources') },
 ];
 
 /* Creates an element with an optional class and text */
@@ -76,13 +127,13 @@ const initDesktop = (bar) => {
     const drop = el('div', 'asc-dd-drop');
     drop.id = `asc-dd-${i}`;
     const list = el('ul', 'asc-dd-list');
-    cat.items.forEach((label) => {
+    cat.items.forEach(({ label, href }) => {
       const item = el('li');
-      item.append(link(null, label));
+      item.append(link(null, label, href));
       list.append(item);
     });
     const foot = el('div', 'asc-dd-foot');
-    foot.append(link('asc-btn-line', `View ${cat.head}`));
+    foot.append(link('asc-btn-line', `View ${cat.head}`, cat.href));
     drop.append(list, foot);
 
     li.append(head, drop);
@@ -152,11 +203,14 @@ const initMobile = (bar) => {
     const body = el('div', 'asc-mbody');
     body.hidden = true;
     const list = el('ul');
-    cat.items.forEach((label) => {
+    cat.items.forEach(({ label, href }) => {
       const li = el('li');
-      li.append(link(null, label));
+      li.append(link(null, label, href));
       list.append(li);
     });
+    const all = el('li');
+    all.append(link('asc-mall', `View ${cat.head}`, cat.href));
+    list.append(all);
     body.append(list);
     head.addEventListener('click', () => {
       const expanded = head.getAttribute('aria-expanded') === 'true';

@@ -176,18 +176,19 @@
    6. WORK / PROOF — full-bleed split
    ============================================================ */
 .proof{display:grid;grid-template-columns:1fr 1fr;background:var(--white)}
-.ph{background:#e8e8e8;border:1px dashed #bdbdbd;color:var(--gray);font-size:13px;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;min-height:580px}
+.proof-photo{position:relative;min-height:580px;background:var(--ink)}
+.proof-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .proof-copy{padding:var(--band) var(--gut) var(--band) 72px;max-width:calc(var(--wrap) / 2 + 32px)}
 .proof-text{margin-top:24px}
 .proof-text p{font-size:17px;line-height:1.7}
 
 @media (max-width:980px){
   .proof{grid-template-columns:1fr}
-  .ph{min-height:320px}
+  .proof-photo{min-height:320px}
   .proof-copy{padding:72px var(--gut);max-width:none}
 }
 @media (max-width:600px){
-  .ph{min-height:260px}
+  .proof-photo{min-height:260px}
   .proof-copy{padding:56px var(--gut)}
 }
 

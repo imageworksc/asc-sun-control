@@ -123,6 +123,7 @@
 .asc-mbody[hidden]{display:none}
 .asc-mbody a{display:block;min-height:46px;padding:12px;text-decoration:none;font:400 16px/1.4 'Roboto',sans-serif;color:var(--slate);transition:background .15s var(--ease),color .15s var(--ease)}
 .asc-mbody a:hover{background:var(--orange-soft);color:var(--ink)}
+.asc-mbody .asc-mall{font:600 15px/1.4 'Jost',sans-serif;color:var(--orange)}
 .asc-mactions{display:flex;flex-direction:column;gap:12px;padding:18px 20px 24px;border-top:1px solid var(--line-lt)}
 .asc-mactions a{width:100%}
 
