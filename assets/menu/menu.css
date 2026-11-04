@@ -12,6 +12,7 @@
   --ink:#1e2129; --slate:#4a4d55;
   --orange:#E8540A; --orange-hi:#ff6b1a; --orange-soft:#fdf1ea;
   --white:#fff; --bg-light:#f5f5f5; --line-lt:#e2e2e2;
+  --mega:#e9e9e9; /* grey of the open tab and the mega panel */
   --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.2,.7,.2,1);
   --wrap:1280px; --gut:40px; /* same content edge as the page's .wrap */
   --logo-h:120px;
@@ -27,7 +28,7 @@
    --------------------------------------------------------------------- */
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);border-bottom:1px solid var(--line-lt);transition:border-color .15s var(--ease)}
 /* while the mega menu is open the bar flows straight into it: no dividing line */
-.asc-bar:has(.asc-panel.is-open){border-bottom-color:var(--bg-light)}
+.asc-bar:has(.asc-panel.is-open){border-bottom-color:var(--mega)}
 .asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:128px}
 
 /* logo.png has blank space on its left and more below the mark than above it:
@@ -45,7 +46,7 @@
 .asc-navbtn:hover,.asc-navbtn[aria-expanded="true"]{color:var(--ink)}
 .asc-navbtn:hover::after{transform:scaleX(1)}
 /* the open item becomes a grey tab: the mega panel's colour rises up around it, no orange bar */
-.asc-nav > li::before{content:'';position:absolute;top:calc(50% - 34px);bottom:0;left:0;right:0;z-index:-1;background:var(--bg-light);opacity:0;transition:opacity .15s var(--ease)}
+.asc-nav > li::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--mega);opacity:0;transition:opacity .15s var(--ease)}
 .asc-nav > li:has(> .asc-navbtn[aria-expanded="true"])::before{opacity:1}
 .asc-navbtn[aria-expanded="true"]::after{transform:scaleX(0)}
 .asc-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.75;transition:transform .2s var(--ease)}
@@ -87,7 +88,7 @@
       Each category opens its own white dropdown; the open category turns
       white too, so the two read as one piece with no lines
    --------------------------------------------------------------------- */
-.asc-panel{display:none;position:absolute;left:0;right:0;top:100%;z-index:40;background:var(--bg-light);box-shadow:0 14px 26px -12px rgba(22,24,31,.28)}
+.asc-panel{display:none;position:absolute;left:0;right:0;top:100%;z-index:40;background:var(--mega);box-shadow:0 14px 26px -12px rgba(22,24,31,.28)}
 .asc-panel.is-open{display:block}
 .asc-panel__inner{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 
