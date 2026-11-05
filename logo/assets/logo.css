@@ -23,6 +23,9 @@ img { display: block; height: auto; max-width: 100%; }
 .w-1 { width: calc(var(--u) * 845); }
 .w-2 { width: calc(var(--u) * 560); }
 .w-3 { width: calc(var(--u) * 960); }
+.w-1b { width: calc(var(--u) * 647); }
+.w-2b { width: calc(var(--u) * 560); }
+.w-3b { width: calc(var(--u) * 960); }
 .w-4 { width: calc(var(--u) * 894); }
 
 /* Screens */
@@ -45,13 +48,13 @@ img { display: block; height: auto; max-width: 100%; }
 .hero { height: clamp(120px, 26vh, 260px); background: linear-gradient(180deg, var(--surface), var(--bg)); }
 
 /* Current logo next to the options */
-.compare { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
+.compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; width: min(1120px, 100%); margin: 0; }
 .compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
 .compare img { width: min(100%, 250px); }
 .compare img.stack { width: min(100%, 140px); }
-.compare .current { grid-column: span 2; background: #FFFFFF; border: 1px solid var(--line); }
-.compare .current img { width: 190px; }
-.compare figcaption { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.compare .current { background: #FFFFFF; border: 1px solid var(--line); }
+.compare .current img { width: 170px; }
+.compare figcaption { font-size: 12px; text-align: center; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
 /* Symbol at several sizes */
 .symbols { display: flex; align-items: flex-end; justify-content: center; gap: clamp(20px, 6vw, 72px); }
