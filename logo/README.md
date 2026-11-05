@@ -1,24 +1,25 @@
 # Atlantic Sun Control: Logo Proposal
 
-Two logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
+Three logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
 
-Both keep the orange half-sun and make the same changes to the current logo:
+All three keep the orange half-sun and make the same changes to the current logo:
 
 - **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, which is simpler and easier to read.
 - **No ", inc".** The name is cleaner and easier to read at small sizes.
-- **New typography and layouts.** Option 1 keeps the sun beside the name. Option 2 moves it above the name.
+- **New typography and layouts.** Option 1 keeps the sun beside the name, option 2 moves it above the name, and option 3 joins it to a solid block.
 - **Vector artwork.** The half-sun has been redrawn as a vector, so it stays sharp at any size.
 
-![Current logo and the two options](previews/comparison.png)
+![Current logo and the three options](previews/comparison.png)
 
 ## Options
 
 | | Typeface | Character |
 |---|---|---|
-| Option 1 · Contrast | Outfit Light and SemiBold | ATLANTIC is light and SUN CONTROL is bold, and both lines end at the same width |
+| Option 1 · Contrast | Outfit SemiBold and Light | ATLANTIC is bold and SUN CONTROL is light, and both lines end at the same width |
 | Option 2 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a thin horizon line, with the name below |
+| Option 3 · Block | Montserrat SemiBold | The sun caps the left end of a solid block that holds the name |
 
-Both typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
+All the typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
 
 ## Colors
 
@@ -38,6 +39,8 @@ option-1-contrast/
   pdf/   vector files (print and Adobe Illustrator)
   png/   high-resolution images
 option-2-sunrise/
+  svg/  pdf/  png/
+option-3-block/
   svg/  pdf/  png/
 symbol/     the half-sun on its own
 previews/   comparison image
