@@ -1,15 +1,15 @@
 # Atlantic Sun Control: Logo Proposal
 
-Three logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
+Four logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
 
-All three keep the orange half-sun and make the same changes to the current logo:
+All four keep the orange half-sun and make the same changes to the current logo:
 
-- **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, so the logo is wider and shorter and stays larger in a website header.
+- **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, which is simpler and easier to read.
 - **No ", inc".** The name is cleaner and easier to read at small sizes.
-- **New typography.** The options differ only in the typeface.
+- **New typography and layouts.** Options 1 and 2 keep the sun beside the name. Options 3 and 4 move it above the name.
 - **Vector artwork.** The half-sun has been redrawn as a vector, so it stays sharp at any size.
 
-![Current logo and the three options](previews/comparison.png)
+![Current logo and the four options](previews/comparison.png)
 
 ## Options
 
@@ -17,9 +17,10 @@ All three keep the orange half-sun and make the same changes to the current logo
 |---|---|---|
 | Option 1 · Bold | Montserrat SemiBold | ATLANTIC is larger, and both lines end at the same width |
 | Option 2 · Contrast | Outfit SemiBold and Light | Same block, with a strong first line and a light second line |
-| Option 3 · Spaced | Red Hat Display Bold | Both lines are the same size, with ATLANTIC letterspaced to the same width |
+| Option 3 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a horizon line, with the name below |
+| Option 4 · Seal | Montserrat SemiBold | A round seal: the sun is the top half and the name sits in the bottom half |
 
-All three typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
+All the typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
 
 ## Colors
 
@@ -40,7 +41,9 @@ option-1-bold/
   png/   high-resolution images
 option-2-contrast/
   svg/  pdf/  png/
-option-3-spaced/
+option-3-sunrise/
+  svg/  pdf/  png/
+option-4-seal/
   svg/  pdf/  png/
 symbol/     the half-sun on its own
 previews/   comparison image
