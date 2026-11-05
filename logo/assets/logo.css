@@ -23,9 +23,7 @@ img { display: block; height: auto; max-width: 100%; }
 .w-1 { width: calc(var(--u) * 845); }
 .w-2 { width: calc(var(--u) * 560); }
 .w-3 { width: calc(var(--u) * 960); }
-.w-4 { width: calc(var(--u) * 765); }
-.w-5 { width: calc(var(--u) * 711); }
-.w-6 { width: calc(var(--u) * 928); }
+.w-4 { width: calc(var(--u) * 894); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -47,7 +45,7 @@ img { display: block; height: auto; max-width: 100%; }
 .hero { height: clamp(120px, 26vh, 260px); background: linear-gradient(180deg, var(--surface), var(--bg)); }
 
 /* Current logo next to the options */
-.compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; width: min(1120px, 100%); margin: 0; }
+.compare { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
 .compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
 .compare img { width: min(100%, 250px); }
 .compare img.stack { width: min(100%, 140px); }
@@ -90,7 +88,7 @@ img { display: block; height: auto; max-width: 100%; }
   .compare img.stack { width: min(100%, 92px); }
   .compare .current img { width: 96px; }
   .compare figcaption { font-size: 10px; }
-  .w-1, .w-3, .w-4, .w-5, .w-6 { width: min(100%, 250px); }
+  .w-1, .w-3, .w-4 { width: min(100%, 250px); }
   .nav img.mid { height: 52px; }
   .w-2 { width: min(100%, 200px); }
   .nav img.stack { height: 76px; }
