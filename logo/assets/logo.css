@@ -1,0 +1,102 @@
+/* =========================================================================
+   Atlantic Sun Control — Logo proposal page
+   ========================================================================= */
+:root {
+  --ink: #1E2129; --orange: #E8540A;
+  --bg: #FFFFFF; --fg: #1E2129; --muted: #73767D; --line: #E2E2E2; --surface: #F5F5F5;
+  /* One scale for every logo, so the sun and the text height match across options */
+  --u: min(1px, calc((100vw - 112px) / 906));
+  --hu: .3px;
+}
+:root[data-theme="dark"] {
+  --bg: #0B0B0B; --fg: #FFFFFF; --muted: #8E9096; --line: #2A2B2E; --surface: #17181B;
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 'Roboto', Arial, sans-serif; transition: background .3s, color .3s; }
+img { display: block; height: auto; max-width: 100%; }
+
+/* Logo file per theme */
+[data-theme="light"] .on-dark, [data-theme="dark"] .on-light { display: none; }
+
+/* Logo widths, in the shared scale */
+.w-1 { width: calc(var(--u) * 722); }
+.w-2 { width: calc(var(--u) * 706); }
+.w-3 { width: calc(var(--u) * 906); }
+
+/* Screens */
+.screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
+.label { position: absolute; top: 28px; left: 32px; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.label b { font-weight: 700; color: var(--fg); }
+.hint { position: absolute; bottom: 24px; left: 50%; margin: 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transform: translateX(-50%); }
+
+/* Website header mock */
+.browser { width: min(1040px, 100%); overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, .08); }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.browser-bar i { width: 10px; height: 10px; background: var(--line); border-radius: 50%; }
+.browser-bar span { flex: 1; height: 22px; margin-left: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px clamp(16px, 3vw, 36px); background: var(--bg); border-bottom: 1px solid var(--line); }
+.nav img { flex: none; width: auto; max-width: none; height: calc(var(--hu) * 224); }
+.nav ul { display: flex; gap: 24px; margin: 0; padding: 0; font: 600 14px/1.2 'Jost', Arial, sans-serif; list-style: none; white-space: nowrap; }
+.cta { padding: 11px 16px; font: 700 12px/1 'Jost', Arial, sans-serif; letter-spacing: .06em; color: var(--orange); white-space: nowrap; text-transform: uppercase; border: 2px solid var(--orange); }
+.hero { height: clamp(120px, 26vh, 260px); background: linear-gradient(180deg, var(--surface), var(--bg)); }
+
+/* Current logo next to the three options */
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
+.compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
+.compare img { width: min(100%, 300px); }
+.compare .current { background: #FFFFFF; border: 1px solid var(--line); }
+.compare .current img { width: 190px; }
+.compare figcaption { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Symbol at several sizes */
+.symbols { display: flex; align-items: flex-end; justify-content: center; gap: clamp(20px, 6vw, 72px); }
+.symbols img { width: auto; max-width: none; }
+.s-xl { height: clamp(180px, 44vmin, 360px); }
+.s-l { height: 96px; }
+.s-m { height: 48px; }
+.s-s { height: 24px; }
+
+/* Light / dark toggle */
+.toggle { position: fixed; top: 20px; right: 24px; z-index: 10; display: flex; padding: 3px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; }
+.toggle button { padding: 8px 14px; font: 500 12px/1 'Roboto', Arial, sans-serif; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; cursor: pointer; background: none; border: 0; border-radius: 999px; }
+.toggle button[aria-pressed="true"] { color: var(--bg); background: var(--fg); }
+
+/* Section dots */
+.dots { position: fixed; top: 50%; right: 24px; z-index: 10; display: flex; flex-direction: column; gap: 14px; transform: translateY(-50%); }
+.dots a { display: block; width: 10px; height: 10px; border: 1.5px solid var(--muted); border-radius: 50%; }
+.dots a.active { background: var(--orange); border-color: var(--orange); }
+.dots .sep { height: 10px; }
+
+@media (max-width: 1180px) {
+  .nav ul { display: none; }
+}
+@media (max-width: 760px) {
+  :root { --hu: .22px; }
+  .screen { padding: 72px 36px 72px 24px; }
+  .label { left: 20px; max-width: calc(100vw - 190px); }
+  .toggle { top: 16px; right: 16px; }
+  .dots { right: 12px; }
+  .cta { display: none; }
+  .compare { grid-template-columns: 1fr; gap: 8px; }
+  .compare figure { min-height: 0; padding: 12px; gap: 6px; }
+  .compare img { width: min(100%, 190px); }
+  .compare .current img { width: 96px; }
+  .compare figcaption { font-size: 10px; }
+  /* Each logo uses the full phone width */
+  .w-1, .w-2, .w-3 { width: 100%; }
+}
+
+/* Large displays: same layout, scaled up */
+@media (min-width: 2560px) {
+  :root { --u: 1.5px; }
+  .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 1.5; }
+}
+@media (min-width: 3840px) {
+  :root { --u: 2.25px; }
+  .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 2.25; }
+}
+@media (min-width: 5120px) {
+  :root { --u: 3px; }
+  .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 3; }
+}
