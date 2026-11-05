@@ -1,26 +1,24 @@
 # Atlantic Sun Control: Logo Proposal
 
-Four logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
+Two logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
 
-All four keep the orange half-sun and make the same changes to the current logo:
+Both keep the orange half-sun and make the same changes to the current logo:
 
 - **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, which is simpler and easier to read.
 - **No ", inc".** The name is cleaner and easier to read at small sizes.
-- **New typography and layouts.** Options 1 and 2 keep the sun beside the name. Options 3 and 4 move it above the name.
+- **New typography and layouts.** Option 1 keeps the sun beside the name. Option 2 moves it above the name.
 - **Vector artwork.** The half-sun has been redrawn as a vector, so it stays sharp at any size.
 
-![Current logo and the four options](previews/comparison.png)
+![Current logo and the two options](previews/comparison.png)
 
 ## Options
 
 | | Typeface | Character |
 |---|---|---|
-| Option 1 · Bold | Montserrat SemiBold | ATLANTIC is larger, and both lines end at the same width |
-| Option 2 · Contrast | Outfit SemiBold and Light | Same block, with a strong first line and a light second line |
-| Option 3 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a horizon line, with the name below |
-| Option 4 · Seal | Montserrat SemiBold | A round seal: the sun is the top half and the name sits in the bottom half |
+| Option 1 · Contrast | Outfit Light and SemiBold | ATLANTIC is light and SUN CONTROL is bold, and both lines end at the same width |
+| Option 2 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a thin horizon line, with the name below |
 
-All the typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
+Both typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
 
 ## Colors
 
@@ -35,15 +33,11 @@ All the typefaces are open source (SIL Open Font License). The text in every log
 Each option comes in a light version (for white or light backgrounds) and a dark version (for black or dark backgrounds). All files have a transparent background.
 
 ```
-option-1-bold/
+option-1-contrast/
   svg/   vector files (web and design use)
   pdf/   vector files (print and Adobe Illustrator)
   png/   high-resolution images
-option-2-contrast/
-  svg/  pdf/  png/
-option-3-sunrise/
-  svg/  pdf/  png/
-option-4-seal/
+option-2-sunrise/
   svg/  pdf/  png/
 symbol/     the half-sun on its own
 previews/   comparison image
