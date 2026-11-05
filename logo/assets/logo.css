@@ -5,8 +5,8 @@
   --ink: #1E2129; --orange: #E8540A;
   --bg: #FFFFFF; --fg: #1E2129; --muted: #73767D; --line: #E2E2E2; --surface: #F5F5F5;
   /* One scale for every logo, so the sun and the text height match across options */
-  --u: min(1px, calc((100vw - 112px) / 906));
-  --hu: .3px;
+  --u: min(.6px, calc((100vw - 112px) / 959));
+  --hu: .24px;
 }
 :root[data-theme="dark"] {
   --bg: #0B0B0B; --fg: #FFFFFF; --muted: #8E9096; --line: #2A2B2E; --surface: #17181B;
@@ -20,9 +20,9 @@ img { display: block; height: auto; max-width: 100%; }
 [data-theme="light"] .on-dark, [data-theme="dark"] .on-light { display: none; }
 
 /* Logo widths, in the shared scale */
-.w-1 { width: calc(var(--u) * 722); }
-.w-2 { width: calc(var(--u) * 706); }
-.w-3 { width: calc(var(--u) * 906); }
+.w-1 { width: calc(var(--u) * 906); }
+.w-2 { width: calc(var(--u) * 845); }
+.w-3 { width: calc(var(--u) * 959); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -44,7 +44,7 @@ img { display: block; height: auto; max-width: 100%; }
 /* Current logo next to the three options */
 .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
 .compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
-.compare img { width: min(100%, 300px); }
+.compare img { width: min(100%, 250px); }
 .compare .current { background: #FFFFFF; border: 1px solid var(--line); }
 .compare .current img { width: 190px; }
 .compare figcaption { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
@@ -72,7 +72,7 @@ img { display: block; height: auto; max-width: 100%; }
   .nav ul { display: none; }
 }
 @media (max-width: 760px) {
-  :root { --hu: .22px; }
+  :root { --hu: .19px; }
   .screen { padding: 72px 36px 72px 24px; }
   .label { left: 20px; max-width: calc(100vw - 190px); }
   .toggle { top: 16px; right: 16px; }
@@ -83,20 +83,19 @@ img { display: block; height: auto; max-width: 100%; }
   .compare img { width: min(100%, 190px); }
   .compare .current img { width: 96px; }
   .compare figcaption { font-size: 10px; }
-  /* Each logo uses the full phone width */
-  .w-1, .w-2, .w-3 { width: 100%; }
+  .w-1, .w-2, .w-3 { width: min(100%, 250px); }
 }
 
 /* Large displays: same layout, scaled up */
 @media (min-width: 2560px) {
-  :root { --u: 1.5px; }
+  :root { --u: .9px; }
   .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 1.5; }
 }
 @media (min-width: 3840px) {
-  :root { --u: 2.25px; }
+  :root { --u: 1.35px; }
   .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 2.25; }
 }
 @media (min-width: 5120px) {
-  :root { --u: 3px; }
+  :root { --u: 1.8px; }
   .browser, .compare, .symbols, .label, .toggle, .dots, .hint { zoom: 3; }
 }
