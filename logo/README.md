@@ -1,27 +1,24 @@
 # Atlantic Sun Control: Logo Proposal
 
-Four logo directions, three of them also in upper and lower case for Atlantic Sun Control, prepared by ImageWorks Creative.
+Four logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
 
 All four keep the orange sun and make the same changes to the current logo:
 
-- **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, which is simpler and easier to read.
+- **Two lines instead of three.** The name now reads "Atlantic / Sun Control" in upper and lower case, which is simpler and easier to read.
 - **No ", inc".** The name is cleaner and easier to read at small sizes.
-- **New typography and layouts.** Option 1 keeps the sun beside the name, option 2 moves it above the name, option 3 builds it into the name, and option 4 uses upper and lower case on a six-unit grid.
+- **New typography and layouts.** Option 1 keeps the sun beside the name, option 2 moves it above the name, option 3 builds it into the name, and option 4 leads with Sun Control on a six-unit grid.
 - **Vector artwork.** The half-sun has been redrawn as a vector, so it stays sharp at any size.
 
-![Current logo and all the options](previews/comparison.png)
+![Current logo and the four options](previews/comparison.png)
 
 ## Options
 
 | | Typeface | Character |
 |---|---|---|
-| Option 1 · Contrast | Outfit SemiBold and Light | ATLANTIC is bold and SUN CONTROL is light, and both lines end at the same width |
-| Option 1B · Contrast lowercase | Outfit SemiBold and Light | Option 1 in upper and lower case |
+| Option 1 · Contrast | Outfit SemiBold and Light | Atlantic is bold and Sun Control is light, and both lines end at the same width |
 | Option 2 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a thin horizon line, with the name below |
-| Option 2B · Sunrise lowercase | Montserrat SemiBold | Option 2 in upper and lower case |
-| Option 3 · Wordmark | Outfit SemiBold and Bold | No separate symbol: SUN CONTROL leads, ATLANTIC sits above it, and a whole sun forms the first O of CONTROL |
-| Option 3B · Wordmark lowercase | Outfit SemiBold and Bold | Option 3 in upper and lower case, with the sun as the o of Control |
-| Option 4 · Sun First | Outfit Medium and SemiBold | Upper and lower case, with Sun Control as the main line |
+| Option 3 · Wordmark | Outfit SemiBold and Bold | No separate symbol: Sun Control leads, Atlantic sits above it, and a whole sun forms the o of Control |
+| Option 4 · Sun First | Outfit Medium and SemiBold | Sun Control is the main line, with the half-sun beside the name |
 
 All the typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
 
@@ -50,15 +47,9 @@ option-1-contrast/
   svg/   vector files (web and design use)
   pdf/   vector files (print and Adobe Illustrator)
   png/   high-resolution images
-option-1b-contrast/
-  svg/  pdf/  png/
 option-2-sunrise/
   svg/  pdf/  png/
-option-2b-sunrise/
-  svg/  pdf/  png/
 option-3-wordmark/
-  svg/  pdf/  png/
-option-3b-wordmark/
   svg/  pdf/  png/
 option-4-sun-first/
   svg/  pdf/  png/
