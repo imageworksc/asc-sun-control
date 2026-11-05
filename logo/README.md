@@ -2,7 +2,7 @@
 
 Three logo directions for Atlantic Sun Control, prepared by ImageWorks Creative.
 
-All three keep the orange half-sun and make the same changes to the current logo:
+All three keep the orange sun and make the same changes to the current logo:
 
 - **Two lines instead of three.** The name now reads "ATLANTIC / SUN CONTROL" in capitals, which is simpler and easier to read.
 - **No ", inc".** The name is cleaner and easier to read at small sizes.
@@ -17,7 +17,7 @@ All three keep the orange half-sun and make the same changes to the current logo
 |---|---|---|
 | Option 1 · Contrast | Outfit SemiBold and Light | ATLANTIC is bold and SUN CONTROL is light, and both lines end at the same width |
 | Option 2 · Sunrise | Montserrat SemiBold | Vertical and centered: the sun rises on a thin horizon line, with the name below |
-| Option 3 · Wordmark | Outfit SemiBold and Light | No separate symbol: the half-sun forms the left half of the first O of CONTROL |
+| Option 3 · Wordmark | Outfit SemiBold and Bold | No separate symbol: SUN CONTROL leads, ATLANTIC sits above it, and a whole sun forms the first O of CONTROL |
 
 All the typefaces are open source (SIL Open Font License). The text in every logo file is converted to outlines, so no font needs to be installed.
 

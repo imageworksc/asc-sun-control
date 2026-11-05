@@ -5,7 +5,7 @@
   --ink: #1E2129; --orange: #E8540A;
   --bg: #FFFFFF; --fg: #1E2129; --muted: #73767D; --line: #E2E2E2; --surface: #F5F5F5;
   /* One scale for every logo, so the sun and the text height match across options */
-  --u: min(.6px, calc((100vw - 112px) / 845));
+  --u: min(.6px, calc((100vw - 112px) / 960));
   --hu: .24px;
 }
 :root[data-theme="dark"] {
@@ -22,7 +22,7 @@ img { display: block; height: auto; max-width: 100%; }
 /* Logo widths, in the shared scale */
 .w-1 { width: calc(var(--u) * 845); }
 .w-2 { width: calc(var(--u) * 560); }
-.w-3 { width: calc(var(--u) * 800); }
+.w-3 { width: calc(var(--u) * 960); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
