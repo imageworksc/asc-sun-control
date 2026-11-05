@@ -19,9 +19,9 @@ img { display: block; height: auto; max-width: 100%; }
 [data-theme="light"] .on-dark, [data-theme="dark"] .on-light { display: none; }
 
 /* Logo widths, in the shared scale */
-.w-1 { width: calc(var(--u) * 837); }
-.w-2 { width: calc(var(--u) * 882); }
-.w-3 { width: calc(var(--u) * 895); }
+.w-1 { width: calc(var(--u) * 890); }
+.w-2 { width: calc(var(--u) * 889); }
+.w-3 { width: calc(var(--u) * 894); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -47,6 +47,13 @@ img { display: block; height: auto; max-width: 100%; }
 .compare .current { background: #FFFFFF; border: 1px solid var(--line); }
 .compare .current img { width: 190px; }
 .compare figcaption { font-size: 12px; text-align: center; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Spacing */
+.spacing { display: grid; gap: 12px; width: min(1040px, 100%); }
+.spacing figure { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 24px; margin: 0; }
+.spacing img { justify-self: end; width: min(100%, calc((100vh - 190px) / 3 * 2.5)); }
+.spacing figcaption { font-size: 14px; color: var(--muted); }
+.spacing b { display: block; margin-bottom: 4px; font-weight: 700; color: var(--fg); }
 
 /* Symbols at small sizes */
 .small { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); }
@@ -98,6 +105,9 @@ img { display: block; height: auto; max-width: 100%; }
   .compare .current img { width: 96px; }
   .compare figcaption { font-size: 10px; }
   .w-1, .w-2, .w-3 { width: min(100%, 280px); }
+  .spacing figure { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .spacing img { justify-self: start; width: 100%; }
+  .spacing figcaption { font-size: 13px; }
   .s-l { height: 64px; }
   .why { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .why article { padding: 16px; }
@@ -108,13 +118,13 @@ img { display: block; height: auto; max-width: 100%; }
 /* Large displays: same layout, scaled up */
 @media (min-width: 2560px) {
   :root { --u: 1.2px; }
-  .browser, .compare, .small, .why, .label, .toggle, .dots, .idea { zoom: 1.5; }
+  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 1.5; }
 }
 @media (min-width: 3840px) {
   :root { --u: 1.8px; }
-  .browser, .compare, .small, .why, .label, .toggle, .dots, .idea { zoom: 2.25; }
+  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 2.25; }
 }
 @media (min-width: 5120px) {
   :root { --u: 2.4px; }
-  .browser, .compare, .small, .why, .label, .toggle, .dots, .idea { zoom: 3; }
+  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 3; }
 }

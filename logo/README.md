@@ -10,13 +10,26 @@ Live page: https://imageworksc.github.io/asc-sun-control/logo/
 | 2 · Window | The sun seen through a four-pane window | Instrument Sans 600 |
 | 3 · Horizon | The sun over the Atlantic, in bands that read as reflection and as layers of film | Newsreader 500 |
 
-## Grid
+## Spacing
 
-One unit (u) is one sixth of the logo height.
+One unit (u) is one sixth of the symbol height.
 
-- Symbol: 6u high, the same as the text block
-- Each line of text: 2.5u, with 1u between lines
-- Symbol to text: 1.5u
+- Symbol: 6u high, from the top of the capitals to the last baseline
+- Capitals: 2.5u, with 1u from the first baseline to the next capitals
+- Symbol to text: 1.5u from a straight edge, 1.25u from a round one
+- Clear space: 2u on every side
+
+Optical corrections: the round sun in Option 3 rises above the capitals, and the S hangs slightly left of the A so both lines look flush. Drawings are in `construction/`.
+
+## Minimum sizes
+
+| Option | Logo height | Symbol height |
+|---|---|---|
+| 1 · Glass | 32 px | 16 px |
+| 2 · Window | 32 px | 24 px |
+| 3 · Horizon | 40 px | 24 px |
+
+For a 16 px favicon, Options 2 and 3 need a simplified symbol.
 
 ## Colours
 
