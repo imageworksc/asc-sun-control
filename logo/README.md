@@ -6,7 +6,7 @@ Live page: https://imageworksc.github.io/asc-sun-control/logo/
 
 | Option | Idea | Typeface |
 |---|---|---|
-| 1 · Glass | A pane of glass in front of the sun, keeping the half sun from the current logo | Schibsted Grotesk 700 / 500 |
+| 1 · Glass | The sun at full strength outside the glass, in soft bands of film inside. Keeps the half sun from the current logo | Schibsted Grotesk 600 |
 | 2 · Window | The sun seen through a four-pane window | Instrument Sans 600 |
 | 3 · Horizon | The sun over the Atlantic, in bands that read as reflection and as layers of film | Newsreader 500 |
 
@@ -25,11 +25,11 @@ Optical corrections: the round sun in Option 3 rises above the capitals, and the
 
 | Option | Logo height | Symbol height |
 |---|---|---|
-| 1 · Glass | 32 px | 16 px |
+| 1 · Glass | 32 px | 32 px |
 | 2 · Window | 32 px | 24 px |
 | 3 · Horizon | 40 px | 24 px |
 
-For a 16 px favicon, Options 2 and 3 need a simplified symbol.
+Below these sizes, such as a 16 px favicon, each option needs a simplified symbol.
 
 ## Colours
 
