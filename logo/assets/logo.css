@@ -5,7 +5,7 @@
   --ink: #1E2129; --orange: #E8540A;
   --bg: #FFFFFF; --fg: #1E2129; --muted: #73767D; --line: #E2E2E2; --surface: #F5F5F5;
   /* One scale for every logo, so the sun and the text height match across options */
-  --u: min(.8px, calc((100vw - 112px) / 925));
+  --u: min(.8px, calc((100vw - 112px) / 962));
 }
 :root[data-theme="dark"] {
   --bg: #0B0B0B; --fg: #FFFFFF; --muted: #8E9096; --line: #2A2B2E; --surface: #17181B;
@@ -19,9 +19,9 @@ img { display: block; height: auto; max-width: 100%; }
 [data-theme="light"] .on-dark, [data-theme="dark"] .on-light { display: none; }
 
 /* Logo widths, in the shared scale */
-.w-1 { width: calc(var(--u) * 922); }
-.w-2 { width: calc(var(--u) * 889); }
-.w-3 { width: calc(var(--u) * 894); }
+.w-1 { width: calc(var(--u) * 959); }
+.w-2 { width: calc(var(--u) * 922); }
+.w-3 { width: calc(var(--u) * 929); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -35,7 +35,7 @@ img { display: block; height: auto; max-width: 100%; }
 .browser-bar i { width: 10px; height: 10px; background: var(--line); border-radius: 50%; }
 .browser-bar span { flex: 1; height: 22px; margin-left: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px clamp(16px, 3vw, 36px); background: var(--bg); border-bottom: 1px solid var(--line); }
-.nav img { flex: none; width: auto; max-width: none; height: 56px; }
+.nav img { flex: none; width: auto; max-width: none; height: 64px; }
 .nav ul { display: flex; gap: 24px; margin: 0; padding: 0; font: 600 14px/1.2 'Jost', Arial, sans-serif; list-style: none; white-space: nowrap; }
 .cta { padding: 11px 16px; font: 700 12px/1 'Jost', Arial, sans-serif; letter-spacing: .06em; color: var(--orange); white-space: nowrap; text-transform: uppercase; border: 2px solid var(--orange); }
 .hero { height: clamp(120px, 26vh, 260px); background: linear-gradient(180deg, var(--surface), var(--bg)); }
@@ -97,7 +97,7 @@ img { display: block; height: auto; max-width: 100%; }
   .toggle { top: 16px; right: 16px; }
   .dots { right: 12px; }
   .cta { display: none; }
-  .nav img { height: 44px; }
+  .nav img { height: 50px; }
   .idea { bottom: 24px; width: calc(100% - 72px); font-size: 14px; }
   .compare { gap: 8px; }
   .compare figure { min-height: 0; padding: 12px; gap: 6px; }

@@ -12,9 +12,9 @@ Live page: https://imageworksc.github.io/asc-sun-control/logo/
 
 ## Spacing
 
-One unit (u) is one sixth of the symbol height.
+One unit (u) is one sixth of the text block, from the first capitals to the last baseline.
 
-- Symbol: 6u high, from the top of the capitals to the last baseline
+- Symbol: 7u high, centred on the text block, so it extends 0.5u above and below
 - Capitals: 2.5u, with 1u from the first baseline to the next capitals
 - Symbol to text: 1.5u from a straight edge, 1.25u from a round one
 - Clear space: 2u on every side
@@ -25,9 +25,9 @@ Optical corrections: the round sun in Option 3 rises above the capitals, and the
 
 | Option | Logo height | Symbol height |
 |---|---|---|
-| 1 · Glass | 32 px | 32 px |
-| 2 · Window | 32 px | 24 px |
-| 3 · Horizon | 40 px | 24 px |
+| 1 · Glass | 36 px | 32 px |
+| 2 · Window | 36 px | 24 px |
+| 3 · Horizon | 48 px | 24 px |
 
 Below these sizes, such as a 16 px favicon, each option needs a simplified symbol.
 
