@@ -67,13 +67,6 @@ img { display: block; height: auto; max-width: 100%; }
 .s-s { height: 24px; }
 .s-xs { height: 16px; }
 
-/* Research */
-.why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); }
-.why article { padding: 28px; background: var(--surface); }
-.why h2 { margin: 0 0 8px; font: 600 24px/1.2 'Jost', Arial, sans-serif; }
-.why p { margin: 0 0 12px; font-size: 16px; color: var(--muted); }
-.why a { font-size: 14px; font-weight: 500; color: var(--orange); }
-
 /* Light / dark toggle */
 .toggle { position: fixed; top: 20px; right: 24px; z-index: 10; display: flex; padding: 3px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; }
 .toggle button { padding: 8px 14px; font: 500 12px/1 'Roboto', Arial, sans-serif; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; cursor: pointer; background: none; border: 0; border-radius: 999px; }
@@ -107,22 +100,18 @@ img { display: block; height: auto; max-width: 100%; }
   .small figure { padding: 16px; gap: 12px; }
   .spacing figcaption { font-size: 13px; }
   .s-l { height: 64px; }
-  .why { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .why article { padding: 16px; }
-  .why h2 { font-size: 20px; }
-  .why p { margin-bottom: 8px; font-size: 14px; }
 }
 
 /* Large displays: same layout, scaled up */
 @media (min-width: 2560px) {
   :root { --u: 1.2px; }
-  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 1.5; }
+  .browser, .compare, .spacing, .small, .label, .toggle, .dots, .idea { zoom: 1.5; }
 }
 @media (min-width: 3840px) {
   :root { --u: 1.8px; }
-  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 2.25; }
+  .browser, .compare, .spacing, .small, .label, .toggle, .dots, .idea { zoom: 2.25; }
 }
 @media (min-width: 5120px) {
   :root { --u: 2.4px; }
-  .browser, .compare, .spacing, .small, .why, .label, .toggle, .dots, .idea { zoom: 3; }
+  .browser, .compare, .spacing, .small, .label, .toggle, .dots, .idea { zoom: 3; }
 }
