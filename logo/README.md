@@ -35,9 +35,9 @@ Below these sizes, such as a 16 px favicon, each option needs a simplified symbo
 
 - Orange `#E8540A`
 - Ink `#1E2129`
-- Soft orange `#F9B48C` (Option 1 only)
+- Glass blue `#AFD5E6` and light orange `#F58B57` (Option 1 only)
 
-All colours are solid, with no gradients. On dark backgrounds, ink becomes white.
+All colours are solid, with no gradients. On dark backgrounds, ink becomes white. The blue glass in Option 1 stays the same on light and dark.
 
 ## Files
 
