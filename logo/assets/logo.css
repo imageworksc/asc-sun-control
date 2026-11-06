@@ -22,6 +22,7 @@ img { display: block; height: auto; max-width: 100%; }
 .w-1 { width: calc(var(--u) * 946); }
 .w-2 { width: calc(var(--u) * 910); }
 .w-3 { width: calc(var(--u) * 917); }
+.w-4 { width: calc(var(--u) * 788); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -42,21 +43,21 @@ img { display: block; height: auto; max-width: 100%; }
 .hero { height: clamp(120px, 26vh, 260px); background: linear-gradient(180deg, var(--surface), var(--bg)); }
 
 /* Current logo next to the options */
-.compare { --u: min(.34px, calc((100vw - 240px) / 2 / 960)); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
+.compare { --u: min(.29px, calc((100vw - 240px) / 3 / 960)); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
 .compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
-.compare .current { background: #FFFFFF; border: 1px solid var(--line); }
+.compare .current { grid-column: span 2; background: #FFFFFF; border: 1px solid var(--line); }
 .compare .current img { width: 190px; }
 .compare figcaption { font-size: 12px; text-align: center; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
 /* Spacing */
-.spacing { display: grid; gap: 12px; width: min(1040px, 100%); }
-.spacing figure { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 24px; margin: 0; }
-.spacing img { justify-self: end; width: min(100%, calc((100vh - 190px) / 3 * 2.5)); }
+.spacing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; width: min(1040px, 100%); }
+.spacing figure { display: grid; gap: 4px; margin: 0; }
+.spacing img { width: min(100%, calc((100vh - 390px) / 2 * 2.7)); }
 .spacing figcaption { font-size: 14px; color: var(--muted); }
 .spacing b { display: block; margin-bottom: 4px; font-weight: 700; color: var(--fg); }
 
 /* Symbols at small sizes */
-.small { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); }
+.small { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); }
 .small figure { display: grid; justify-items: center; gap: 20px; margin: 0; padding: 32px 16px; background: var(--surface); }
 .small figcaption { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sizes { display: flex; align-items: flex-end; gap: 16px; }
@@ -87,10 +88,6 @@ img { display: block; height: auto; max-width: 100%; }
 @media (max-width: 1180px) {
   .nav ul { display: none; }
 }
-@media (max-width: 1000px) {
-  .small { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .small figure { padding: 16px; gap: 12px; }
-}
 @media (max-width: 760px) {
   :root { --u: min(.3px, calc((100vw - 76px) / 960)); }
   .screen { height: auto; min-height: 100vh; min-height: 100svh; padding: 72px 36px 72px 24px; }
@@ -100,12 +97,14 @@ img { display: block; height: auto; max-width: 100%; }
   .cta { display: none; }
   .nav { --u: .215px; }
   .idea { bottom: 24px; width: calc(100% - 72px); font-size: 14px; }
-  .compare { --u: calc((100vw - 92px) / 2 / 960); gap: 8px; }
+  .compare { --u: calc((100vw - 92px) / 2 / 960); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .compare figure { min-height: 0; padding: 12px; gap: 6px; }
   .compare .current img { width: 96px; }
   .compare figcaption { font-size: 10px; }
-  .spacing figure { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .spacing img { justify-self: start; width: 100%; }
+  .spacing { grid-template-columns: minmax(0, 1fr); }
+  .spacing img { width: 100%; }
+  .small { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .small figure { padding: 16px; gap: 12px; }
   .spacing figcaption { font-size: 13px; }
   .s-l { height: 64px; }
   .why { grid-template-columns: minmax(0, 1fr); gap: 8px; }
