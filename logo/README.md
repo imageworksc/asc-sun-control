@@ -16,10 +16,10 @@ One unit (u) is one sixth of the text block, from the first capitals to the last
 
 - Symbol: 7u high, centred on the text block, so it extends 0.5u above and below
 - Capitals: 2.5u, with 1u from the first baseline to the next capitals
-- Symbol to text: 1.5u from a straight edge, 1.25u from a round one
+- Symbol to text: 1.25u from a straight edge, 1u from a round one
 - Clear space: 2u on every side
 
-Optical corrections: the round sun in Option 3 rises above the capitals, and the S hangs slightly left of the A so both lines look flush. Drawings are in `construction/`.
+Optical corrections: the round sun in Option 3 rises slightly further than the other symbols, the S hangs slightly left of the A so both lines look flush, and letter pairs such as "ro" and "Co" are kerned by hand. The gaps in the symbols are drawn close to the stroke width of the type. Drawings are in `construction/`.
 
 ## Minimum sizes
 
