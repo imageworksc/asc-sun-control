@@ -1,6 +1,6 @@
 # ASC logo proposal
 
-Four two-line directions for Atlantic Sun Control, without the "inc". Options 1 to 3 are in upper and lower case, and Option 4 is all lower case. They replace the earlier options, which remain in the git history.
+Two-line directions for Atlantic Sun Control, without the "inc". Options 3B and 4B swap the lettering of Options 3 and 4. They replace the earlier options, which remain in the git history.
 
 Live page: https://imageworksc.github.io/asc-sun-control/logo/
 
@@ -9,7 +9,9 @@ Live page: https://imageworksc.github.io/asc-sun-control/logo/
 | 1 · Glass | The sun at full strength outside the glass, in soft bands of film inside. Keeps the half sun from the current logo | Schibsted Grotesk 600 |
 | 2 · Window | The sun seen through a four-pane window | Instrument Sans 600 |
 | 3 · Horizon | The sun over the Atlantic, in bands that read as reflection and as layers of film | Newsreader 500 |
+| 3B · Horizon, lower case | Option 3 with the lettering of Option 4 | Figtree 600, lower case |
 | 4 · Current Sun | The current half sun, kept as it is, with a new name in lower case | Figtree 600 |
+| 4B · Current Sun, serif | Option 4 with the lettering of Option 3 | Newsreader 500 |
 
 ## Spacing
 
@@ -22,7 +24,7 @@ One unit (u) is one sixth of the text block, from the first capitals to the last
 
 Optical corrections: the round sun in Option 3 rises slightly further than the other symbols, the S hangs slightly left of the A so both lines look flush, and letter pairs such as "ro" and "Co" are kerned by hand. The gaps in the symbols are drawn close to the stroke width of the type. Drawings are in `construction/`.
 
-Option 4 is all lower case, so it is set on the ascenders: 2.75u per line, 0.5u between lines.
+Options 4 and 3B are all lower case, so they are set on the ascenders: 2.75u per line, 0.5u between lines.
 
 ## Minimum sizes
 
@@ -31,7 +33,9 @@ Option 4 is all lower case, so it is set on the ascenders: 2.75u per line, 0.5u 
 | 1 · Glass | 36 px | 32 px |
 | 2 · Window | 36 px | 24 px |
 | 3 · Horizon | 48 px | 24 px |
+| 3B · Horizon, lower case | 28 px | 24 px |
 | 4 · Current Sun | 28 px | 16 px |
+| 4B · Current Sun, serif | 40 px | 16 px |
 
 Below these sizes, such as a 16 px favicon, each option needs a simplified symbol.
 

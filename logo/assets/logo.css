@@ -23,6 +23,8 @@ img { display: block; height: auto; max-width: 100%; }
 .w-2 { width: calc(var(--u) * 910); }
 .w-3 { width: calc(var(--u) * 917); }
 .w-4 { width: calc(var(--u) * 788); }
+.w-3b { width: calc(var(--u) * 909); }
+.w-4b { width: calc(var(--u) * 796); }
 
 /* Screens */
 .screen { position: relative; display: grid; place-items: center; height: 100vh; height: 100svh; padding: 72px 64px; scroll-snap-align: start; }
@@ -44,15 +46,15 @@ img { display: block; height: auto; max-width: 100%; }
 
 /* Current logo next to the options */
 .compare { --u: min(.29px, calc((100vw - 240px) / 3 / 960)); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: min(1040px, 100%); margin: 0; }
-.compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 220px; margin: 0; padding: 24px; background: var(--surface); }
-.compare .current { grid-column: span 2; background: #FFFFFF; border: 1px solid var(--line); }
+.compare figure { display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 12px; min-height: 150px; margin: 0; padding: 20px; background: var(--surface); }
+.compare .current { grid-column: 1 / -1; background: #FFFFFF; border: 1px solid var(--line); }
 .compare .current img { width: 190px; }
 .compare figcaption { font-size: 12px; text-align: center; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
 /* Spacing */
-.spacing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; width: min(1040px, 100%); }
+.spacing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px; width: min(1040px, 100%); }
 .spacing figure { display: grid; gap: 4px; margin: 0; }
-.spacing img { width: min(100%, calc((100vh - 390px) / 2 * 2.7)); }
+.spacing img { width: 100%; }
 .spacing figcaption { font-size: 14px; color: var(--muted); }
 .spacing b { display: block; margin-bottom: 4px; font-weight: 700; color: var(--fg); }
 
