@@ -1,0 +1,5 @@
+brotli==1.2.1
+fonttools==4.60.2
+pillow==11.3.0
+skia-pathops==0.8.0.post2
+uharfbuzz==0.51.7
