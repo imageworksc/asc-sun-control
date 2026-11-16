@@ -16,8 +16,8 @@ from fontTools.pens.transformPen import TransformPen
 from pathops import Path, op, PathOp
 from lib import load, outline, cap_height, sun as current_sun
 
-OUT = sys.argv[1]
-ONLY = sys.argv[2:]
+OUT = sys.argv[1] if __name__ == '__main__' else None
+ONLY = sys.argv[2:] if __name__ == '__main__' else []
 ORANGE, INK, WHITE, TINT = '#E8540A', '#1E2129', '#FFFFFF', '#F9B48C'
 K = .5522847
 H = 200.0
@@ -147,7 +147,8 @@ FIG = ('Figtree.ttf', {'wght': 600})
 LABEL = load('Schibsted.ttf', {'wght': 500})
 
 
-def lockup(name, num, short, mark, symbol, font, case, gap):
+def lettering(font, case):
+    """The two lines of the name on the grid: paths, ink bounds, first baseline, S shift, size, grid labels."""
     fp = load(*font); kern = KERN[font[0]]
     if case == 'lower':
         t1, t2, a = 'atlantic', 'sun control', 2.75 * U
@@ -159,6 +160,11 @@ def lockup(name, num, short, mark, symbol, font, case, gap):
         shift, steps = ROUND, ('2.5u', '1u', '2.5u')
     p1, q1 = outline(t1, fp, size, pairs=kern)
     p2, q2 = outline(t2, fp, size, pairs=kern)
+    return p1, q1, p2, q2, a, shift, size, steps
+
+
+def lockup(name, num, short, mark, symbol, font, case, gap):
+    p1, q1, p2, q2, a, shift, size, steps = lettering(font, case)
     mw, over = mark('size')
     tx = mw + gap * U
     x1, x2 = tx - q1[0], tx - q2[0] - shift
@@ -199,8 +205,11 @@ JOBS = {
     'option-2-window': lambda: lockup('option-2-window', '2', 'window', flat_mark(window), flat_symbol(window), INS, 'title', 1.25),
     'option-3-horizon': lambda: lockup('option-3-horizon', '3', 'horizon', horizon_mark, flat_symbol(horizon), NEWS, 'title', 1.0),
     'option-3b-horizon-lower': lambda: lockup('option-3b-horizon-lower', '3b', 'horizon-lower', horizon_mark, flat_symbol(horizon), FIG, 'lower', 1.0),
+    'option-3c-horizon-title': lambda: lockup('option-3c-horizon-title', '3c', 'horizon-title', horizon_mark, flat_symbol(horizon), FIG, 'title', 1.0),
+    'option-3d-horizon-grotesk': lambda: lockup('option-3d-horizon-grotesk', '3d', 'horizon-grotesk', horizon_mark, flat_symbol(horizon), SCH, 'title', 1.0),
     'option-4-current-sun': lambda: lockup('option-4-current-sun', '4', 'current-sun', sun_mark('a'), sun_symbol, FIG, 'lower', 1.25),
     'option-4b-current-sun-serif': lambda: lockup('option-4b-current-sun-serif', '4b', 'current-sun-serif', sun_mark('a'), sun_symbol, NEWS, 'title', 1.25),
 }
-for job in (ONLY or JOBS):
-    JOBS[job]()
+if __name__ == '__main__':
+    for job in (ONLY or JOBS):
+        JOBS[job]()

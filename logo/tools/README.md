@@ -6,6 +6,7 @@ Scripts that draw every logo option in this folder. Text is outlined from the fo
 |---|---|
 | `build.py` | Draws the logo, symbol and spacing drawing of each option, light and dark, as SVG |
 | `export.py` | Makes the PNG (transparent) and PDF of every SVG, using Chrome |
+| `animate.py` | Draws the animated Option 2: each pane lights up with its service (Solar, Security, Graphics, Shades) |
 | `lib.py` | Outlines text with kerning and draws the current ASC half sun |
 | `fonts.sh` | Downloads the four typefaces (SIL Open Font License) |
 
@@ -24,6 +25,7 @@ python3 -m venv .venv
 .venv/bin/python build.py ..                       # every option
 .venv/bin/python build.py .. option-1-glass        # one option
 .venv/bin/python export.py .. "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" option-1-glass
+.venv/bin/python animate.py ../v2                   # animated Option 2, into round 2
 ```
 
 `build.py` prints the width of each logo. When a width changes, update the matching `.w-*` class in `assets/logo.css`, and raise the `?v=` number in `index.html` so browsers load the new files.
