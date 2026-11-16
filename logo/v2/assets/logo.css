@@ -37,7 +37,7 @@ img { display: block; height: auto; max-width: 100%; }
 .browser-bar i { width: 10px; height: 10px; background: var(--line); border-radius: 50%; }
 .browser-bar span { flex: 1; height: 22px; margin-left: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px clamp(16px, 3vw, 36px); background: var(--bg); border-bottom: 1px solid var(--line); }
-.nav { --u: .275px; }
+.nav { --u: .2px; }
 .nav img { flex: none; max-width: none; }
 .nav ul { display: flex; gap: 24px; margin: 0; padding: 0; font: 600 14px/1.2 'Jost', Arial, sans-serif; list-style: none; white-space: nowrap; }
 .cta { padding: 11px 16px; font: 700 12px/1 'Jost', Arial, sans-serif; letter-spacing: .06em; color: var(--orange); white-space: nowrap; text-transform: uppercase; border: 2px solid var(--orange); }
@@ -93,7 +93,7 @@ img { display: block; height: auto; max-width: 100%; }
   .toggle { top: 16px; right: 16px; }
   .dots { right: 12px; }
   .cta { display: none; }
-  .nav { --u: .215px; }
+  .nav { --u: .17px; }
   .idea { bottom: 24px; width: calc(100% - 72px); font-size: 14px; }
   .compare { --u: calc((100vw - 92px) / 2 / 960); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .compare figure { min-height: 0; padding: 12px; gap: 6px; }
