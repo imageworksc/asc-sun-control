@@ -14,9 +14,13 @@ Round 1 stays at https://imageworksc.github.io/asc-sun-control/logo/
 
 ## Animation
 
-`option-2-window/animation/` has the animated Option 2, light and dark. Each pane lights up with its service until the sun is whole, then the name comes in. It loops every 9 seconds.
+Every option has an animated version in its `animation/` folder, light and dark. The symbol builds, then the name comes in, and it loops every 7 seconds. No other words appear.
 
-It is one SVG file with its own CSS animation, so it works as a normal image:
+- Option 2: the panes appear, then each quarter of the sun lights up in turn. The panes stand for Solar, Security, Graphics and Shades.
+- Options 3 and 3B: the sun rises over the horizon, then the bands appear one by one.
+- Option 4B: the half sun rises.
+
+Each is one SVG file with its own CSS animation, so it works as a normal image:
 
 ```html
 <img src="asc-logo-option-2-window-animated-light.svg" alt="Atlantic Sun Control">
