@@ -205,8 +205,9 @@ JOBS = {
     'option-2-window': lambda: lockup('option-2-window', '2', 'window', flat_mark(window), flat_symbol(window), INS, 'title', 1.25),
     'option-3-horizon': lambda: lockup('option-3-horizon', '3', 'horizon', horizon_mark, flat_symbol(horizon), NEWS, 'title', 1.0),
     'option-3b-horizon-lower': lambda: lockup('option-3b-horizon-lower', '3b', 'horizon-lower', horizon_mark, flat_symbol(horizon), FIG, 'lower', 1.0),
-    'option-3c-horizon-title': lambda: lockup('option-3c-horizon-title', '3c', 'horizon-title', horizon_mark, flat_symbol(horizon), FIG, 'title', 1.0),
-    'option-3d-horizon-grotesk': lambda: lockup('option-3d-horizon-grotesk', '3d', 'horizon-grotesk', horizon_mark, flat_symbol(horizon), SCH, 'title', 1.0),
+    # Round 2: 3B with a capital first letter, and 3B in the typeface of Option 1
+    'option-3b-horizon-title': lambda: lockup('option-3b-horizon-title', '3b', 'horizon-title', horizon_mark, flat_symbol(horizon), FIG, 'title', 1.0),
+    'option-3b-horizon-grotesk': lambda: lockup('option-3b-horizon-grotesk', '3b', 'horizon-grotesk', horizon_mark, flat_symbol(horizon), SCH, 'title', 1.0),
     'option-4-current-sun': lambda: lockup('option-4-current-sun', '4', 'current-sun', sun_mark('a'), sun_symbol, FIG, 'lower', 1.25),
     'option-4b-current-sun-serif': lambda: lockup('option-4b-current-sun-serif', '4b', 'current-sun-serif', sun_mark('a'), sun_symbol, NEWS, 'title', 1.25),
 }
