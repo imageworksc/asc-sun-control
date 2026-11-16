@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100.00" height="200" viewBox="0 0 100.00 200" role="img" aria-label="Atlantic Sun Control symbol"><defs><linearGradient id="arim" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#F05523"/><stop offset=".5" stop-color="#C24024"/><stop offset="1" stop-color="#9E2D22"/>
+</linearGradient>
+<linearGradient id="aface" x1="1" y1="0" x2=".15" y2="1">
+<stop offset="0" stop-color="#F9A77F"/><stop offset=".5" stop-color="#F15825"/><stop offset="1" stop-color="#C94324"/>
+</linearGradient>
+<linearGradient id="acap" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#F26A34"/><stop offset="1" stop-color="#F47C48"/>
+</linearGradient></defs><g transform="translate(100.00 100.00) scale(0.24390)"><path fill="url(#arim)" d="M0 -410A410 410 0 0 0 0 410Z"/><path fill="url(#aface)" d="M0 -397.94A378.7 378.7 0 1 0 0 357.94Z"/><path fill="url(#acap)" d="M-243 -330A410 410 0 0 1 0 -410V-262Z"/></g></svg>

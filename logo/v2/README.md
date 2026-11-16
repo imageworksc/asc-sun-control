@@ -10,6 +10,7 @@ Round 1 stays at https://imageworksc.github.io/asc-sun-control/logo/
 | 3 · Horizon | Kept | Newsreader 500 |
 | 3B · Upper case | Option 3B with a capital first letter on each word | Figtree 600 |
 | 3B · Option 1 type | Option 3B in the typeface of Option 1 | Schibsted Grotesk 600 |
+| 4B · Current Sun, serif | Kept | Newsreader 500 |
 
 ## Animation
 
@@ -35,3 +36,4 @@ Each option folder has `svg/`, `pdf/` and `png/` (transparent), with the logo an
 | 3 · Horizon | 48 px | 24 px |
 | 3B · Upper case | 28 px | 24 px |
 | 3B · Option 1 type | 28 px | 24 px |
+| 4B · Current Sun, serif | 40 px | 16 px |
