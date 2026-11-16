@@ -1,4 +1,4 @@
-"""Animated logos: the symbol builds, then the name comes in. Loops every 7 seconds.
+"""Animated logos: the symbol builds, then the name comes in. One loop takes 5.6 seconds.
 
 - Window (Option 2): the four panes appear, then each quarter of the sun lights up in turn.
   The panes stand for Solar, Security, Graphics and Shades.
@@ -17,7 +17,8 @@ from pathops import PathOp
 from build import (H, U, EXT, INK, WHITE, ORANGE, INS, SCH, NEWS, FIG, rect, circle, both, d_of,
                    lettering, current_sun)
 
-LOOP = 7.0
+LOOP = 7.0       # timeline length in seconds; the keyframes are set on this scale
+SPEED = 0.8      # play at 80% of the timeline length: one loop is 5.6 seconds
 WORDS_IN = (3.2, 3.9)
 FADE_OUT = (6.4, 7.0)
 
@@ -93,7 +94,7 @@ def build(out, name):
         x1, x2 = tx - q1[0], tx - q2[0] - shift
         width = max(x1 + q1[2], x2 + q2[2])
         top = max(-q1[1] - a, over + EXT); bottom = max(q1[3], q2[3], EXT); height = H + top + bottom
-        style = (f'.part,.words{{animation-duration:{LOOP:g}s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;'
+        style = (f'.part,.words{{animation-duration:{LOOP * SPEED:g}s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;'
                  f'transform-box:fill-box;transform-origin:center}}'
                  f'.words{{fill:{ink};animation-name:words}}'
                  + keyframes('words', *WORDS_IN, 'opacity:0;transform:translate(-24px,0)', 'opacity:1;transform:translate(0,0)')

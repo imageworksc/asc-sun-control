@@ -14,7 +14,7 @@ Round 1 stays at https://imageworksc.github.io/asc-sun-control/logo/
 
 ## Animation
 
-Every option has an animated version in its `animation/` folder, light and dark. The symbol builds, then the name comes in, and it loops every 7 seconds. No other words appear.
+Every option has an animated version in its `animation/` folder, light and dark. The symbol builds, then the name comes in, and it loops every 5.6 seconds. No other words appear.
 
 - Option 2: the panes appear, then each quarter of the sun lights up in turn. The panes stand for Solar, Security, Graphics and Shades.
 - Options 3 and 3B: the sun rises over the horizon, then the bands appear one by one.
