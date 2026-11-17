@@ -21,14 +21,21 @@ LOOP = 7.0       # timeline length in seconds; the keyframes are set on this sca
 SPEED = 0.8      # play at 80% of the timeline length: one loop is 5.6 seconds
 WORDS_IN = (3.2, 3.9)
 FADE_OUT = (6.4, 7.0)
+ONCE = False     # True: play once and stay on the finished logo (for a site header)
+
+
+def length():
+    return WORDS_IN[1] if ONCE else LOOP
 
 
 def pct(t):
-    return f'{t / LOOP * 100:.2f}%'
+    return f'{t / length() * 100:.2f}%'
 
 
 def keyframes(name, start, end, hidden, shown):
-    """Hidden until start, shown from end until the loop fades out."""
+    """Hidden until start, then shown; in a loop it fades out at the end."""
+    if ONCE:
+        return f'@keyframes {name}{{0%,{pct(start)}{{{hidden}}}{pct(end)},100%{{{shown}}}}}'
     return (f'@keyframes {name}{{0%,{pct(start)}{{{hidden}}}{pct(end)},{pct(FADE_OUT[0])}{{{shown}}}'
             f'100%{{opacity:0;{shown.replace("opacity:1", "")}}}}}')
 
@@ -82,10 +89,14 @@ OPTIONS = {   # folder: (file key, short name, symbol, typeface, case, symbol-to
 }
 
 
-def build(out, name):
+def build(out, name, once=False):
+    global ONCE
+    ONCE = once
     num, short, symbol, font, case, gap = OPTIONS[name]
     p1, q1, p2, q2, a, shift, size, steps = lettering(font, case)
     folder = f'{out}/{name}/animation'
+    repeat = 'animation-iteration-count:1;animation-fill-mode:both' if once else 'animation-iteration-count:infinite'
+    suffix = 'animated-once' if once else 'animated'
     os.makedirs(folder, exist_ok=True)
     for theme in ('light', 'dark'):
         ink = INK if theme == 'light' else WHITE
@@ -94,19 +105,22 @@ def build(out, name):
         x1, x2 = tx - q1[0], tx - q2[0] - shift
         width = max(x1 + q1[2], x2 + q2[2])
         top = max(-q1[1] - a, over + EXT); bottom = max(q1[3], q2[3], EXT); height = H + top + bottom
-        style = (f'.part,.words{{animation-duration:{LOOP * SPEED:g}s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;'
+        style = (f'.part,.words{{animation-duration:{length() * SPEED:g}s;{repeat};animation-timing-function:ease-in-out;'
                  f'transform-box:fill-box;transform-origin:center}}'
                  f'.words{{fill:{ink};animation-name:words}}'
                  + keyframes('words', *WORDS_IN, 'opacity:0;transform:translate(-24px,0)', 'opacity:1;transform:translate(0,0)')
                  + css + '@media (prefers-reduced-motion:reduce){.part,.words{animation:none}}')
         words = (f'<g class="words"><path transform="translate({x1:.2f} {a:.2f})" d="{p1}"/>'
                  f'<path transform="translate({x2:.2f} {H:.2f})" d="{p2}"/></g>')
-        open(f'{folder}/asc-logo-option-{num}-{short}-animated-{theme}.svg', 'w').write(
+        open(f'{folder}/asc-logo-option-{num}-{short}-{suffix}-{theme}.svg', 'w').write(
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.2f}" height="{height:.2f}" viewBox="0 {-top:.2f} {width:.2f} {height:.2f}" '
             f'role="img" aria-label="Atlantic Sun Control"><style>{style}</style><defs>{defs}</defs>{body}{words}</svg>')
-    print(f'{name}: animated, {width:.0f} x {height:.0f}')
+    print(f'{name}: {suffix}, {width:.0f} x {height:.0f}, {length() * SPEED:g} s')
 
 
 if __name__ == '__main__':
-    for job in (sys.argv[2:] or OPTIONS):
-        build(sys.argv[1], job)
+    # python animate.py OUT [--once] [option names...]
+    args = sys.argv[2:]
+    once = '--once' in args
+    for job in ([a for a in args if a != '--once'] or OPTIONS):
+        build(sys.argv[1], job, once)

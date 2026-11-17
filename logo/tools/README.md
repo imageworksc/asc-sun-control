@@ -26,6 +26,7 @@ python3 -m venv .venv
 .venv/bin/python build.py .. option-1-glass        # one option
 .venv/bin/python export.py .. "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" option-1-glass
 .venv/bin/python animate.py ../v2                   # animated logos, into round 2
+.venv/bin/python animate.py ../v2 --once option-3b-horizon-title   # plays once, for the site header
 ```
 
 `build.py` prints the width of each logo. When a width changes, update the matching `.w-*` class in `assets/logo.css`, and raise the `?v=` number in `index.html` so browsers load the new files.

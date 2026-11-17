@@ -15,7 +15,7 @@
   --mega:#e9e9e9; /* grey of the open tab and the mega panel */
   --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.2,.7,.2,1);
   --wrap:1280px; --gut:40px; /* same content edge as the page's .wrap */
-  --logo-h:120px;
+  --logo-h:46px; /* height of the logo, 3B: the sun and both lines of the name */
 }
 @media (max-width:980px){.asc-bar{--gut:32px}}
 @media (max-width:600px){.asc-bar{--gut:20px}}
@@ -29,12 +29,12 @@
 .asc-bar{position:sticky;top:0;z-index:150;background:var(--white);border-bottom:1px solid var(--line-lt);transition:border-color .15s var(--ease)}
 /* while the mega menu is open the bar flows straight into it: no dividing line */
 .asc-bar:has(.asc-panel.is-open){border-bottom-color:var(--mega)}
-.asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:28px;min-height:128px}
+.asc-bar__inner{position:relative;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:20px;min-height:128px}
 
-/* logo.png has blank space on its left and more below the mark than above it:
-   pull it left to the content edge and nudge it down so the mark sits centred */
-.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center;overflow-x:visible;overflow-y:clip}
-.asc-logo img{height:var(--logo-h);width:auto;margin-left:calc(var(--logo-h) * -.134);transform:translateY(calc(var(--logo-h) * .11))}
+/* The SVG logo has no blank space around it, so it sits on the content edge as is.
+   It plays its animation once when the page loads, then stays still. */
+.asc-logo{flex:0 0 auto;display:inline-flex;align-items:center}
+.asc-logo img{height:var(--logo-h);width:auto}
 
 /* ---------------------------------------------------------------------
    3. Top links
@@ -132,8 +132,9 @@
 /* ---------------------------------------------------------------------
    7. Responsive
    --------------------------------------------------------------------- */
-@media (max-width:1180px){
-  .asc-bar__inner{gap:16px}
+/* compact bar: the phone shows as an icon only, so the links keep their room beside the logo */
+@media (max-width:1280px){
+  .asc-bar__inner{gap:12px}
   .asc-navbtn{padding:0 10px;letter-spacing:.8px}
   .asc-navbtn::after{left:10px;right:10px}
   .asc-tel-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -141,7 +142,7 @@
   .asc-dd-cat{padding:0 8px;letter-spacing:.6px}
 }
 @media (max-width:1080px){
-  .asc-bar{--logo-h:76px}
+  .asc-bar{--logo-h:44px}
   .asc-bar__inner{min-height:88px;gap:12px}
   .asc-nav,.asc-actions,.asc-panel.is-open{display:none}
   .asc-burger{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-left:auto;padding:0;background:none;border:1px solid rgba(22,24,31,.2);cursor:pointer}
